@@ -19,7 +19,7 @@ function Tagebuch() {
             <EintragForm />
             <EintraegeOutput />
 
-            <script type="text/javascript" src="../Tagebuch.js"></script>
+            {/*<script type="text/javascript" src="../Tagebuch.js"></script>*/}
         </>
     );
 }

@@ -118,7 +118,7 @@ function Home({onLogin}) {
                 <h1>Sponsor</h1>
                 <p>Danke an unseren Sponsor</p>
                 <a href="https://www.acs.it/de/">
-                    <img src="/assets/images/frosch.jpeg" alt="Logo ACS"/>
+                    <img src="/assets/images/acsLogo.svg" alt="Logo ACS"/>
                 </a>
             </div>
         </>

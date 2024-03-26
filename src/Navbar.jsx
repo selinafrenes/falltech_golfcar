@@ -1,7 +1,6 @@
 import React from 'react';
 // import '/src/styles/style.css';
 import {openLoginWindow} from './script';
-// import { Outlet, Link } from "react-router-dom";
 
 function Navbar() {
     return (
@@ -28,7 +27,6 @@ function Navbar() {
                     <a onClick={openLoginWindow}><i className="fa-solid fa-right-to-bracket"></i></a>
                 </div>
             </nav>
-            {/*<Outlet />*/}
         </>
 
     );

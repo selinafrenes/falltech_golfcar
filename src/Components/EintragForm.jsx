@@ -23,7 +23,7 @@ function EintragForm() {
         }
 
         // Senden der Daten an den Server
-        const response = await fetch('http://localhost:8000/tagebuch.html/submit', {
+        const response = await fetch('http://localhost:8000/tagebuch/submit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

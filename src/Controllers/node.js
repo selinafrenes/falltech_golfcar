@@ -44,7 +44,7 @@ app.get('/', function (req, res){
 // <form action="http://localhost:8000/tagebuch.html/submit" className="filter and search" method="get">
 
 
-app.post('/tagebuch.html/submit', function (req, res){
+app.post('/tagebuch/submit', function (req, res){
 
     console.log("currenty in : '/tagebuch.html/submit'");
     const data = req.body;

@@ -42,7 +42,7 @@ function EintraegeOutput(){
     return(
         <div className="output-wrapper">
             <div className="output-container">
-                <form action="http://localhost:8000/tagebuch.html/submit" className="filter and search" method="get">
+                <form action="http://localhost:8000/tagebuch/submit" className="filter and search" method="get">
                     <div className="suchen">
                         <label className="label-input-text-field" htmlFor="searchInput">Suchen nach Beschreibung</label>
                         <input className="input-text-field" type="text" id="searchInput"/>

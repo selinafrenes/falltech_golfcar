@@ -29,19 +29,6 @@ function App() {
                   </Routes>
                   <Footer/>
           </Router>
-          {/*<Navbar/>*/}
-          {/*<Home>*/}
-          {/*/!*<BrowserRouter>*!/*/}
-          {/*/!*    <Routes>*!/*/}
-          {/*/!*        <Route path="/" element={<Footer />}>*!/*/}
-          {/*/!*            <Route path="impressum" element={<Impressum />} />*!/*/}
-          {/*/!*            <Route path="datenschutz" element={<Datenschutz />} />*!/*/}
-          {/*/!*            /!*<Route path="*" element={<NoPage />} />*!/*!/*/}
-          {/*/!*        </Route>*!/*/}
-          {/*/!*    </Routes>*!/*/}
-          {/*/!*</BrowserRouter>*!/*/}
-          {/*    <Footer/>*/}
-          {/*</Home>*/}
       </>
   );
 }
