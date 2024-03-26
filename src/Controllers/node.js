@@ -121,15 +121,14 @@ app.post('/index.html/login', (req, res) => {
 });
 
 
-app.get('/tagebuch.html/submit', (req, res) => {
+app.get('/tagebuch/entries', (req, res) => {
     getAllEnters().then(r => {
         console.log("Result getAllEnters: " + JSON.stringify(r));
-        // TODO res.
         res.json(r);
 
         // loadEnters(r.entersResult, r.entryResult);
     }).catch(error => {
-        console.error("Fehler bei '/tagebuch.html/submit': " + error.message);
+        console.error("Fehler bei ex '/tagebuch.html/submit' jz '/tagebuch/entries': " + error.message);
     });
 });
 

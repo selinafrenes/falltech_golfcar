@@ -1,5 +1,7 @@
 // import {useState} from "react";
 
+import CheckboxElement from "./CheckboxElement";
+
 function EintragForm() {
 
     // const [isSubmitting, setIsSubmitting] = useState(false);
@@ -65,41 +67,11 @@ function EintragForm() {
 
                     <fieldset className="checkbox-container">
                         <legend>Personen:</legend>
-                        <div className="checkbox-wrapper">
-                            <label className="checkbox-input" htmlFor="checkboxDamian">
-                                <input className="input-checkbox-field" type="checkbox" id="checkboxDamian" name="people"
-                                       value="mayrdamian"/>
-                            </label>
-                            <label className="checkbox-label" htmlFor="checkboxDamian">Damian</label>
-                        </div>
-                        <div className="checkbox-wrapper">
-                            <label className="checkbox-input" htmlFor="checkboxDavid">
-                                <input className="input-checkbox-field" type="checkbox" id="checkboxDavid" name="people"
-                                       value="mairhoferdavid"/>
-                            </label>
-                            <label className="checkbox-label" htmlFor="checkboxDavid">David</label>
-                        </div>
-                        <div className="checkbox-wrapper">
-                            <label className="checkbox-input" htmlFor="checkboxFabian">
-                                <input className="input-checkbox-field" type="checkbox" id="checkboxFabian" name="people"
-                                       value="reiferfabian"/>
-                            </label>
-                            <label className="checkbox-label" htmlFor="checkboxFabian">Fabian</label>
-                        </div>
-                        <div className="checkbox-wrapper">
-                            <label className="checkbox-input" htmlFor="checkboxSelina">
-                                <input className="input-checkbox-field" type="checkbox" id="checkboxSelina" name="people"
-                                       value="frenesselina"/>
-                            </label>
-                            <label className="checkbox-label" htmlFor="checkboxSelina">Selina</label>
-                        </div>
-                        <div className="checkbox-wrapper">
-                            <label className="checkbox-input" htmlFor="checkboxWilma">
-                                <input className="input-checkbox-field" type="checkbox" id="checkboxWilma" name="people"
-                                       value="frenerwilma"/>
-                            </label>
-                            <label className="checkbox-label" htmlFor="checkboxWilma">Wilma</label>
-                        </div>
+                        <CheckboxElement username="mayrdamian" firstname="Damian"/>
+                        <CheckboxElement username="mairhoferdavid" firstname="David"/>
+                        <CheckboxElement username="reiferfabian" firstname="Fabian"/>
+                        <CheckboxElement username="frenesselina" firstname="Selina"/>
+                        <CheckboxElement username="frenerwilma" firstname="Wilma"/>
                     </fieldset>
                     <label htmlFor="description">Beschreibung:</label>
                     <textarea className="input-text-field" id="description" name="description" rows="4" required></textarea>
