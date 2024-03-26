@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import '../src/styles/style.css';
+import { Routes, Route } from "react-router-dom";
+import Navbar from './Navbar';
+import Home from "./Pages/Home";
+import Impressum from "./Pages/Impressum";
+import Datenschutz from "./Pages/Datenschutz";
+import Footer from "./Components/Footer";
+import { BrowserRouter as Router } from 'react-router-dom';
+import Tagebuch from "./Pages/Tagebuch";
+import {useState} from "react";
+
 
 function App() {
+    // authentifizierung für Tagebuch
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const handleLoginSuccess = () => {
+        setIsAuthenticated(true);
+    };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+          <Router>
+                  <Navbar/>
+                  <Routes>
+                      <Route path="/" element={<Home onLogin={handleLoginSuccess}/>} />
+                      <Route path="/tagebuch" element={isAuthenticated ? <Tagebuch /> : <Home onLogin={handleLoginSuccess} />}/>
+                      <Route path="/impressum" element={<Impressum />} />
+                      <Route path="/datenschutz" element={<Datenschutz />} />
+                      {/* Definieren Sie weitere Routen hier */}
+                  </Routes>
+                  <Footer/>
+          </Router>
+          {/*<Navbar/>*/}
+          {/*<Home>*/}
+          {/*/!*<BrowserRouter>*!/*/}
+          {/*/!*    <Routes>*!/*/}
+          {/*/!*        <Route path="/" element={<Footer />}>*!/*/}
+          {/*/!*            <Route path="impressum" element={<Impressum />} />*!/*/}
+          {/*/!*            <Route path="datenschutz" element={<Datenschutz />} />*!/*/}
+          {/*/!*            /!*<Route path="*" element={<NoPage />} />*!/*!/*/}
+          {/*/!*        </Route>*!/*/}
+          {/*/!*    </Routes>*!/*/}
+          {/*/!*</BrowserRouter>*!/*/}
+          {/*    <Footer/>*/}
+          {/*</Home>*/}
+      </>
   );
 }
 
+// const root = ReactDOM.createRoot(document.getElementById('app'));
+// root.render(<App />);
 export default App;
