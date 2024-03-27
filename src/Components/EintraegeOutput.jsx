@@ -63,13 +63,12 @@ function EintraegeOutput(){
                     <button type="button" className="submitBtn" id="searchButton">Suchen</button>
                 </form>
                 <div className="output-field" id="enters">
-                    <p>Hello OUTPUT</p>
+                    {/*<p>Hello OUTPUT</p>*/}
+                    {entersData && <Table data={entersData}/>}
                 </div>
 
             </div>
-            {/*{entersData && <Table data={entersData}/>}*/}
-            <div className="output">
-            </div>
+
         </div>
 
     );
