@@ -5,8 +5,13 @@ import Login from "../Components/Login";
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Sponsor from "../Components/Sponsor";
+import {Route, Routes} from "react-router-dom";
+import {useRef} from "react";
+
 
 function Home({onLogin}) {
+    const sponsorRef = useRef(null);
 
     return (
         <>
@@ -120,13 +125,15 @@ function Home({onLogin}) {
                 </div>
 
             </div>
-            <div id="sponsor">
+            <div id="sponsor" ref={sponsorRef}>
                 <h1>Sponsor</h1>
                 <p>Danke an unseren Sponsor</p>
                 <a href="https://www.acs.it/de/">
                     <img src="/assets/images/acsLogo.svg" alt="Logo ACS"/>
                 </a>
             </div>
+
+
         </>
     );
 }
