@@ -8,6 +8,7 @@ import Footer from "./Components/Footer";
 import { BrowserRouter as Router } from 'react-router-dom';
 import Tagebuch from "./Pages/Tagebuch";
 import {useState} from "react";
+import Sponsor from "./Components/Sponsor";
 
 
 function App() {

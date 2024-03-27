@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useRef} from 'react';
 // import '/src/styles/style.css';
 import {openLoginWindow} from './script';
-import { useLocation } from 'react-router-dom';
+import {useLocation, Link, useNavigate} from 'react-router-dom';
 
 import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -15,31 +15,51 @@ function textTagebuch (currentLocation) {
     }
 }
 
+/*TODO Problem mit Zum Projekt, Über Uns und Sponsor bei Impressum und Datenschutz*/
+
 function Navbar() {
     const location = useLocation();
+    const scrollToElement = (elementId) => {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        /*useNavigate("/"); */
+        const element = document.getElementById(elementId);
+        if(element) {
+            element.scrollIntoView({ behavior: 'smooth'});
+        }
+    };
+
+    const scrollToSponsor = () => {
+        scrollToElement("sponsor");
+    };
+
+    const scrollToAboutUs = () => {
+        scrollToElement("aboutUs");
+    };
+
+    const scrollToZumProjekt = () => {
+        scrollToElement("zumProjekt");
+    };
+
     return (
         <>
             <nav className="navbar">
-                <div className="navbar-a-container">
+                <div className="navbar-a-container"> {/*TODO Funktioniert noch nicht*/}
                     {/*<Link to="/">*/}
                         <img className="logo_FallTech" src="/assets/images/FallTech_Logo.svg" alt="Logo FallTech"/>
                     {/*</Link>*/}
                 </div>
                 <div className="navbar-a-container">
-                    <p>Zum Projekt</p>
-                    {/*<a href="#zumProjekt">Zum Projekt</a>*/}
+                    <button onClick={scrollToZumProjekt}>Unser Team</button>
                 </div>
                 <div  className="navbar-a-container">
-                    <p>About Us</p>
-                    {/*<a href="#aboutUs">About Us</a>*/}
+                    <button onClick={scrollToAboutUs}>Unser Team</button>
                 </div>
                 <div className="navbar-a-container">
-                    {/*<a href="#sponsor">Sponsor</a>*/}
-                    <p>Sponsor</p>
+                    <button onClick={scrollToSponsor}>Zum Sponsor</button>
                 </div>
                 <div className="navbar-a-container" id="loginButton">
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <a onClick={openLoginWindow}>{textTagebuch(location)}</a>
+                    <button onClick={openLoginWindow}>{textTagebuch(location)}</button>
                 </div>
             </nav>
         </>
