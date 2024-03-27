@@ -2,6 +2,9 @@ import '../../src/styles/style.css';
 // import Navbar from '../Navbar';
 import {prevSlide, nextSlide} from '../script';
 import Login from "../Components/Login";
+import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function Home({onLogin}) {
 
@@ -11,10 +14,11 @@ function Home({onLogin}) {
             <div id="zumProjekt">
                 <h1>Zum Projekt</h1>
                 <div id="zumProjekt-Container">
+                    <div className="pfeil-links">
+                        <div className="prev" onClick={prevSlide}><FontAwesomeIcon icon={faArrowLeft} /></div>
+                    </div>
                     <section id="zumProjektShow">
                         <div className="slides">
-                            <div className="prev" onClick={prevSlide}><i className="fa-solid fa-arrow-left"></i></div>
-                            <div className="next" onClick={nextSlide}><i className="fa-solid fa-arrow-right"></i></div>
                             <div className="slide" id="slide-1">
                                 <h3 className="slide-uberschrift">Schulprojekt</h3>
                                 <div className="slide-text">
@@ -62,7 +66,9 @@ function Home({onLogin}) {
                             </div>
                         </div>
                     </section>
-
+                    <div className="pfeil-rechts">
+                        <div className="next" onClick={nextSlide}><FontAwesomeIcon icon={faArrowRight}/></div>
+                    </div>
                 </div>
             </div>
             <div id="aboutUs" className="aboutUS">

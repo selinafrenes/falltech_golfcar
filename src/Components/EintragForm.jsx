@@ -66,7 +66,7 @@ function EintragForm() {
                            step="0.01" pattern="^\d+(\.\d{0,2})?$"/>
 
                     <fieldset className="checkbox-container">
-                        <legend>Personen:</legend>
+                        <legend className="checkbox-legend">Personen:</legend>
                         <CheckboxElement username="mayrdamian" firstname="Damian"/>
                         <CheckboxElement username="mairhoferdavid" firstname="David"/>
                         <CheckboxElement username="reiferfabian" firstname="Fabian"/>
