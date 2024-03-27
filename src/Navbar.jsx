@@ -1,8 +1,22 @@
 import React from 'react';
 // import '/src/styles/style.css';
 import {openLoginWindow} from './script';
+import { useLocation } from 'react-router-dom';
+
+import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
+function textTagebuch (currentLocation) {
+    let location = currentLocation;
+    if(location.pathname === '/' || location.pathname === '/index' || location.pathname === '/impressum' || location.pathname === '/datenschutz'){
+        return (<p>Tagebuch</p>);
+    } else if (location.pathname === '/tagebuch'){
+        return (<FontAwesomeIcon icon={faRightFromBracket} />);
+    }
+}
 
 function Navbar() {
+    const location = useLocation();
     return (
         <>
             <nav className="navbar">
@@ -24,7 +38,8 @@ function Navbar() {
                     <p>Sponsor</p>
                 </div>
                 <div className="navbar-a-container" id="loginButton">
-                    <a onClick={openLoginWindow}><i className="fa-solid fa-right-to-bracket"></i></a>
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <a onClick={openLoginWindow}>{textTagebuch(location)}</a>
                 </div>
             </nav>
         </>
