@@ -1,8 +1,31 @@
 function Table(props){
     //      bezieh          einträge
     const { entersResult, entryResult } = props.data;
+    const combinedEntries = [];
 
-    const groupedEntries = entryResult.reduce((acc, entry) => {
+    for (let i = 0; i < entersResult.length; i++) {
+        const e = entersResult[i];
+        const res = entryResult.find((entry) => entry.id === e.id);
+        const result = {
+            username: entersResult[i].username,
+            id: res.id,
+            description: res.description,
+            notes: res.notes,
+            date: res.date,
+            duration: res.duration
+        }
+        combinedEntries.push(result);
+    }
+
+    // sortieren nach Datum
+    combinedEntries.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateA.getTime() - dateB.getTime();
+    });
+
+    // nach Datum gruppieren
+    const groupedEntries = combinedEntries.reduce((acc, entry) => {
         const date = entry.date;
         if (!acc.hasOwnProperty(date)) {
             acc[date] = [];
@@ -11,61 +34,40 @@ function Table(props){
         return acc;
     }, {});
 
-    // entryResult.sort((a, b) => {
-    //     const dateA = new Date(a.date);
-    //     const dateB = new Date(b.date);
-    //     return dateA.getTime() - dateB.getTime();
-    // });
 
-    for (const date in groupedEntries) {
-        // const entries = groupedEntries[date];
-        const e = groupedEntries[date];
-        for (let i = 0; i < e; i++) {
-
-        }
-    }
-    debugger;
     return(
-        <div>
-            {Object.keys(groupedEntries).map((date) => (
-                <div key={date}>
-                    <h2>{date}</h2>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Datum</th>
-                            <th>Beschreibung</th>
-                            <th>Notizen</th>
-                            <th>Dauer</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {groupedEntries[date].map((entry) => (
-                            <tr key={entry.id}> {/* Use a unique identifier for each entry */}
-                                <td>{entry.date}</td>
+        <>
+            <table>
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Duration</th>
+                    <th>Description</th>
+                    <th>Notes</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {Object.entries(groupedEntries).map(([date, entries]) => (
+                    <tr key={date}>
+                        <th colSpan="6">{date}</th>
+                        {/* Group header */}
+                        {entries.map((entry) => (
+                            <tr key={entry.id}>
+                                <td>{entry.username}</td>
+                                <td>{entry.duration}</td>
                                 <td>{entry.description}</td>
                                 <td>{entry.notes}</td>
-                                <td>{entry.duration}</td>
                             </tr>
                         ))}
-                        </tbody>
-                    </table>
-                </div>
-            ))}
-        </div>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        </>
     );
 
 }
 
-// <table>
-//     <th>ID</th>
-//     <th>Username</th>
-//     {entersResult.map((relations) => (
-//         <tr id={relations.id}>
-//             <td>{relations.id}</td>
-//             <td>{relations.username}</td>
-//             {/*<p>{relations.content}</p>*/}
-//         </tr>
-//     ))}
-// </table>
+
 export default Table
