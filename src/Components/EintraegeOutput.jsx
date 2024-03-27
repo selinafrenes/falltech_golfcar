@@ -1,6 +1,7 @@
-import CheckboxElement from "./CheckboxElement";
+
 import {useEffect, useState} from "react";
 import Table from "./Table";
+import ToggleButton from "./ToggleButton";
 
 function EintraegeOutput(){
 
@@ -39,11 +40,27 @@ function EintraegeOutput(){
     //     return <p>Fehler</p>;
     // }
 
+
     return(
         <div className="output-wrapper">
             <div className="output-container">
+                <p className="p_beiOutput">Sortieren nach: </p>
+                <div className="filternNach">
+                    <p>Person</p>
+                    <ToggleButton/>
+                    <p>Datum</p>
+                </div>
+
+                {/*ToDo Hook*/}
+
+                {/*
                 <form action="http://localhost:8000/tagebuch/submit" className="filter and search" method="get">
+
+
                     <div className="suchen">
+
+
+                        {/*
                         <label className="label-input-text-field" htmlFor="searchInput">Suchen nach Beschreibung</label>
                         <input className="input-text-field" type="text" id="searchInput"/>
 
@@ -55,13 +72,21 @@ function EintraegeOutput(){
                             <CheckboxElement username="frenesselina" firstname="Selina"/>
                             <CheckboxElement username="frenerwilma" firstname="Wilma"/>
                         </fieldset>
+
                     </div>
+
                     <div>
+
+                        <label className="label-input-text-field" htmlFor="searchInput">Suchen nach Beschreibung</label>
                         <label htmlFor="date_filter">Datum:</label>
                         <input className="input-date-field" type="date" id="date_filter" name="date"/>
+
+
                     </div>
+
                     <button type="button" className="submitBtn" id="searchButton">Suchen</button>
                 </form>
+                */}
                 <div className="output-field" id="enters">
                     {/*<p>Hello OUTPUT</p>*/}
                     {entersData && <Table data={entersData}/>}

@@ -24,7 +24,6 @@ function Table(props){
 
         }
     }
-    debugger;
     return(
         <div>
             {Object.keys(groupedEntries).map((date) => (
