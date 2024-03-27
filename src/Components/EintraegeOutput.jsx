@@ -1,11 +1,12 @@
 
-import {useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import Table from "./Table";
 import ToggleButton from "./ToggleButton";
 
 function EintraegeOutput(){
 
     const [entersData, setEntersData] = useState(null);
+    const [toggle, setToggle] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,56 +41,27 @@ function EintraegeOutput(){
     //     return <p>Fehler</p>;
     // }
 
+    // TODO
+    const [filterPerson, setFilterPerson] = useState(false);
+    const filterByPerson = () => {
+        setFilterPerson(!filterPerson);
+    };
 
     return(
         <div className="output-wrapper">
             <div className="output-container">
                 <p className="p_beiOutput">Sortieren nach: </p>
                 <div className="filternNach">
-                    <p>Person</p>
-                    <ToggleButton/>
                     <p>Datum</p>
+                    <ToggleButton onChange={filterByPerson}/>
+                    <p>Person</p>
                 </div>
 
                 {/*ToDo Hook*/}
 
-                {/*
-                <form action="http://localhost:8000/tagebuch/submit" className="filter and search" method="get">
-
-
-                    <div className="suchen">
-
-
-                        {/*
-                        <label className="label-input-text-field" htmlFor="searchInput">Suchen nach Beschreibung</label>
-                        <input className="input-text-field" type="text" id="searchInput"/>
-
-                        <fieldset className="checkbox-container">
-                            <legend>Personen:</legend>
-                            <CheckboxElement username="mayrdamian" firstname="Damian"/>
-                            <CheckboxElement username="mairhoferdavid" firstname="David"/>
-                            <CheckboxElement username="reiferfabian" firstname="Fabian"/>
-                            <CheckboxElement username="frenesselina" firstname="Selina"/>
-                            <CheckboxElement username="frenerwilma" firstname="Wilma"/>
-                        </fieldset>
-
-                    </div>
-
-                    <div>
-
-                        <label className="label-input-text-field" htmlFor="searchInput">Suchen nach Beschreibung</label>
-                        <label htmlFor="date_filter">Datum:</label>
-                        <input className="input-date-field" type="date" id="date_filter" name="date"/>
-
-
-                    </div>
-
-                    <button type="button" className="submitBtn" id="searchButton">Suchen</button>
-                </form>
-                */}
                 <div className="output-field" id="enters">
                     {/*<p>Hello OUTPUT</p>*/}
-                    {entersData && <Table data={entersData}/>}
+                    {entersData && <Table filter={filterPerson} data={entersData}/>}
                 </div>
 
             </div>

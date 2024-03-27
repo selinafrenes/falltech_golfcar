@@ -17,26 +17,76 @@ function Table(props){
         combinedEntries.push(result);
     }
 
-    // sortieren nach Datum
-    combinedEntries.sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        return dateA.getTime() - dateB.getTime();
-    });
+    if (props.filter) {
+        // Gruppiert alle Einträge nach Username
+        const groupedEntries = combinedEntries.reduce((acc, entry) => {
+            // debugger;
+            const username = entry.username;
+            if (!acc.hasOwnProperty(username)) {
+                acc[username] = [];
+            }
+            acc[username].push(entry);
+            return acc;
+        }, {});
 
-    // nach Datum gruppieren
-    const groupedEntries = combinedEntries.reduce((acc, entry) => {
-        const date = entry.date;
-        if (!acc.hasOwnProperty(date)) {
-            acc[date] = [];
+        // sortiert alle Einträge im User
+        for (const groupedEntry in groupedEntries) {
+            debugger;
+            groupedEntries[groupedEntry].sort((a, b) => {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+                return dateA.getTime() - dateB.getTime();
+            });
         }
-        acc[date].push(entry);
-        return acc;
-    }, {});
 
 
-    return(
-        <>
+        return(
+            <table>
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Duration</th>
+                    <th>Description</th>
+                    <th>Notes</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {Object.entries(groupedEntries).map(([username, entries]) => (
+                    <tr key={username}>
+                        <th colSpan="6">{username}</th>
+                        {/* Group header */}
+                        {entries.map((entry) => (
+                            <tr key={entry.id}>
+                                <td>{entry.date}</td>
+                                <td>{entry.duration}</td>
+                                <td>{entry.description}</td>
+                                <td>{entry.notes}</td>
+                            </tr>
+                        ))}
+                    </tr>
+                ))}
+                </tbody>
+            </table>);
+    }else{
+        // sortieren nach Datum
+        combinedEntries.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateA.getTime() - dateB.getTime();
+        });
+
+        // nach Datum gruppieren
+        const groupedEntries = combinedEntries.reduce((acc, entry) => {
+            const date = entry.date;
+            if (!acc.hasOwnProperty(date)) {
+                acc[date] = [];
+            }
+            acc[date].push(entry);
+            return acc;
+        }, {});
+
+        return(
             <table>
                 <thead>
                 <tr>
@@ -63,9 +113,8 @@ function Table(props){
                     </tr>
                 ))}
                 </tbody>
-            </table>
-        </>
-    );
+            </table>);
+    }
 
 }
 
