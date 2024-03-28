@@ -1,3 +1,15 @@
+import React, { Fragment } from 'react';
+
+/**
+ * Komponente zur Darstellung einer Tabelle basierend auf den übergebenen Daten.
+ * Die Tabelle kann entweder nach Benutzername oder nach Datum gefiltert und organisiert werden.
+ * @param {object} props - Die Eigenschaften, die der Tabelle übergeben werden.
+ * @param {object} props.data - Objekt, das die Daten für die Tabelle enthält.
+ * @param {Array} props.data.entersResult - Einträge zur Darstellung in der Tabelle.
+ * @param {Array} props.data.entryResult - Zusätzliche Informationen für die Einträge.
+ * @param {string} [props.filter] - Optionaler Parameter, der angibt, ob die Tabelle nach Benutzername oder Datum gefiltert werden soll.
+ * @returns {JSX.Element} - JSX-Element zur Darstellung der Tabelle.
+ */
 function Table(props){
     const { entersResult, entryResult } = props.data;
     const combinedEntries = [];
@@ -16,13 +28,19 @@ function Table(props){
         combinedEntries.push(result);
     }
 
+
     return(
         <>
             {props.filter ? filterTableByUsername(combinedEntries) : filterTableByDate(combinedEntries)}
         </>
     );
-
 }
+
+/**
+ * Filtert und organisiert kombinierte Einträge nach Benutzernamen, gruppiert sie und sortiert sie dann nach Datum.
+ * @param {Array} combinedEntries - Die kombinierten Einträge enthalten Daten für mehrere Benutzer.
+ * @returns {JSX.Element} - JSX-Element, das eine Tabelle darstellt, in der gefilterte und sortierte Einträge angezeigt werden.
+ */
 const filterTableByUsername = (combinedEntries) => {
     // Gruppiert alle Einträge nach Username
     const groupedEntries = combinedEntries.reduce((acc, entry) => {
@@ -35,9 +53,9 @@ const filterTableByUsername = (combinedEntries) => {
         return acc;
     }, {});
 
-    // sortiert alle Einträge im User
+    // Sortiert alle Einträge innerhalb des Users nach Datum
     for (const groupedEntry in groupedEntries) {
-        debugger;
+        //debugger;
         groupedEntries[groupedEntry].sort((a, b) => {
             const dateA = new Date(a.date);
             const dateB = new Date(b.date);
@@ -45,26 +63,85 @@ const filterTableByUsername = (combinedEntries) => {
         });
     }
 
-
+    // Rendert JSX-Tabelle mit gruppierten und sortierten Einträgen
     return(
-        <table>
-            <thead>
+        <table className="output-filed-table-person">
+            <thead className="output-filed-table-thead-person">
             <tr>
-                <th>Username</th>
-                <th>Duration</th>
-                <th>Description</th>
-                <th>Notes</th>
-                <th>Date</th>
+                <th>Person</th>
+                <th>Datum</th>
+                <th>Zeit</th>
+                <th>Beschreibung</th>
+                <th>Notizen</th>
             </tr>
             </thead>
-            <tbody>
+
+            <tbody className="output-filed-table-tbody-person">
             {Object.entries(groupedEntries).map(([username, entries]) => (
-                <tr key={username}>
-                    <th colSpan="6">{username}</th>
-                    {/* Group header */}
+                // eslint-disable-next-line react/jsx-no-undef
+                <Fragment key={username}>
+                    <tr>
+                        <th rowSpan={entries.length+1}>{username}</th> {/*TODO Warum +1*/}
+                    </tr>
                     {entries.map((entry) => (
                         <tr key={entry.id}>
-                            <td>{entry.date}</td>
+                            <td>{new Date(entry.date).toLocaleDateString('de-DE')}</td>
+                            <td>{entry.duration}</td>
+                            <td>{entry.description}</td>
+                            <td>{entry.notes}</td>
+                        </tr>
+                    ))}
+                </Fragment>
+            ))}
+            </tbody>
+
+        </table>
+)};
+
+/**
+ * Filtert und organisiert kombinierte Einträge nach Datum, sortiert sie chronologisch und gruppiert sie nach Datum.
+ * @param {Array} combinedEntries - Die kombinierten Einträge enthalten Daten für mehrere Datumswerte.
+ * @returns {JSX.Element} - JSX-Element, das eine Tabelle darstellt, in der gefilterte und nach Datum sortierte Einträge angezeigt werden.
+ */
+/*
+const filterTableByDate = (combinedEntries) => {
+    // sortieren nach Datum
+    combinedEntries.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateA.getTime() - dateB.getTime();
+    });
+
+    // nach Datum gruppieren
+    const groupedEntries = combinedEntries.reduce((acc, entry) => {
+        const date = entry.date;
+        if (!acc.hasOwnProperty(date)) {
+            acc[date] = [];
+        }
+        acc[date].push(entry);
+        return acc;
+    }, {});
+
+    // Rendert JSX-Tabelle mit gruppierten Einträgen nach Datum sortiert
+    return(
+        <table className="output-filed-table">
+            <thead className="output-filed-table-thead">
+            <tr>
+                <th>Datum</th>
+                <th>Person</th>
+                <th>Zeit</th>
+                <th>Beschreibung</th>
+                <th>Notiz</th>
+            </tr>
+            </thead>
+            <tbody className="output-filed-table-tbody">
+            {Object.entries(groupedEntries).map(([date, entries]) => (
+                <tr key={date}>
+                    <th colSpan="6">{date}</th>
+                    {/* Group header }
+                    {entries.map((entry) => (
+                        <tr key={entry.id}>
+                            <td>{entry.username}</td>
                             <td>{entry.duration}</td>
                             <td>{entry.description}</td>
                             <td>{entry.notes}</td>
@@ -75,6 +152,10 @@ const filterTableByUsername = (combinedEntries) => {
             </tbody>
         </table>);
 }
+*/
+
+
+
 
 const filterTableByDate = (combinedEntries) => {
     // sortieren nach Datum
@@ -94,31 +175,35 @@ const filterTableByDate = (combinedEntries) => {
         return acc;
     }, {});
 
+    // Rendert JSX-Tabelle mit gruppierten Einträgen nach Datum sortiert
     return(
-        <table>
-            <thead>
+        <table className="output-filed-table-datum">
+            <thead className="output-filed-table-thead-datum">
             <tr>
-                <th>Username</th>
-                <th>Duration</th>
-                <th>Description</th>
-                <th>Notes</th>
-                <th>Date</th>
+                <th>Datum</th>
+                <th>Person</th>
+                <th>Zeit</th>
+                <th>Beschreibung</th>
+                <th>Notiz</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody className="output-filed-table-tbody-datum">
             {Object.entries(groupedEntries).map(([date, entries]) => (
-                <tr key={date}>
-                    <th colSpan="6">{date}</th>
-                    {/* Group header */}
-                    {entries.map((entry) => (
-                        <tr key={entry.id}>
-                            <td>{entry.username}</td>
-                            <td>{entry.duration}</td>
-                            <td>{entry.description}</td>
-                            <td>{entry.notes}</td>
-                        </tr>
-                    ))}
-                </tr>
+                entries.map((entry, index) => (
+                    <tr key={entry.id}>
+                        {index === 0 && (
+                            <th rowSpan={entries.length}>
+                                {new Date(date).toLocaleDateString('de-DE')}
+                            </th>
+                        )}
+                        {/*index === 0 && <td rowSpan={entries.length}>{date}</td>*/}
+                        <td>{entry.username}</td>
+                        <td>{entry.duration}</td>
+                        <td>{entry.description.replace(/[^a-zA-Z0-9 ]/g, '')}</td> {/*TODO Anzeichen entfernen*/}
+                        <td>{entry.notes}</td>
+                        {/*<td>{entry.date}</td>*/}
+                    </tr>
+                ))
             ))}
             </tbody>
         </table>);

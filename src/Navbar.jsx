@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 // import '/src/styles/style.css';
 import {openLoginWindow} from './script';
-import {useLocation, Link, useNavigate} from 'react-router-dom';
+import {useLocation, Link, useNavigate, NavLink} from 'react-router-dom';
 
 import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -29,6 +29,7 @@ function Navbar() {
     };
 
     const scrollToSponsor = () => {
+
         scrollToElement("sponsor");
     };
 
@@ -49,14 +50,18 @@ function Navbar() {
                     {/*</Link>*/}
                 </div>
                 <div className="navbar-a-container">
-                    <button onClick={scrollToZumProjekt}>Unser Team</button>
+                    <button onClick={scrollToZumProjekt}>Zum Projekt</button>
                 </div>
                 <div  className="navbar-a-container">
                     <button onClick={scrollToAboutUs}>Unser Team</button>
                 </div>
                 <div className="navbar-a-container">
-                    <button onClick={scrollToSponsor}>Zum Sponsor</button>
-                </div>
+                    <button onClick={scrollToSponsor}>Sponsor</button>
+
+                    {/*<NavLink to="/" onClick={() => scrollToSponsor()}>Zum Sponsor</NavLink>
+                        <Link to="/" onClick={scrollToSponsor}>Zum Sponsor</Link>
+                */}
+                    </div>
                 <div className="navbar-a-container" id="loginButton">
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <button onClick={openLoginWindow}>{textTagebuch(location)}</button>
