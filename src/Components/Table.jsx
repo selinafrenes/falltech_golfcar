@@ -64,7 +64,8 @@ const filterTableByUsername = (combinedEntries) => {
     }
 
     // Rendert JSX-Tabelle mit gruppierten und sortierten Einträgen
-    return(
+
+    return (
         <table className="output-filed-table-person">
             <thead className="output-filed-table-thead-person">
             <tr>
@@ -75,28 +76,27 @@ const filterTableByUsername = (combinedEntries) => {
                 <th>Notizen</th>
             </tr>
             </thead>
-
             <tbody className="output-filed-table-tbody-person">
             {Object.entries(groupedEntries).map(([username, entries]) => (
-                // eslint-disable-next-line react/jsx-no-undef
                 <Fragment key={username}>
                     <tr>
-                        <th rowSpan={entries.length+1}>{username}</th> {/*TODO Warum +1*/}
+                        <th rowSpan={entries.length+1}>{username}</th>{/*TODO Warum +1*/}
                     </tr>
                     {entries.map((entry) => (
                         <tr key={entry.id}>
                             <td>{new Date(entry.date).toLocaleDateString('de-DE')}</td>
                             <td>{entry.duration}</td>
-                            <td>{entry.description}</td>
-                            <td>{entry.notes}</td>
+                            <td>{entry.description.replace(/'/g, '').replace(/\n/g, '')}</td>
+                            <td>{entry.notes.replace(/'/g, '').replace(/\n/g, '')}</td>
                         </tr>
                     ))}
                 </Fragment>
             ))}
             </tbody>
-
         </table>
-)};
+    )
+
+    };
 
 /**
  * Filtert und organisiert kombinierte Einträge nach Datum, sortiert sie chronologisch und gruppiert sie nach Datum.
@@ -176,7 +176,7 @@ const filterTableByDate = (combinedEntries) => {
     }, {});
 
     // Rendert JSX-Tabelle mit gruppierten Einträgen nach Datum sortiert
-    return(
+    return (
         <table className="output-filed-table-datum">
             <thead className="output-filed-table-thead-datum">
             <tr>
@@ -190,23 +190,23 @@ const filterTableByDate = (combinedEntries) => {
             <tbody className="output-filed-table-tbody-datum">
             {Object.entries(groupedEntries).map(([date, entries]) => (
                 entries.map((entry, index) => (
-                    <tr key={entry.id}>
+                    <tr key={`${entry.id}-${index}`}>
                         {index === 0 && (
                             <th rowSpan={entries.length}>
                                 {new Date(date).toLocaleDateString('de-DE')}
                             </th>
                         )}
-                        {/*index === 0 && <td rowSpan={entries.length}>{date}</td>*/}
                         <td>{entry.username}</td>
                         <td>{entry.duration}</td>
-                        <td>{entry.description.replace(/[^a-zA-Z0-9 ]/g, '')}</td> {/*TODO Anzeichen entfernen*/}
-                        <td>{entry.notes}</td>
-                        {/*<td>{entry.date}</td>*/}
+                        <td>{entry.description.replace(/'/g, '').replace(/\n/g, '<br>')}</td>
+                        <td>{entry.notes.replace(/'/g, '').replace(/\n/g, '<br>')}</td>
                     </tr>
                 ))
             ))}
             </tbody>
-        </table>);
+        </table>
+    );
+
 }
 
 
