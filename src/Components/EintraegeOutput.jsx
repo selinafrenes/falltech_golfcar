@@ -6,7 +6,13 @@ import ToggleButton from "./ToggleButton";
 function EintraegeOutput(){
 
     const [entersData, setEntersData] = useState(null);
-    const [toggle, setToggle] = useState(false);
+    const [reloadTrigger, setReloadTrigger] = useState(false); // Zustandsvariable für den Neu-Laden-Trigger
+
+
+    // Funktion zum Neu-Laden
+    const reloadData = () => {
+        setReloadTrigger(!reloadTrigger); // Ändert den Wert von reloadTrigger, um useEffect auszulösen
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,24 +27,16 @@ function EintraegeOutput(){
 
                 setEntersData(jsonData);
             } catch (err) {
-                console.log("erorrrrrrrrrrrrrrrrrrrrrrrrr: " + err.message);
+                console.log("errrrrrrrrrrrrrrrrrrrrrrrrr: " + err.message);
             }
         };
 
         fetchData();
-    }, []);
 
+    }, [reloadTrigger]); // useEffect wird bei Änderungen von reloadTrigger ausgeführt
 
-    if (entersData){
-        console.log("ENTERSDATA sind daaaaa");
-        // const { entersResult, entryResult } = entersData;
-
-    }
-
-    // else if (isLoading) {
-    //     return <p>Loading...</p>;
-    // } else{
-    //     return <p>Fehler</p>;
+    // if (entersData){
+    //     console.log("ENTERSDATA sind daaaaa");
     // }
 
     // TODO
@@ -50,6 +48,7 @@ function EintraegeOutput(){
     return(
         <div className="output-wrapper">
             <div className="output-container">
+                <button id="reloadDataBtn" onClick={reloadData}>Neu Laden</button>
                 <p className="p_beiOutput">Sortieren nach: </p>
                 <div className="filternNach">
                     <p>Datum</p>
