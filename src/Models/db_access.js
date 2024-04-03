@@ -1,4 +1,16 @@
-require('dotenv').config({ path: '../.env' });
+
+// +++ zuweisung variable _env, um dann z.b. mit console.log falschen pfad zu erkennen
+
+// +++ absolut von root (startpfad) aus gesehen
+// bei z.b. startpfad: node ./src/Controllers/node.js
+// const _env = require('dotenv').config({path: './src/.env' });
+
+// +++ relativ gesehen, mit __dirname
+// TODO: auch noch bei Controllers/node.js
+const _env = require('dotenv').config({path: __dirname + './../.env' });
+
+console.log(_env); // +++
+
 const bcrypt = require("bcrypt");
 // mysql2 unterstützt neuere async/await-Syntax und Promises für asynchrone Operationen
 const pool = require('mysql2/promise').createPool({
@@ -20,10 +32,13 @@ const pool = require('mysql2/promise').createPool({
  * @throws {Error} Wirft einen Fehler mit einer Nachricht, wenn der Benutzername oder das Passwort falsch ist oder ein anderer Fehler auftritt.
  */
 const userAuthentication = async (username, password) => {
+    console.log(`userAuthentication(username: '${username}' password: '${password}')`);
     let connection;
     try{
+        console.log("--> try connection");
         connection = await pool.getConnection();
-        if (username && password){
+        if (!!username && !!password){
+            console.log("--> try select");
             const [results] = await connection.execute(
                 'SELECT password FROM Person WHERE username = ?',
                 [username]

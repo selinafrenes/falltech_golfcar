@@ -20,6 +20,9 @@ function Login({ onLogin }) {
         if (data.success) {
             console.log("Successsssssssss");
             onLogin();
+            // wichtig, damit cookie auf localhost läuft!!!!
+            document.cookie = "username=" + username + "; max-age=86400; path=/; domain=localhost";
+
             navigate('/tagebuch');
             // closeLoginWindow();
         } else {

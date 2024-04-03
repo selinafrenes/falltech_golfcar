@@ -103,9 +103,9 @@ app.post('/index.html/login', (req, res) => {
             if (response){
                 // TODO Cookie evt wieder löschen (logout) und automatisch anmelden?
                 // Cookie setzten
-                res.cookie('username', username, {maxAge: 24*60*60*1000}); // Cookie ist ein Tag gültig
                 //res.redirect('/tagebuch');
                 res.json({ success: true });
+                console.log("COOKIE IST SET!!!!!!!!!!!!!!!!!!!!: " + response);
                 // res.status(200).json({ message: username });
             } else {
                 // TODO Benutzer anzeigen, dass Eingabe falsch war
@@ -113,11 +113,17 @@ app.post('/index.html/login', (req, res) => {
                 res.json({ success: false, message: 'Login fehlgeschlagen' });
                 // res.status(403).json({ message: 'Nicht autorisiert' });
             }
+            res.send();
         })
         .catch(error => {
             console.error('Fehler beim Aufrufen der userAuthentication-Funktion:', error);
+            // res.send();
             // res.status(403).json({ message: 'Nicht autorisiert' });
-        });
+        })
+        // .finally(() => {
+        //     console.log("SEND COOKIE");
+        //
+        // });
 });
 
 
