@@ -2,9 +2,11 @@
 const slides = document.getElementsByClassName("slide");
 let currenSlide = 0;
 
+
 export function openLoginWindow () {
     document.getElementById('loginWindow').style.display = 'block';
 }
+
 
 export function closeLoginWindow() {
     document.getElementById('loginWindow').style.display = 'none';
