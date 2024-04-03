@@ -1,7 +1,7 @@
-import React, {useRef} from 'react';
+import React from 'react';
 // import '/src/styles/style.css';
 import {openLoginWindow} from './script';
-import {useLocation, Link, useNavigate, NavLink} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 
 import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";

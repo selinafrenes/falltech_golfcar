@@ -101,8 +101,9 @@ app.post('/login', (req, res) => {
     userAuthentication(username, password)
         .then(response => {
             if (response){
-                // TODO Cookie evt wieder löschen (logout) und automatisch anmelden?
+                // TODO Cookie evt wieder setzten und bei client löschen (logout) und automatisch anmelden?
                 // res.cookie()
+                // res.cookie('username', username, { maxAge: 24*60*60*1000, path: '/', domain: 'localhost' });
 
                 res.json({ success: true });
                 console.log("COOKIE IST SET!!!!!!!!!!!!!!!!!!!!: " + response);
