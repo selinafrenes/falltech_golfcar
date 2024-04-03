@@ -25,8 +25,6 @@ function getCookieValue(cookieName) {
 }
 
 function App() {
-    const navigate = useNavigate();
-    const location = useLocation();
     // authentifizierung für Tagebuch
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const handleLoginSuccess = () => {
@@ -41,45 +39,6 @@ function App() {
             setIsAuthenticated(true);
         }
     }, []);
-    //
-    // useEffect(() => {
-    //     sessionStorage.setItem("lastPath", location.pathname);
-    // }, [location.pathname]);
-    //
-    // useEffect(() => {
-    //     const handleBeforeUnload = (event) => {
-    //         event.preventDefault();
-    //         event.returnValue = 'Möchtest du sicher die Seite verlassen? Eventuelle Änderungen werden nicht gespeichert';
-    //
-    //         // Benachrichtigung anzeigen und Navigation durchführen, wenn Benutzer bestätigt
-    //         const confirmationMessage = 'Möchtest du wirklich die Seite verlassen?';
-    //         event.returnValue = confirmationMessage; // Dies ist für Chrome erforderlich
-    //         return confirmationMessage;
-    //     };
-    //
-    //     const handleUnload = (event) => {
-    //         debugger;
-    //         const confirmation = window.confirm('Möchtest du wirklich die Seite verlassen?');
-    //         if (confirmation) {
-    //             window.location.pathname = "/";
-    //             console.log("WLP: " + window.location.pathname)
-    //             // const lastPath = sessionStorage.getItem("lastPath");
-    //             // if (lastPath && lastPath !== window.location.pathname) {
-    //                 navigate("/");
-    //
-    //         }
-    //     };
-    //
-    //     window.addEventListener("beforeunload", handleBeforeUnload);
-    //     window.addEventListener("unload", handleUnload);
-    //
-    //     return () => {
-    //         window.removeEventListener("beforeunload", handleBeforeUnload);
-    //         window.removeEventListener("unload", handleUnload);
-    //     };
-    // }, [navigate]);
-
-    //TODO pfad bei reload anpassen! History?
 
 
   return (

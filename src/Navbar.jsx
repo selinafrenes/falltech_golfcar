@@ -1,8 +1,6 @@
-import React from 'react';
-// import '/src/styles/style.css';
+import React, {useEffect, useState} from 'react';
 import {openLoginWindow} from './script';
-import {useLocation} from 'react-router-dom';
-
+import {useLocation, useNavigate} from 'react-router-dom';
 import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
@@ -15,55 +13,42 @@ function textTagebuch (currentLocation) {
     }
 }
 
-/*TODO Problem mit Zum Projekt, Über Uns und Sponsor bei Impressum und Datenschutz*/
-
 function Navbar() {
     const location = useLocation();
-    const scrollToElement = (elementId) => {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        /*useNavigate("/"); */
-        const element = document.getElementById(elementId);
-        if(element) {
-            element.scrollIntoView({ behavior: 'smooth'});
+    const navigate = useNavigate();
+    const [isNavigated, setIsNavigated] = useState("/");
+
+    useEffect(() => {
+        if (isNavigated !== "/") {
+            const element = document.getElementById(isNavigated);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            setIsNavigated("/");
         }
-    };
+    }, [isNavigated]);
 
-    const scrollToSponsor = () => {
-
-        scrollToElement("sponsor");
-    };
-
-    const scrollToAboutUs = () => {
-        scrollToElement("aboutUs");
-    };
-
-    const scrollToZumProjekt = () => {
-        scrollToElement("zumProjekt");
+    const scrollToElement = (elementId) => {
+        setIsNavigated(elementId);
+        navigate('/');
     };
 
     return (
         <>
             <nav className="navbar">
                 <div className="navbar-a-container"> {/*TODO Funktioniert noch nicht*/}
-                    {/*<Link to="/">*/}
-                        <img className="logo_FallTech" src="/assets/images/FallTech_Logo.svg" alt="Logo FallTech"/>
-                    {/*</Link>*/}
+                    <img className="logo_FallTech" src="/assets/images/FallTech_Logo.svg" alt="Logo FallTech"/>
                 </div>
                 <div className="navbar-a-container">
-                    <button onClick={scrollToZumProjekt}>Zum Projekt</button>
+                    <button onClick={() => scrollToElement("zumProjekt")}>Zum Projekt</button>
                 </div>
                 <div  className="navbar-a-container">
-                    <button onClick={scrollToAboutUs}>Unser Team</button>
+                    <button onClick={() => scrollToElement("aboutUs")}>Unser Team</button>
                 </div>
                 <div className="navbar-a-container">
-                    <button onClick={scrollToSponsor}>Sponsor</button>
-
-                    {/*<NavLink to="/" onClick={() => scrollToSponsor()}>Zum Sponsor</NavLink>
-                        <Link to="/" onClick={scrollToSponsor}>Zum Sponsor</Link>
-                */}
+                    <button onClick={() => scrollToElement("sponsor")}>Sponsor</button>
                     </div>
                 <div className="navbar-a-container" id="loginButton">
-                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <button onClick={openLoginWindow}>{textTagebuch(location)}</button>
                 </div>
             </nav>
