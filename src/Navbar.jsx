@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {openLoginWindow} from './script';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 
-/*TODO Problem mit Zum Projekt, Über Uns und Sponsor bei Impressum und Datenschutz*/
+/*TODO evt window.location.href mit navigate (usenavigate) ersetzten???*/
 
 
 
@@ -25,32 +24,38 @@ function getCookieValue(cookieName) {
     return null;
 }
 
+
 function deleteCookie(cookieName){
     document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    // setIsLoggedIn(false);
 }
 
 function logout() {
     deleteCookie('username');
+
     window.location.href = '/';
     console.log("Abgemeldet!!!");
 }
 
+
 function Navbar() {
     const location = useLocation();
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isNavigated, setIsNavigated] = useState("/");
 
 // Anmelde Cookie setzten und merken
-    useEffect(() => {
-        // Überprüfen, ob der Anmelde-Cookie gesetzt ist
-        const loginCookie = getCookieValue("username");
-        setIsLoggedIn(loginCookie);
-    }, []);
+
+    // useEffect(() => {
+    //     // Überprüfen, ob der Anmelde-Cookie gesetzt ist
+    //     const loginCookie = getCookieValue("username");
+    //     //debugger;
+    //     setIsLoggedIn(loginCookie);
+    // }, []);
 
     function openLoginWindow() {
         // Öffne das Anmeldefenster nur, wenn der Benutzer nicht auf der Homepage ist oder der Anmelde-Cookie nicht gesetzt ist
-        if (!isLoggedIn) {
+        if (!getCookieValue("username")){
             // Führe hier die Aktion aus, um das Anmeldefenster zu öffnen
             document.getElementById('loginWindow').style.display = 'block';
             console.log('Anmeldefenster öffnen');
