@@ -19,6 +19,19 @@ function App() {
         setIsAuthenticated(true);
     };
 
+    useEffect(() => {
+        const handleBeforeUnload = (event) => {
+            // Hier können Sie Aktionen ausführen, die beim Neuladen der Seite ausgeführt werden sollen
+            event.preventDefault();
+            return event.returnValue = 'Are you sure you want to leave?';
+        };
+
+        window.addEventListener("beforeunload", handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+    }, []);
 
   return (
       <>

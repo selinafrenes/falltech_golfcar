@@ -94,7 +94,7 @@ app.post('/index.html/login', function (req, res){
  *
  * @route POST /index.html/login
  */
-app.post('/index.html/login', (req, res) => {
+app.post('/login', (req, res) => {
     const { username, password } = req.body;
     console.log("UN, PW: " + username + password);
     console.log("Process.cwd " + process.cwd());
@@ -102,8 +102,8 @@ app.post('/index.html/login', (req, res) => {
         .then(response => {
             if (response){
                 // TODO Cookie evt wieder löschen (logout) und automatisch anmelden?
-                // Cookie setzten
-                //res.redirect('/tagebuch');
+                // res.cookie()
+
                 res.json({ success: true });
                 console.log("COOKIE IST SET!!!!!!!!!!!!!!!!!!!!: " + response);
                 // res.status(200).json({ message: username });
@@ -117,13 +117,7 @@ app.post('/index.html/login', (req, res) => {
         })
         .catch(error => {
             console.error('Fehler beim Aufrufen der userAuthentication-Funktion:', error);
-            // res.send();
-            // res.status(403).json({ message: 'Nicht autorisiert' });
-        })
-        // .finally(() => {
-        //     console.log("SEND COOKIE");
-        //
-        // });
+        });
 });
 
 

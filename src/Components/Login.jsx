@@ -9,7 +9,7 @@ function Login({ onLogin }) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch('http://localhost:8000/index.html/login', {
+        const response = await fetch('http://localhost:8000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
