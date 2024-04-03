@@ -560,3 +560,43 @@ h2 {
 .toggle-btn.toggled .thumb {
     left: calc(50px - 25px);
 }
+
+
+/*Output Tabelle*/
+.output-filed-table-datum, .output-filed-table-person {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.output-filed-table-thead-datum, .output-filed-table-thead-person {
+    background: transparent;
+    color: black;
+    width: 100%;
+}
+
+.output-filed-table-thead-datum th , .output-filed-table-thead-person th {
+    padding: 10px;
+    border: 2px solid #E91E63;
+    text-align: center;
+    width: calc(100% / 5);
+    margin: auto;
+}
+
+.output-filed-table-tbody-datum, .output-filed-table-tbody-person {
+    background: transparent;
+    color: black;
+    width: 100%;
+}
+
+.output-filed-table-tbody-datum tr, .output-filed-table-tbody-person tr {
+    border: 2px solid #E91E63;
+}
+
+.output-filed-table-tbody-datum tr td, .output-filed-table-tbody-datum tr th
+, .output-filed-table-tbody-person tr td, .output-filed-table-tbody-person tr th{
+    border-right: 2px solid #E91E63;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word;
+}
