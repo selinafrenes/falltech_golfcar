@@ -5,6 +5,13 @@ import EintraegeOutput from "../Components/EintraegeOutput";
 
 function Tagebuch() {
     const [data, setData] = useState(null);
+    const [reloadTrigger, setReloadTrigger] = useState(false); // Zustandsvariable für den Neu-Laden-Trigger
+
+
+    // Funktion zum Neu-Laden
+    const reloadData = () => {
+        setReloadTrigger(!reloadTrigger); // Ändert den Wert von reloadTrigger, um useEffect auszulösen
+    };
 
     useEffect(() => {
         if (data?.success) {
@@ -16,8 +23,8 @@ function Tagebuch() {
     return(
         <>
             {/*{data?.success && alert("Erfolgreich abgesendet")}*/}
-            <EintragForm />
-            <EintraegeOutput />
+            <EintragForm onreload={reloadData}/>
+            <EintraegeOutput onreload={reloadData} trigger={reloadTrigger}/>
 
             {/*<script type="text/javascript" src="../Tagebuch.js"></script>*/}
         </>

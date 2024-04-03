@@ -2,7 +2,7 @@
 
 import CheckboxElement from "./CheckboxElement";
 
-function EintragForm() {
+function EintragForm(props) {
 
     // const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -50,6 +50,8 @@ function EintragForm() {
         }
 
         // setIsSubmitting(false);
+        // trigger -> um die Tagebucheinträge neu zu laden
+        props.onreload();
     };
     return (
         <>

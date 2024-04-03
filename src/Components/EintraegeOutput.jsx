@@ -3,16 +3,11 @@ import { useEffect, useState} from "react";
 import Table from "./Table";
 import ToggleButton from "./ToggleButton";
 
-function EintraegeOutput(){
+function EintraegeOutput(props){
+
 
     const [entersData, setEntersData] = useState(null);
-    const [reloadTrigger, setReloadTrigger] = useState(false); // Zustandsvariable für den Neu-Laden-Trigger
 
-
-    // Funktion zum Neu-Laden
-    const reloadData = () => {
-        setReloadTrigger(!reloadTrigger); // Ändert den Wert von reloadTrigger, um useEffect auszulösen
-    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,13 +28,12 @@ function EintraegeOutput(){
 
         fetchData();
 
-    }, [reloadTrigger]); // useEffect wird bei Änderungen von reloadTrigger ausgeführt
+    }, [props.trigger]); // useEffect wird bei Änderungen von reloadTrigger ausgeführt
 
     // if (entersData){
     //     console.log("ENTERSDATA sind daaaaa");
     // }
 
-    // TODO
     const [filterPerson, setFilterPerson] = useState(false);
     const filterByPerson = () => {
         setFilterPerson(!filterPerson);
@@ -48,7 +42,7 @@ function EintraegeOutput(){
     return(
         <div className="output-wrapper">
             <div className="output-container">
-                <button id="reloadDataBtn" onClick={reloadData}>Neu Laden</button>
+                <button id="reloadDataBtn" onClick={props.onreload}>Neu Laden</button>
                 <p className="p_beiOutput">Sortieren nach: </p>
                 <div className="filternNach">
                     <p>Datum</p>
