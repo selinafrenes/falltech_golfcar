@@ -1,8 +1,4 @@
 import React, {useEffect, useState} from 'react';
-// import '/src/styles/style.css';
-import {useLocation} from 'react-router-dom';
-
-import React, {useEffect, useState} from 'react';
 import {openLoginWindow} from './script';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
@@ -39,23 +35,13 @@ function logout() {
     console.log("Abgemeldet!!!");
 }
 
-/*
-function textTagebuch (currentLocation) {
-    let location = currentLocation;
-    if(location.pathname === '/' || location.pathname === '/index' || location.pathname === '/impressum' || location.pathname === '/datenschutz'){
-        return (<button onClick={openLoginWindow}><p>Tagebuch</p></button>);
-    } else if (location.pathname === '/tagebuch'){
-        return (<button onClick={logout}><FontAwesomeIcon icon={faRightFromBracket} /></button>);
-    }
-}
- */
-
-
 function Navbar() {
     const location = useLocation();
+    const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isNavigated, setIsNavigated] = useState("/");
 
-
+// Anmelde Cookie setzten und merken
     useEffect(() => {
         // Überprüfen, ob der Anmelde-Cookie gesetzt ist
         const loginCookie = getCookieValue("username");
@@ -83,12 +69,14 @@ function Navbar() {
         }
     }
 
-    const scrollToElement = (elementId) => {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        /*useNavigate("/"); */
-        const element = document.getElementById(elementId);
-        if(element) {
-            element.scrollIntoView({ behavior: 'smooth'});
+// Um zum richtigen Abschnitt zu scrollen
+    useEffect(() => {
+        if (isNavigated !== "/") {
+            const element = document.getElementById(isNavigated);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            setIsNavigated("/");
         }
     }, [isNavigated]);
 
@@ -96,7 +84,6 @@ function Navbar() {
         setIsNavigated(elementId);
         navigate('/');
     };
-
     return (
         <>
             <nav className="navbar">
