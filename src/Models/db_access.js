@@ -2,11 +2,11 @@
 // +++ zuweisung variable _env, um dann z.b. mit console.log falschen pfad zu erkennen
 
 // +++ absolut von root (startpfad) aus gesehen
-// bei z.b. startpfad: node ./src/Controllers/node.js
+// bei z.b. startpfad: node ./src/Controllers/server.js
 // const _env = require('dotenv').config({path: './src/.env' });
 
 // +++ relativ gesehen, mit __dirname
-// TODO: auch noch bei Controllers/node.js
+// TODO: auch noch bei Controllers/server.js
 const _env = require('dotenv').config({path: __dirname + './../.env' });
 
 console.log(_env); // +++
@@ -21,16 +21,6 @@ const pool = require('mysql2/promise').createPool({
     database: process.env.DB_NAME
 });
 
-/**
- * Authentifiziert einen Benutzer durch Überprüfung des Benutzernamens und des Passworts in der Datenbank.
- *
- * @async
- * @function userAuthentication
- * @param {string} username - Der Benutzername des Benutzers.
- * @param {string} password - Das Passwort des Benutzers.
- * @returns {Promise<string>} Gibt den Benutzernamen zurück, wenn die Authentifizierung erfolgreich ist.
- * @throws {Error} Wirft einen Fehler mit einer Nachricht, wenn der Benutzername oder das Passwort falsch ist oder ein anderer Fehler auftritt.
- */
 const userAuthentication = async (username, password) => {
     console.log(`userAuthentication(username: '${username}' password: '${password}')`);
     let connection;
@@ -52,19 +42,6 @@ const userAuthentication = async (username, password) => {
     }
 }
 
-/**
- * Erstellt einen neuen Eintrag in der 'Entry'-Tabelle und verknüpft ihn mit Personen in der 'Enters'-Tabelle.
- *
- * @async
- * @function createNewEntry
- * @param {string[]} people - Eine Liste von Benutzernamen, die mit dem Eintrag verknüpft werden sollen.
- * @param {string} description - Die Beschreibung des Eintrags.
- * @param {string} notes - Zusätzliche Notizen zum Eintrag.
- * @param {string} date - Das Datum des Eintrags im Format 'YYYY-MM-DD'.
- * @param {string} duration - Die Dauer des Eintrags.
- * @returns {Promise<string>} Eine Nachricht, die bestätigt, dass alle Datensätze erfolgreich eingetragen wurden.
- * @throws {Error} Wirft einen Fehler, wenn beim Erstellen des Eintrags oder beim Verknüpfen mit Personen ein Problem auftritt.
- */
 const createNewEntry = async (people, description, notes, date, duration) => {
     let connection
     try{

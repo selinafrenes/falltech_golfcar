@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 
-/*TODO evt window.location.href mit navigate (usenavigate) ersetzten???*/
+/*TODO evt window.location.href mit navigate (useNavigate) ersetzten???*/
 
 
 
@@ -32,27 +32,16 @@ function deleteCookie(cookieName){
 
 function logout() {
     deleteCookie('username');
-
     window.location.href = '/';
     console.log("Abgemeldet!!!");
 }
 
-
 function Navbar() {
     const location = useLocation();
     const navigate = useNavigate();
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isNavigated, setIsNavigated] = useState("/");
 
 // Anmelde Cookie setzten und merken
-
-    // useEffect(() => {
-    //     // Überprüfen, ob der Anmelde-Cookie gesetzt ist
-    //     const loginCookie = getCookieValue("username");
-    //     //debugger;
-    //     setIsLoggedIn(loginCookie);
-    // }, []);
-
     function openLoginWindow() {
         // Öffne das Anmeldefenster nur, wenn der Benutzer nicht auf der Homepage ist oder der Anmelde-Cookie nicht gesetzt ist
         if (!getCookieValue("username")){
@@ -110,7 +99,6 @@ function Navbar() {
                 </div>
             </nav>
         </>
-
     );
 }
 export default Navbar;
