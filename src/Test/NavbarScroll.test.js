@@ -2,7 +2,7 @@ const { Builder, By } = require('selenium-webdriver');
 const assert = require('assert');
 
 describe('Zum Projekt, Über uns, Sponsor Test',  function () {
-    this.timeout(3000);
+    this.timeout(5000);
     // eslint-disable-next-line no-unused-vars
     let driver;
 
@@ -50,6 +50,22 @@ describe('Zum Projekt, Über uns, Sponsor Test',  function () {
         await performButtonClickTest('http://localhost:3000/datenschutz', 'uberUnsBtn');
         //const location = '/index';
         const scrolledElement = await driver.findElement(By.id('aboutUs'));
+        const isScrolledIntoView = await scrolledElement.isDisplayed();
+        assert.strictEqual(isScrolledIntoView, true);
+    });
+
+    it('Sponsor Test - Index HTML', async function() {
+        await performButtonClickTest('http://localhost:3000', 'sponsorBtn');
+        //const location = '/index';
+        const scrolledElement = await driver.findElement(By.id('sponsor'));
+        const isScrolledIntoView = await scrolledElement.isDisplayed();
+        assert.strictEqual(isScrolledIntoView, true);
+    });
+
+    it('Sponsor Test - Impressum HTML', async function() {
+        await performButtonClickTest('http://localhost:3000/impressum', 'sponsorBtn');
+        //const location = '/index';
+        const scrolledElement = await driver.findElement(By.id('sponsor'));
         const isScrolledIntoView = await scrolledElement.isDisplayed();
         assert.strictEqual(isScrolledIntoView, true);
     });
