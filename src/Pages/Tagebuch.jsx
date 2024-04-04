@@ -12,14 +12,14 @@ function Tagebuch() {
         setReloadTrigger(!reloadTrigger); // Ändert den Wert von reloadTrigger, um useEffect auszulösen
     };
 
-
+    const teammember = getCookieValue("teammember");
     return(
         <>
             <div id="tagebuch-eintrage">
                 <h1>Tagebuch</h1>
                 <h2>Willkommen {getCookieValue("firstname")}</h2>
             </div>
-            <EintragForm onreload={reloadData}/>
+            {teammember === "1" ? <EintragForm onreload={reloadData}/> : <></>}
             <EintraegeOutput onreload={reloadData} trigger={reloadTrigger}/>
         </>
     );
