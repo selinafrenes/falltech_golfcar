@@ -56,9 +56,7 @@ function EintraegeOutput(props){
                     {/*<p>Hello OUTPUT</p>*/}
                     {entersData && <Table filter={filterPerson} data={entersData}/>}
                 </div>
-
             </div>
-
         </div>
 
     );

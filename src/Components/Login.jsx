@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { closeLoginWindow } from '../script';
 import {useNavigate} from "react-router-dom";
-import {toast} from "react-toastify"; // Pfad zum File anpassen
+import {toast} from "react-toastify";
 
 function Login({ onLogin }) {
     const [username, setUsername] = useState('');
@@ -19,13 +19,17 @@ function Login({ onLogin }) {
         });
         const data = await response.json();
         if (data.success) {
-            toast.success('🦄 Anmeldung war erfolgreich');
+            toast.success('🦄 Anmeldung war erfolgreich.');
+            const userInfo = data.data;
+
             onLogin();
-            // wichtig, damit cookie auf localhost läuft!!!!
-            document.cookie = "username=" + username + "; max-age=86400; path=/; domain=localhost";
+            // cookie speichern
+            if (userInfo.username) document.cookie = "username=" + userInfo.username + "; max-age=86400; path=/; domain=localhost";
+            if (userInfo.firstname) document.cookie = "firstname=" + userInfo.firstname + "; max-age=86400; path=/; domain=localhost";
+            if (userInfo.lastname) document.cookie = "lastname=" + username + "; max-age=86400; path=/; domain=localhost";
+            if (userInfo.teammember) document.cookie = "teammember=" + userInfo.teammember + "; max-age=86400; path=/; domain=localhost";
 
             navigate('/tagebuch');
-            // closeLoginWindow();
         } else {
             toast.error('🦄 Fehler beim Anmelden in der Datenbank');
             alert(data.message);

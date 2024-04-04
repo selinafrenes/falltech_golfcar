@@ -4,16 +4,17 @@ import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {getCookieValue} from '../script';
 
-function deleteCookie(cookieName){
+const deleteCookie = (cookieName) => {
     document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    // setIsLoggedIn(false);
 }
 
-function logout() {
+const logout = () => {
     deleteCookie('username');
+    deleteCookie('firstname');
+    deleteCookie('lastname');
+    deleteCookie('teammember');
 
     window.location.href = '/';
-    console.log("Abgemeldet!!!");
 }
 
 function Navbar() {
