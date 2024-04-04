@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {getCookieValue} from './script';
+import {getCookieValue} from '../script';
 
 function deleteCookie(cookieName){
     document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
@@ -75,13 +75,13 @@ function Navbar() {
                     {/*<img className="logo_FallTech" src="/assets/images/FallTech_Logo.svg" alt="Logo FallTech"/>*/}
                 </div>
                 <div className="navbar-a-container">
-                    <button onClick={() => scrollToElement("zumProjekt")}>Zum Projekt</button>
+                    <button id="zumProjektBtn" onClick={() => scrollToElement("zumProjekt")}>Zum Projekt</button>
                 </div>
                 <div  className="navbar-a-container">
-                    <button onClick={() => scrollToElement("aboutUs")}>Unser Team</button>
+                    <button id="uberUnsBtn" onClick={() => scrollToElement("aboutUs")}>Unser Team</button>
                 </div>
                 <div className="navbar-a-container">
-                    <button onClick={() => scrollToElement("sponsor")}>Sponsor</button>
+                    <button id="sponsorBtn" onClick={() => scrollToElement("sponsor")}>Sponsor</button>
                     </div>
                 <div className="navbar-a-container" id="loginButton">
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}

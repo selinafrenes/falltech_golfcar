@@ -1,6 +1,6 @@
 import '../src/styles/style.css';
 import {Routes, Route, Navigate} from "react-router-dom";
-import Navbar from './Navbar';
+import Navbar from './Components/Navbar';
 import Home from "./Pages/Home";
 import Impressum from "./Pages/Impressum";
 import Datenschutz from "./Pages/Datenschutz";
