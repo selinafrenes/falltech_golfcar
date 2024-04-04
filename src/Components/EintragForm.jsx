@@ -1,10 +1,9 @@
 // import {useState} from "react";
 
 import CheckboxElement from "./CheckboxElement";
+import {toast} from "react-toastify";
 
 function EintragForm(props) {
-
-    // const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -36,21 +35,15 @@ function EintragForm(props) {
         // setIsSubmitting(false);
 
         if (jsonData.success) {
-            alert("Success");
+            toast.success('Daten wurden erfolgreich abgespeichert');
             console.log("S:DATA:" + JSON.stringify(jsonData));
             event.target.reset();
             // Erfolgreiche Verarbeitung
             // ... (z.B. setData(jsonData) um die Komponente zu aktualisieren)
         } else {
-            alert("Error");
-            console.log("E:DATA:" + JSON.stringify(jsonData));
-
-            // Fehlerhafte Verarbeitung
-            // ... (z.B. Fehlermeldung anzeigen)
+            toast.error('Fehler beim abspeichern in der Datenbank');
         }
 
-        // setIsSubmitting(false);
-        // trigger -> um die Tagebucheinträge neu zu laden
         props.onreload();
     };
     return (

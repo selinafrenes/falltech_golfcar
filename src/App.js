@@ -1,5 +1,5 @@
 import '../src/styles/style.css';
-import {Routes, Route, useNavigate, useLocation, redirect} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 import Navbar from './Navbar';
 import Home from "./Pages/Home";
 import Impressum from "./Pages/Impressum";
@@ -7,8 +7,9 @@ import Datenschutz from "./Pages/Datenschutz";
 import Footer from "./Components/Footer";
 import Tagebuch from "./Pages/Tagebuch";
 import {useEffect, useState} from "react";
-import Sponsor from "./Components/Sponsor";
 import {getCookieValue} from "./script";
+import {Slide, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -36,13 +37,27 @@ function App() {
               <Route path="/tagebuch" element={isAuthenticated ? <Tagebuch /> : <Home onLogin={handleLoginSuccess} />}/>
               <Route path="/impressum" element={<Impressum />} />
               <Route path="/datenschutz" element={<Datenschutz />} />
-              {/* Definieren Sie weitere Routen hier */}
+              <Route path="*" element={<Navigate to="/" />} /> {/* Standardroute */}
+               {/*Definieren Sie weitere Routen hier */}
           </Routes>
           <Footer/>
+          <ToastContainer
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+              transition={Slide}
+          />
       </>
   );
 }
-
+// position="top-right"
 // const root = ReactDOM.createRoot(document.getElementById('app'));
 // root.render(<App />);
 export default App;
