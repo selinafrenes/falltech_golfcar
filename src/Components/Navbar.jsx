@@ -39,9 +39,9 @@ function Navbar() {
     function textTagebuch (currentLocation) {
         let location = currentLocation;
         if(location.pathname === '/' || location.pathname === '/index' || location.pathname === '/impressum' || location.pathname === '/datenschutz'){
-            return (<button onClick={openLoginWindow}><p>Tagebuch</p></button>);
+            return (<button id="tagebuchBtn" onClick={openLoginWindow}><p>Tagebuch</p></button>);
         } else if (location.pathname === '/tagebuch'){
-            return (<button onClick={logout}><FontAwesomeIcon icon={faRightFromBracket} /></button>);
+            return (<button id="logoutBtn" onClick={logout}><FontAwesomeIcon icon={faRightFromBracket} /></button>);
         }
     }
 
