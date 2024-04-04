@@ -2,28 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-
-
-
-/*TODO evt window.location.href mit navigate (useNavigate) ersetzten???*/
-
-
-
-function getCookieValue(cookieName) {
-    // Zuerst die Cookies anhand ihres Namens suchen
-    const cookieArray = document.cookie.split(';');
-    for (let i = 0; i < cookieArray.length; i++) {
-        let cookie = cookieArray[i].trim();
-        // Prüfen, ob der Name des aktuellen Cookies dem gewünschten Namen entspricht
-        if (cookie.startsWith(cookieName + '=')) {
-            // Wenn ja, den Wert des Cookies zurückgeben
-            return cookie.substring(cookieName.length + 1);
-        }
-    }
-    // Wenn kein entsprechendes Cookie gefunden wird, wird null zurückgegeben
-    return null;
-}
-
+import {getCookieValue} from './script';
 
 function deleteCookie(cookieName){
     document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
@@ -32,6 +11,7 @@ function deleteCookie(cookieName){
 
 function logout() {
     deleteCookie('username');
+
     window.location.href = '/';
     console.log("Abgemeldet!!!");
 }
@@ -44,9 +24,11 @@ function Navbar() {
 // Anmelde Cookie setzten und merken
     function openLoginWindow() {
         // Öffne das Anmeldefenster nur, wenn der Benutzer nicht auf der Homepage ist oder der Anmelde-Cookie nicht gesetzt ist
-        if (!getCookieValue("username")){
+
+        const loginWindow = document.getElementById('loginWindow');
+        if (!getCookieValue("username")) {
             // Führe hier die Aktion aus, um das Anmeldefenster zu öffnen
-            document.getElementById('loginWindow').style.display = 'block';
+            loginWindow.style.display = 'block';
             console.log('Anmeldefenster öffnen');
         } else {
             window.location.href = '/tagebuch';
@@ -78,11 +60,19 @@ function Navbar() {
         setIsNavigated(elementId);
         navigate('/');
     };
+
+    const toIndex = () => {
+        window.location.href = '/';
+        console.log('Zu Index');
+    }
+
     return (
         <>
             <nav className="navbar">
                 <div className="navbar-a-container"> {/*TODO Funktioniert noch nicht*/}
-                    <img className="logo_FallTech" src="/assets/images/FallTech_Logo.svg" alt="Logo FallTech"/>
+
+                    <button onClick={toIndex}><img className="logo_FallTech" src="/assets/images/FallTech_Logo.svg" alt="Logo FallTech"/></button>
+                    {/*<img className="logo_FallTech" src="/assets/images/FallTech_Logo.svg" alt="Logo FallTech"/>*/}
                 </div>
                 <div className="navbar-a-container">
                     <button onClick={() => scrollToElement("zumProjekt")}>Zum Projekt</button>
@@ -99,6 +89,7 @@ function Navbar() {
                 </div>
             </nav>
         </>
+
     );
 }
 export default Navbar;
