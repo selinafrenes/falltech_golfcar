@@ -222,14 +222,13 @@ h1 {
     overflow:hidden;
 }
 
-/*
+
 .unserTeamItem p {
-    padding: 15px;
+    padding: 5px 10px;
 }
 
- */
 
-.unserTeamItem a, .unserTeamItem p {
+.unserTeamItem a, .unserTeamItem span {
     text-decoration: none;
     color: black;
 }
@@ -240,6 +239,7 @@ h1 {
 
 .unserTeam p span {
     font-weight: bold;
+    font-size: large;
 }
 
 .datenschutz span {
