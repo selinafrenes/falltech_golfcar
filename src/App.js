@@ -59,7 +59,6 @@ function App() {
      */
 
     return (
-  return (
       <>
           <Navbar/>
           <Routes>
