@@ -26,14 +26,46 @@ function App() {
         }
     }, []);
 
-  return (
+    /*
+
+
+    useEffect(() => {
+        const element = document.createElement('style');
+        const linkElement = document.querySelector(`link[href*="${currentStyle}.css"]`);
+
+        if (linkElement){
+            element.textContent = linkElement.sheet.cssRules[0].cssText;
+        } else {
+            const stylesheet = currentStyle === 'style1' ? stylesheet1 : stylesheet2;
+            element.textContent = stylesheet.default;
+        }
+
+        document.head.appendChild(element);
+
+        return () => {
+            document.head.removeChild(element);
+        }
+
+    }, [currentStyle]);
+
+
+
+    const [currentStyle, setCurrentStyle] = useState(false);
+    const changeMode = (!currentStyle) => {
+
+    };
+
+
+     */
+
+    return (
       <>
           <Navbar/>
           <Routes>
               <Route exact path="/" element={<Home onLogin={handleLoginSuccess}/>} />
               <Route path="/tagebuch" element={isAuthenticated ? <Tagebuch /> : <Home onLogin={handleLoginSuccess} />}/>
-              <Route path="/impressum" element={<Impressum />} />
-              <Route path="/datenschutz" element={<Datenschutz />} />
+              <Route path="/impressum" element={<Impressum onLogin={handleLoginSuccess}/>} />
+              <Route path="/datenschutz" element={<Datenschutz onLogin={handleLoginSuccess}/>} />
               <Route path="*" element={<Navigate to="/" />} /> {/* Standardroute */}
                {/*Definieren Sie weitere Routen hier */}
           </Routes>
