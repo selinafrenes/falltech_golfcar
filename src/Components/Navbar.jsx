@@ -73,7 +73,7 @@ function Navbar() {
         <>
             <nav className="navbar">
                 <div className="navbar-a-container"> {/*TODO Funktioniert noch nicht*/}
-                    <button onClick={toIndex}><img className="logo_FallTech" src="/assets/images/FallTech_Logo.svg" alt="Logo FallTech"/></button>
+                    <button id="navbar-logo" onClick={toIndex}><img className="logo_FallTech" src="/assets/images/FallTech_Logo.svg" alt="Logo FallTech"/></button>
                     {/*<img className="logo_FallTech" src="/assets/images/FallTech_Logo.svg" alt="Logo FallTech"/>*/}
                 </div>
                 <div className="navbar-a-container">
