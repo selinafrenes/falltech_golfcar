@@ -9,6 +9,7 @@ import Sponsor from "../Components/Sponsor";
 import {Route, Routes} from "react-router-dom";
 import {useRef} from "react";
 import { Slide as SlideItem } from "../Components/Slide";
+import TeamItem from "../Components/TeamItem";
 
 
 function Home({onLogin}) {
@@ -53,41 +54,11 @@ function Home({onLogin}) {
                 <h1>Unser Team</h1>
                 <div className="unserTeamContainer">
                     <div className="unserTeam">
-                        <div className="unserTeamItem">
-                            <div className="unserTeam-image-container">
-                                <img src="/assets/images/frosch.jpeg" alt="Foto Damian Mayr"/>
-                            </div>
-                            <p><span>Damian Mayr, PM</span></p>
-                            <p>3D CAD Designer</p>
-                        </div>
-                        <div className="unserTeamItem">
-                            <div className="unserTeam-image-container">
-                                <img src="/assets/images/frosch.jpeg" alt="Foto David Maierhofer"/>
-                            </div>
-                            <p><span>David Mairhofer</span></p>
-                            <p>Robotics Engineer</p>
-                        </div>
-                        <div className="unserTeamItem">
-                            <div className="unserTeam-image-container">
-                                <img src="/assets/images/frosch.jpeg" alt="Foto Fabian Reifer"/>
-                            </div>
-                            <p><span>Fabian Reifer</span></p>
-                            <p>Software Engineer</p>
-                        </div>
-                        <div className="unserTeamItem">
-                            <div className="unserTeam-image-container">
-                                <img src="/assets/images/frosch.jpeg" alt="Foto Selina Frenes"/>
-                            </div>
-                            <p><span>Selina Frenes</span></p>
-                            <p>Full Stack Developer</p>
-                        </div>
-                        <div className="unserTeamItem">
-                            <div className="unserTeam-image-container">
-                                <img src="/assets/images/frosch.jpeg" alt="Foto Wilma Frener"/>
-                            </div>
-                            <p><span>Wilma Frener</span></p>
-                            <p>Full Stack Developer</p>
-                        </div>
+                        <TeamItem name="Damian Mayr, PM" job="3D CAD Designer" imagePath="/assets/images/frosch.jpeg"/>
+                        <TeamItem name="David Maierhofer" job="Robotics Engineer" imagePath="/assets/images/frosch.jpeg"/>
+                        <TeamItem name="Fabian Reifer" job="Software Engineer" imagePath="/assets/images/frosch.jpeg"/>
+                        <TeamItem name="Selina Frenes" job="Full Stack Developer" imagePath="/assets/images/frosch.jpeg"/>
+                        <TeamItem name="Wilma Frener" job="Full Stack Developer" imagePath="/assets/images/frosch.jpeg"/>
                     </div>
                 </div>
 
