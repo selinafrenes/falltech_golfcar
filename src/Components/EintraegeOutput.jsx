@@ -2,13 +2,11 @@
 import { useEffect, useState} from "react";
 import Table from "./Table";
 import ToggleButton from "./ToggleButton";
+import {toast} from "react-toastify";
 
 function EintraegeOutput(props){
 
-
     const [entersData, setEntersData] = useState(null);
-
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -22,12 +20,11 @@ function EintraegeOutput(props){
 
                 setEntersData(jsonData);
             } catch (err) {
-                console.log("errrrrrrrrrrrrrrrrrrrrrrrrr: " + err.message);
+                toast.error("Fehler beim holen der Daten aus der Datenbank");
+                console.log(err.message);
             }
         };
-
         fetchData();
-
     }, [props.trigger]); // useEffect wird bei Änderungen von reloadTrigger ausgeführt
 
     // if (entersData){
