@@ -1,7 +1,9 @@
+import Login from "../Components/Login";
 
-function Impressum(){
+function Impressum({onLogin}){
     return(
         <>
+            <Login onLogin={onLogin}/>
             <div id="impressum">
                 <h1>Impressum</h1>
                 <p><span>Eigentümer der Webseite:</span></p><br/>

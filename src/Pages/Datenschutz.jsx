@@ -1,6 +1,9 @@
-function Datenschutz(){
+import Login from "../Components/Login";
+
+function Datenschutz({onLogin}){
     return(
         <>
+            <Login onLogin={onLogin}/>
             <div id="datenschutz">
                 <h1>Datenschutzerklärung für FallTech.it</h1>
                 <p>Willkommen auf FallTech.it. Deine Privatsphäre ist uns wichtig.</p><br/>
