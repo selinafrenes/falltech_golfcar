@@ -6,16 +6,17 @@ import {getCookieValue} from '../script';
 import ToggleButton from "./ToggleButton";
 import {changeMode} from '../App';
 
-function deleteCookie(cookieName){
+const deleteCookie = (cookieName) => {
     document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    // setIsLoggedIn(false);
 }
 
-function logout() {
+const logout = () => {
     deleteCookie('username');
+    deleteCookie('firstname');
+    deleteCookie('lastname');
+    deleteCookie('teammember');
 
     window.location.href = '/';
-    console.log("Abgemeldet!!!");
 }
 
 function Navbar() {

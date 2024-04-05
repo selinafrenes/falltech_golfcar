@@ -11,7 +11,6 @@ import {getCookieValue} from "./script";
 import {Slide, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-
 function App() {
     // authentifizierung für Tagebuch
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,7 +20,6 @@ function App() {
 
 
     useEffect(() => {
-        //TODO mit db abfrage - evtl. optimieren ???
         const username = getCookieValue("username");
         if (username){
             setIsAuthenticated(true);
@@ -61,6 +59,7 @@ function App() {
      */
 
     return (
+  return (
       <>
           <Navbar/>
           <Routes>

@@ -21,19 +21,27 @@ const pool = require('mysql2/promise').createPool({
     database: process.env.DB_NAME
 });
 
-const userAuthentication = async (username, password) => {
-    console.log(`userAuthentication(username: '${username}' password: '${password}')`);
+const userAuthentication = async (username, userPassword) => {
+    console.log(`userAuthentication(username: '${username}' password: '${userPassword}')`);
     let connection;
     try{
         console.log("--> try connection");
         connection = await pool.getConnection();
-        if (!!username && !!password){
+        if (!!username && !!userPassword){
             console.log("--> try select");
             const [results] = await connection.execute(
-                'SELECT password FROM Person WHERE username = ?',
+                'SELECT * FROM Person WHERE username = ?',
                 [username]
             );
-            return await bcrypt.compare(password, results[0].password);
+            const { password, ...data } = await results[0];
+            // aktuell kann jeder username nur einmal genutzt werden!
+            if (results[0] && bcrypt.compare(userPassword, password)) {
+                // delete results[0].password;
+                // console.log("results: " + results[0].username);
+                return data;
+            } else {
+                return false;
+            }
         }
     } catch(error) {
         console.error('Fehler beim Anmelden', error.message);

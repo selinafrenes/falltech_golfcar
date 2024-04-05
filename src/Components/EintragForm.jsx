@@ -48,10 +48,6 @@ function EintragForm(props) {
     };
     return (
         <>
-            <div id="tagebuch - eintrage">
-                <h1>Tagebuch</h1>
-            </div>
-
             <div className="input-wrapper">
                 <form /* action="http://localhost:8000/tagebuch.html/submit"*/ onSubmit={handleSubmit} className="input-container" /* method="post"*/>
                     <label htmlFor="date">Datum:</label>
