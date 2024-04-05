@@ -5,11 +5,10 @@ import Login from "../Components/Login";
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Sponsor from "../Components/Sponsor";
-import {Route, Routes} from "react-router-dom";
 import {useRef} from "react";
 import { Slide as SlideItem } from "../Components/Slide";
-import TeamItem from "../Components/TeamItem";
+import Item from "../Components/Item";
+import ItemContainer from "../Components/ItemContainer";
 import HardwareComponents from "../Components/HardwareComponents";
 
 
@@ -66,19 +65,30 @@ function Home({onLogin}) {
 
                 </div>
 
+
             </div>
             <div id="aboutUs" className="aboutUS">
                 <h1>Unser Team</h1>
-                <div className="unserTeamContainer">
-                    <div className="unserTeam">
-                        <TeamItem name="Damian Mayr, PM" job="3D CAD Designer" imagePath="/assets/images/frosch.jpeg"/>
-                        <TeamItem name="David Maierhofer" job="Robotics Engineer" imagePath="/assets/images/frosch.jpeg"/>
-                        <TeamItem name="Fabian Reifer" job="Software Engineer" imagePath="/assets/images/frosch.jpeg"/>
-                        <TeamItem name="Selina Frenes" job="Full Stack Developer" imagePath="/assets/images/frosch.jpeg"/>
-                        <TeamItem name="Wilma Frener" job="Full Stack Developer" imagePath="/assets/images/frosch.jpeg"/>
-                    </div>
-                </div>
-
+                <ItemContainer classname="unserTeamContainer" innerClassname="unserTeam">
+                    <Item name="Damian Mayr, PM" description="3D CAD Designer" imagePath="/assets/images/frosch.jpeg"/>
+                    <Item name="David Maierhofer" description="Robotics Engineer" imagePath="/assets/images/frosch.jpeg"/>
+                    <Item name="Fabian Reifer" description="Software Engineer" imagePath="/assets/images/frosch.jpeg"/>
+                    <Item name="Selina Frenes" description="Full Stack Developer" imagePath="/assets/images/frosch.jpeg"/>
+                    <Item name="Wilma Frener" description="Full Stack Developer" imagePath="/assets/images/frosch.jpeg"/>
+                </ItemContainer>
+            </div>
+            {/*relationales Datenbankverwaltungssystem*/}
+            <div id="software" className="software">
+                <h1>Software</h1>
+                <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
+                    <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python2.png"/>
+                    <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.png"/>
+                    <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.png"/>
+                    <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/js.png"/>
+                    <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.png"/>
+                    <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.png"/>
+                    <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.png"/>
+                </ItemContainer>
             </div>
             <div id="sponsor" ref={sponsorRef}>
                 <h1>Sponsor</h1>
