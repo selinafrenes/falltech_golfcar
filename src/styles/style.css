@@ -222,11 +222,14 @@ h1 {
     overflow:hidden;
 }
 
+/*
 .unserTeamItem p {
     padding: 15px;
 }
 
-.unserTeamItem a {
+ */
+
+.unserTeamItem a, .unserTeamItem p {
     text-decoration: none;
     color: black;
 }
