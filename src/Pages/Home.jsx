@@ -47,6 +47,7 @@ function Home({onLogin}) {
                         <div className="next" onClick={nextSlide}><FontAwesomeIcon icon={faArrowRight}/></div>
                     </div>
                 </div>
+
             </div>
             <div id="aboutUs" className="aboutUS">
                 <h1>Unser Team</h1>
@@ -56,43 +57,36 @@ function Home({onLogin}) {
                             <div className="unserTeam-image-container">
                                 <img src="/assets/images/frosch.jpeg" alt="Foto Damian Mayr"/>
                             </div>
-                            <p><span>Damian Mayr</span><br/>
-                                <a>Projektleiter</a>
-                                {/*<a href="mailto:stmaydam@bx.fallmerayer.it">stmaydam@bx.fallmerayer.it</a>*/}
-                            </p>
+                            <p><span>Damian Mayr, PM</span></p>
+                            <p>3D CAD Designer</p>
                         </div>
                         <div className="unserTeamItem">
                             <div className="unserTeam-image-container">
                                 <img src="/assets/images/frosch.jpeg" alt="Foto David Maierhofer"/>
                             </div>
-                            <p><span>David Mairhofer</span><br/>
-                                <a href="mailto:stmaidav@bx.fallmerayer.it">stmaidav@bx.fallmerayer.it</a>
-                            </p>
+                            <p><span>David Mairhofer</span></p>
+                            <p>Robotics Engineer</p>
                         </div>
                         <div className="unserTeamItem">
                             <div className="unserTeam-image-container">
                                 <img src="/assets/images/frosch.jpeg" alt="Foto Fabian Reifer"/>
                             </div>
-                            <p><span>Fabian Reifer</span><br/>
-                                <a href="mailto:streifab@bx.fallmerayer.it">streifab@bx.fallmerayer.it</a>
-                            </p>
+                            <p><span>Fabian Reifer</span></p>
+                            <p>Software Engineer</p>
                         </div>
                         <div className="unserTeamItem">
                             <div className="unserTeam-image-container">
                                 <img src="/assets/images/frosch.jpeg" alt="Foto Selina Frenes"/>
                             </div>
-                            <p><span>Selina Frenes</span><br/>
-                                <a href="mailto:stfresel@bx.fallmerayer.it">stfresel@bx.fallmerayer.it</a>
-                            </p>
+                            <p><span>Selina Frenes</span></p>
+                            <p>Full Stack Developer</p>
                         </div>
                         <div className="unserTeamItem">
                             <div className="unserTeam-image-container">
                                 <img src="/assets/images/frosch.jpeg" alt="Foto Wilma Frener"/>
                             </div>
-                            <p><span>Wilma Frener</span><br/>
-                                <a href="mailto:stfrewil@bx.fallmerayer.it">stfrewil@bx.fallmerayer.it</a>
-                            </p>
-
+                            <p><span>Wilma Frener</span></p>
+                            <p>Full Stack Developer</p>
                         </div>
                     </div>
                 </div>
