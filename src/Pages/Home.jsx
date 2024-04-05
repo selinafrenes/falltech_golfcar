@@ -8,10 +8,18 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Sponsor from "../Components/Sponsor";
 import {Route, Routes} from "react-router-dom";
 import {useRef} from "react";
+import { Slide as SlideItem } from "../Components/Slide";
 
 
 function Home({onLogin}) {
     const sponsorRef = useRef(null);
+
+    const textZiele = "Unser Ziel besteht darin, ein autonomes Fahrzeug zu entwickeln, das in der Lage ist, " +
+        "einen Ball auf einem Spielfeld zu lokalisieren und sicher in ein definiertes Zielgebiet zu bringen. " +
+        "Dabei soll das Fahrzeug Hindernisse erkennen und umfahren können, sowie flexibel an verschiedene Umgebungen " +
+        "anpassbar sein. Die Steuerung erfolgt über WLAN, unterstützt durch eine Kamera für die Navigation. " +
+        "Zusätzlich wird das Fahrzeug bei Dunkelheit automatisch Licht einschalten, um die Sichtbarkeit zu verbessern " +
+        "und seine Aufgaben effektiv zu erfüllen."
 
     return (
         <>
@@ -24,52 +32,16 @@ function Home({onLogin}) {
                     </div>
                     <section id="zumProjektShow">
                         <div className="slides">
-                            <div className="slide" id="slide-1">
-                                <h3 className="slide-uberschrift">Schulprojekt</h3>
-                                <div className="slide-text">
-                                    <p>TEXT ÜBER PROJEKT</p>
-                                </div>
-                                <div className="slide-image">
-                                    <img src="/assets/images/frosch.jpeg" alt="Bild"/>
-                                </div>
-                            </div>
-                            <div className="slide" id="slide-2">
-                                <h3 className="slide-uberschrift">Golf Car Projekt</h3>
-                                <div className="slide-text">
-                                    <p>TEXT ÜBER PROJEKT</p>
-                                </div>
-                                <div className="slide-image">
-                                    <img src="/assets/images/frosch.jpeg" alt="Bild"/>
-                                </div>
-                            </div>
-                            <div className="slide" id="slide-3">
-                                <h3 className="slide-uberschrift">Ziele</h3>
-                                <div className="slide-text">
-                                    <p>TEXT ÜBER PROJEKT</p>
-                                </div>
-                                <div className="slide-image">
-                                    <img src="/assets/images/frosch.jpeg" alt="Bild"/>
-                                </div>
-                            </div>
-                            <div className="slide" id="slide-4">
-                                <h3 className="slide-uberschrift">Bauteile des Autos</h3>
-                                <div className="slide-text">
-                                    <p>TEXT ÜBER PROJEKT</p>
-                                </div>
-                                <div className="slide-image">
-                                    <img src="/assets/images/frosch.jpeg" alt="Bild"/>
-                                </div>
-                            </div>
-                            <div className="slide" id="slide-5">
-                                <h3 className="slide-uberschrift">Verwendete Programmiersprachen</h3>
-                                <div className="slide-text">
-                                    <p>TEXT ÜBER PROJEKT</p>
-                                </div>
-                                <div className="slide-image">
-                                    <img src="/assets/images/frosch.jpeg" alt="Bild"/>
-                                </div>
-                            </div>
+                            <SlideItem heading="Schulprojekt" text="TEXT ÜBER PROJEKT" image="/assets/images/frosch.jpeg"
+                                       altText="Bild"></SlideItem>
+                            <SlideItem heading="Golf Car Projekt" text="TEXT ÜBER PROJEKT" image="/assets/images/frosch.jpeg"
+                                       altText="Bild"></SlideItem>
+                            <SlideItem heading="Ziele" text={textZiele} image="/assets/images/frosch.jpeg"
+                                       altText="Bild"></SlideItem>
+                            {/*<SlideItem heading="Verwendete Programmiersprachen" text="TEXT ÜBER PROJEKT" image="/assets/images/frosch.jpeg"*/}
+                            {/*           altText="Bild"></SlideItem>*/}
                         </div>
+                    {/*    TODO Programmmierpraschen und Bauteile darunter!*/}
                     </section>
                     <div className="pfeil-rechts">
                         <div className="next" onClick={nextSlide}><FontAwesomeIcon icon={faArrowRight}/></div>
@@ -85,7 +57,8 @@ function Home({onLogin}) {
                                 <img src="/assets/images/frosch.jpeg" alt="Foto Damian Mayr"/>
                             </div>
                             <p><span>Damian Mayr</span><br/>
-                                <a href="mailto:stmaydam@bx.fallmerayer.it">stfrewil@bx.fallmerayer.it</a>
+                                <a>Projektleiter</a>
+                                {/*<a href="mailto:stmaydam@bx.fallmerayer.it">stmaydam@bx.fallmerayer.it</a>*/}
                             </p>
                         </div>
                         <div className="unserTeamItem">
@@ -93,7 +66,7 @@ function Home({onLogin}) {
                                 <img src="/assets/images/frosch.jpeg" alt="Foto David Maierhofer"/>
                             </div>
                             <p><span>David Mairhofer</span><br/>
-                                <a href="mailto:stmaidav@bx.fallmerayer.it">stfrewil@bx.fallmerayer.it</a>
+                                <a href="mailto:stmaidav@bx.fallmerayer.it">stmaidav@bx.fallmerayer.it</a>
                             </p>
                         </div>
                         <div className="unserTeamItem">
@@ -101,7 +74,7 @@ function Home({onLogin}) {
                                 <img src="/assets/images/frosch.jpeg" alt="Foto Fabian Reifer"/>
                             </div>
                             <p><span>Fabian Reifer</span><br/>
-                                <a href="mailto:streifab@bx.fallmerayer.it">stfrewil@bx.fallmerayer.it</a>
+                                <a href="mailto:streifab@bx.fallmerayer.it">streifab@bx.fallmerayer.it</a>
                             </p>
                         </div>
                         <div className="unserTeamItem">
@@ -109,7 +82,7 @@ function Home({onLogin}) {
                                 <img src="/assets/images/frosch.jpeg" alt="Foto Selina Frenes"/>
                             </div>
                             <p><span>Selina Frenes</span><br/>
-                                <a href="mailto:stfresel@bx.fallmerayer.it">stfrewil@bx.fallmerayer.it</a>
+                                <a href="mailto:stfresel@bx.fallmerayer.it">stfresel@bx.fallmerayer.it</a>
                             </p>
                         </div>
                         <div className="unserTeamItem">
