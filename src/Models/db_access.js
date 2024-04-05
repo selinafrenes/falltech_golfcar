@@ -45,6 +45,7 @@ const userAuthentication = async (username, userPassword) => {
         }
     } catch(error) {
         console.error('Fehler beim Anmelden', error.message);
+
     } finally {
         if (connection) await connection.release();
     }
