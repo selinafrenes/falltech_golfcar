@@ -1,5 +1,4 @@
 import '../../src/styles/style.css';
-// import Navbar from '../Navbar';
 import {prevSlide, nextSlide} from '../script';
 import Login from "../Components/Login";
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +8,6 @@ import {useRef} from "react";
 import { Slide as SlideItem } from "../Components/Slide";
 import Item from "../Components/Item";
 import ItemContainer from "../Components/ItemContainer";
-import HardwareComponents from "../Components/HardwareComponents";
 
 
 function Home({onLogin}) {
@@ -49,21 +47,25 @@ function Home({onLogin}) {
                         <div className="next" onClick={nextSlide}><FontAwesomeIcon icon={faArrowRight}/></div>
                     </div>
                 </div>
-                <div className="hardwareContainer">
-                    <div className="hardwareWrapper">
-                        {/*TODO --> Lizenzen von Bilder*/}
-                        <HardwareComponents beschreibung="Mikrocontroller" nameBauteil="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                        <HardwareComponents beschreibung="Kamera" nameBauteil="Rasperry Pi Camera Module 3" imagePath="/assets/images/components/kamerPI3.png" />
-                        <HardwareComponents beschreibung="Abstandssensor" nameBauteil="3pcs Ultrasonic Sensor" imagePath="/assets/images/components/ultrasonicSensor.png" />
-                        <HardwareComponents beschreibung="Schrittmotor" nameBauteil="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                        <HardwareComponents beschreibung="Servomotor" nameBauteil="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                        <HardwareComponents beschreibung="Motortreiber" nameBauteil="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                        <HardwareComponents beschreibung="Stromquelle" nameBauteil="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                        <HardwareComponents beschreibung="LED" nameBauteil="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                        <HardwareComponents beschreibung="Batterie" nameBauteil="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                    </div>
+                {/*{name, description, imagePath}*/}
+                <ItemContainer classname="hardwareContainer" innerClassname="hardwareWrapper">
+                    <Item name="Mikrocontroller" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
+                    <Item name="Kamera" description="Rasperry Pi Camera Module 3" imagePath="/assets/images/components/kamerPI3.png" />
+                    <Item name="Abstandssensor" description="3pcs Ultrasonic Sensor" imagePath="/assets/images/components/ultrasonicSensor.png" />
+                    <Item name="Schrittmotor" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
+                    <Item name="Servomotor" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
+                    <Item name="Motortreiber" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
+                    <Item name="Stromquelle" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
+                    <Item name="LED" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
+                    <Item name="Batterie" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
+                </ItemContainer>
+            {/*    <div className="hardwareContainer">*/}
+            {/*        <div className="hardwareWrapper">*/}
+            {/*            /!*TODO --> Lizenzen von Bilder*!/*/}
+            {/*            */}
+            {/*        </div>*/}
 
-                </div>
+            {/*    </div>*/}
 
 
             </div>

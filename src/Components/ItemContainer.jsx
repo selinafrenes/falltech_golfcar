@@ -9,5 +9,5 @@ function ItemContainer(props) {
         </div>
     );
 }
-
+// tainer className="hardwareContainer" innerClassName="hardwareWrapper">
 export default ItemContainer;

@@ -198,7 +198,7 @@ h1 {
     padding: 10px;
 }
 
-.item, .hardwareComponent {
+.item {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
     background-color: lightpink;
@@ -213,7 +213,7 @@ h1 {
     /*aspect-ratio: 4 / 5;*/
     padding: 15px;
 }
-.hardwareComponent-image-container {
+.hardwareWrapper > .item > .image-container {
     position: relative;
     display: flex;
     justify-content: center;
@@ -223,7 +223,7 @@ h1 {
     height: 200px;
 }
 
-.hardwareComponent-image-container img {
+.hardwareWrapper > .item > .image-container img {
     display: block;
     opacity: 1;
     flex: 1 0 100%;
@@ -279,13 +279,13 @@ h1 {
 }
 
 /*.unserTeamItem p,*/
-.hardwareComponent p {
+.hardwareWrapper > .item p {
     padding: 5px 10px;
     word-wrap: break-word;
     max-width: 200px;
 }
 
-.item a, .item span, .hardwareComponent span{
+.item a, .item span {
     text-decoration: none;
     color: black;
 }
@@ -294,7 +294,7 @@ h1 {
     color: red;
 }
 
-.unserTeam p span, .unsereSoftware p span, .hardwareComponent span {
+.unserTeam p span, .unsereSoftware p span, .hardwareWrapper > .item span {
     font-weight: bold;
     font-size: large;
 }
