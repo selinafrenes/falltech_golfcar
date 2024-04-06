@@ -81,13 +81,13 @@ function Home({onLogin}) {
             <div id="software" className="software">
                 <h1>Software</h1>
                 <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
-                    <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python2.png"/>
-                    <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.png"/>
-                    <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.png"/>
-                    <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/js.png"/>
-                    <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.png"/>
-                    <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.png"/>
-                    <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.png"/>
+                    <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python.jpg"/>
+                    <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.jpg"/>
+                    <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.jpg"/>
+                    <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/javascript.jpg"/>
+                    <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.jpg"/>
+                    <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.jpg"/>
+                    <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.jpg"/>
                 </ItemContainer>
             </div>
             <div id="sponsor" ref={sponsorRef}>

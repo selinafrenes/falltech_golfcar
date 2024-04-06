@@ -223,6 +223,16 @@ h1 {
     height: 200px;
 }
 
+.hardwareComponent-image-container img {
+    display: block;
+    opacity: 1;
+    flex: 1 0 100%;
+    object-fit: cover;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
 .unserTeam > .item > .image-container img {
     max-height: 400px;
     max-width: 300px;
@@ -241,20 +251,20 @@ h1 {
     display: flex;
     justify-content: center;
     /*max-width: ;*/
-    /*aspect-ratio: 4 / 5;*/
-    max-width: 300px;
-    max-height: 400px;
+    aspect-ratio: 4 / 5;
+    /*max-width: 300px;*/
+    /*max-height: 400px;*/
     padding: 15px;
 }
 .unsereSoftware > .item {
-    width: 300px;
+    width: 250px;
 }
 
 .unsereSoftware > .item > .image-container img {
-    max-height: 370px;
-    max-width: 270px;
-    min-height: 360px;
-    min-width: 260px;
+    /*max-height: 370px;*/
+    /*max-width: 270px;*/
+    /*min-height: 360px;*/
+    /*min-width: 260px;*/
     display: block;
     opacity: 1;
     flex: 1 0 100%;
