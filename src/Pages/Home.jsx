@@ -8,7 +8,6 @@ import {useRef} from "react";
 import { Slide as SlideItem } from "../Components/Slide";
 import Item from "../Components/Item";
 import ItemContainer from "../Components/ItemContainer";
-import {toast} from "react-toastify";
 
 function Home({onLogin}) {
     const sponsorRef = useRef(null);
@@ -18,7 +17,13 @@ function Home({onLogin}) {
         "Dabei soll das Fahrzeug Hindernisse erkennen und umfahren können, sowie flexibel an verschiedene Umgebungen " +
         "anpassbar sein. Die Steuerung erfolgt über WLAN, unterstützt durch eine Kamera für die Navigation. " +
         "Zusätzlich wird das Fahrzeug bei Dunkelheit automatisch Licht einschalten, um die Sichtbarkeit zu verbessern " +
-        "und seine Aufgaben effektiv zu erfüllen."
+        "und seine Aufgaben effektiv zu erfüllen.";
+
+    const textGolfCar = "Unser Projekt umfasst die Entwicklung eines Autos, welches autonom einen Golfball auf einem " +
+        "Parcours findet und ihn sicher zum Ziel bringt. Wir haben die Karosserie und das Chassis mit einem 3D-Drucker " +
+        "selbst entworfen. Das Auto erkennt Hindernisse autonom und weicht ihnen aus. Zudem haben wir die Webseite " +
+        "und den Server für das Projekt selbst erstellt, was eine nahtlose Steuerung und Überwachung ermöglicht. " +
+        "Unser Ziel ist es, ein zuverlässiges und leistungsfähiges autonomes Golfcar zu schaffen."
 
 
     return (
@@ -35,7 +40,7 @@ function Home({onLogin}) {
                         <div className="slides">
                             <SlideItem heading="Schulprojekt" text="TEXT ÜBER PROJEKT" image="/assets/images/frosch.jpeg"
                                        altText="Bild"></SlideItem>
-                            <SlideItem heading="Golf Car Projekt" text="TEXT ÜBER PROJEKT" image="/assets/images/frosch.jpeg"
+                            <SlideItem heading="Golf Car Projekt" text={textGolfCar} image="/assets/images/frosch.jpeg"
                                        altText="Bild"></SlideItem>
                             <SlideItem heading="Ziele" text={textZiele} image="/assets/images/frosch.jpeg"
                                        altText="Bild"></SlideItem>
@@ -60,14 +65,6 @@ function Home({onLogin}) {
                     <Item name="LED" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
                     <Item name="Batterie" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
                 </ItemContainer>
-            {/*    <div className="hardwareContainer">*/}
-            {/*        <div className="hardwareWrapper">*/}
-            {/*            /!*TODO --> Lizenzen von Bilder*!/*/}
-            {/*            */}
-            {/*        </div>*/}
-
-            {/*    </div>*/}
-
 
             </div>
             <div id="aboutUs" className="aboutUS">
@@ -84,13 +81,13 @@ function Home({onLogin}) {
             <div id="software" className="software">
                 <h1>Software</h1>
                 <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
-                    <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python.jpg"/>
-                    <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.jpg"/>
-                    <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.jpg"/>
-                    <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/javascript.jpg"/>
-                    <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.jpg"/>
-                    <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.jpg"/>
-                    <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.jpg"/>
+                    <Item name="Python" description="Vielseitige, interpretierte Programmiersprache" imagePath="/assets/images/software/python.jpg"/>
+                    <Item name="HTML" description="Markup-Sprache für Webinhalte" imagePath="/assets/images/software/html.jpg"/>
+                    <Item name="CSS" description="Stylesheet-Sprache für das Webdesign" imagePath="/assets/images/software/css.jpg"/>
+                    <Item name="JavaScript" description="Skriptsprache für Webentwicklung" imagePath="/assets/images/software/javascript.jpg"/>
+                    <Item name="React" description="JavaScript-Bibliothek für Benutzeroberflächen" imagePath="/assets/images/software/react.jpg"/>
+                    <Item name="Nodejs" description="JavaScript-Laufzeitumgebung für Server" imagePath="/assets/images/software/nodejs.jpg"/>
+                    <Item name="MySQL" description="Relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.jpg"/>
                 </ItemContainer>
             </div>
             <div id="sponsor" ref={sponsorRef}>

@@ -261,10 +261,6 @@ h1 {
 }
 
 .unsereSoftware > .item > .image-container img {
-    /*max-height: 370px;*/
-    /*max-width: 270px;*/
-    /*min-height: 360px;*/
-    /*min-width: 260px;*/
     display: block;
     opacity: 1;
     flex: 1 0 100%;
