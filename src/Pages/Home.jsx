@@ -8,7 +8,7 @@ import {useRef} from "react";
 import { Slide as SlideItem } from "../Components/Slide";
 import Item from "../Components/Item";
 import ItemContainer from "../Components/ItemContainer";
-
+import {toast} from "react-toastify";
 
 function Home({onLogin}) {
     const sponsorRef = useRef(null);
@@ -19,6 +19,7 @@ function Home({onLogin}) {
         "anpassbar sein. Die Steuerung erfolgt über WLAN, unterstützt durch eine Kamera für die Navigation. " +
         "Zusätzlich wird das Fahrzeug bei Dunkelheit automatisch Licht einschalten, um die Sichtbarkeit zu verbessern " +
         "und seine Aufgaben effektiv zu erfüllen."
+
 
     return (
         <>

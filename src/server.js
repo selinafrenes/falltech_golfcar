@@ -9,6 +9,7 @@ const cors = require("cors");
 const NewEntryController = require("./Controllers/NewEntryController");
 const AuthController = require("./Controllers/AuthController");
 const ListAllEntriesController = require("./Controllers/ListAllEntriesController");
+const PersonsController = require("./Controllers/PersonsController");
 
 
 //Api Middlewares
@@ -43,6 +44,10 @@ app.post('/login', (req, res) => {
 
 app.get('/tagebuch/entries', (req, res) => {
     ListAllEntriesController(req, res);
+});
+
+app.get('/personen', (req, res) => {
+    PersonsController(req, res);
 });
 
 app.listen(port, () => {

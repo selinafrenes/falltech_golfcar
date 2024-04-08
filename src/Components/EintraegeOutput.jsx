@@ -27,27 +27,26 @@ function EintraegeOutput(props){
         fetchData();
     }, [props.trigger]); // useEffect wird bei Änderungen von reloadTrigger ausgeführt
 
-    // if (entersData){
-    //     console.log("ENTERSDATA sind daaaaa");
-    // }
 
     const [filterPerson, setFilterPerson] = useState(false);
     const filterByPerson = () => {
         setFilterPerson(!filterPerson);
     };
+    const reloadData = () => {
+        toast.info("Daten werden neu geladen");
+        props.onreload();
+    }
 
     return(
         <div className="output-wrapper">
             <div className="output-container">
-                <button id="reloadDataBtn" onClick={props.onreload}>Neu Laden</button>
+                <button id="reloadDataBtn" onClick={reloadData}>Neu Laden</button>
                 <p className="p_beiOutput">Sortieren nach: </p>
                 <div className="filternNach">
                     <p>Datum</p>
                     <ToggleButton onChange={filterByPerson}/>
                     <p>Person</p>
                 </div>
-
-                {/*ToDo Hook*/}
 
                 <div className="output-field" id="enters">
                     {/*<p>Hello OUTPUT</p>*/}

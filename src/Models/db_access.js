@@ -91,9 +91,10 @@ const getTeamMembers = async() => {
             'SELECT * FROM Person WHERE teammember = 1;'
         );
         console.log("Result: " + results);
-
+        return results;
     } catch(error) {
         console.error('Fehler beim Zurückgeben von Teammembers', error.message);
+        return error;
     } finally {
         if (connection) await connection.release();
     }
