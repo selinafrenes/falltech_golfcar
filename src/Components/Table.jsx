@@ -86,8 +86,8 @@ const filterTableByUsername = (combinedEntries) => {
                         <tr key={entry.id}>
                             <td>{new Date(entry.date).toLocaleDateString('de-DE')}</td>
                             <td>{entry.duration}</td>
-                            <td>{entry.description.replace(/'/g, '').replace(/\n/g, '')}</td>
-                            <td>{entry.notes.replace(/'/g, '').replace(/\n/g, '')}</td>
+                            <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                            <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
                         </tr>
                     ))}
                 </Fragment>
@@ -198,8 +198,8 @@ const filterTableByDate = (combinedEntries) => {
                         )}
                         <td>{entry.username}</td>
                         <td>{entry.duration}</td>
-                        <td>{entry.description.replace(/'/g, '').replace(/\n/g, '<br>')}</td>
-                        <td>{entry.notes.replace(/'/g, '').replace(/\n/g, '<br>')}</td>
+                        <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                        <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
                     </tr>
                 ))
             ))}

@@ -50,15 +50,22 @@ function Home({onLogin}) {
                 </div>
                 {/*{name, description, imagePath}*/}
                 <ItemContainer classname="hardwareContainer" innerClassname="hardwareWrapper">
-                    <Item name="Mikrocontroller" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                    <Item name="Kamera" description="Rasperry Pi Camera Module 3" imagePath="/assets/images/components/kamerPI3.png" />
-                    <Item name="Abstandssensor" description="3pcs Ultrasonic Sensor" imagePath="/assets/images/components/ultrasonicSensor.png" />
-                    <Item name="Schrittmotor" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                    <Item name="Servomotor" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                    <Item name="Motortreiber" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
+                    <Item name="Mikrocontroller +" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
+                    <Item name="Kamera +" description="Rasperry Pi Camera Module 3" imagePath="/assets/images/components/kamerPI3.png" />
+                    <Item name="Abstandssensor +" description="3pcs Ultrasonic Sensor" imagePath="/assets/images/components/ultrasonicSensor.png" />
+                    <Item name="Schrittmotor +" description="5pcs 28BYJ-48 Schrittmotor" imagePath="/assets/images/components/stepperMotor.png" />
+                    <Item name="DC Motor mit Getriebe" description="GA12-N20 Gear Motor" imagePath="/assets/images/components/gearMotor.png" />
+                    <Item name="Motortreiber" description="L298 Motor Drive Controller Board" imagePath="/assets/images/components/MotorControllerBoard.png" />
                     <Item name="Stromquelle" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                    <Item name="LED" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                    <Item name="Batterie" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
+                    <Item name="LED +" description="Raspberry PI 3" imagePath="/assets/images/components/leds.png" />
+                    <Item name="Batterie +" description="9V 650mA wiederaufladbare Batterie" imagePath="/assets/images/components/battery.png" />
+                    <Item name="Batterie Adapter +" description="9V Batterie Adapter" imagePath="/assets/images/components/batteryAdapter.png" />
+                    <Item name="Speicher +" description="32GB Micro SD" imagePath="/assets/images/components/storageSD.png" />
+                    <Item name="Kugellager +" description="5pcs 10x3x4 mm" imagePath="/assets/images/components/kugellager.png" />
+                    <Item name="Aufbau" description="Filament" imagePath="/assets/images/components/kugellager.png" />
+                    <Item name="Power Bank" description="Mini Power Bank 5000mAh " imagePath="/assets/images/components/powerBank.png" />
+
+
                 </ItemContainer>
             {/*    <div className="hardwareContainer">*/}
             {/*        <div className="hardwareWrapper">*/}
