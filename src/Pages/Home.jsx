@@ -8,7 +8,6 @@ import {useRef} from "react";
 import { Slide as SlideItem } from "../Components/Slide";
 import Item from "../Components/Item";
 import ItemContainer from "../Components/ItemContainer";
-import {toast} from "react-toastify";
 
 function Home({onLogin}) {
     const sponsorRef = useRef(null);
@@ -18,7 +17,13 @@ function Home({onLogin}) {
         "Dabei soll das Fahrzeug Hindernisse erkennen und umfahren können, sowie flexibel an verschiedene Umgebungen " +
         "anpassbar sein. Die Steuerung erfolgt über WLAN, unterstützt durch eine Kamera für die Navigation. " +
         "Zusätzlich wird das Fahrzeug bei Dunkelheit automatisch Licht einschalten, um die Sichtbarkeit zu verbessern " +
-        "und seine Aufgaben effektiv zu erfüllen."
+        "und seine Aufgaben effektiv zu erfüllen.";
+
+    const textGolfCar = "Unser Projekt umfasst die Entwicklung eines Autos, welches autonom einen Golfball auf einem " +
+        "Parcours findet und ihn sicher zum Ziel bringt. Wir haben die Karosserie und das Chassis mit einem 3D-Drucker " +
+        "selbst entworfen. Das Auto erkennt Hindernisse autonom und weicht ihnen aus. Zudem haben wir die Webseite " +
+        "und den Server für das Projekt selbst erstellt, was eine nahtlose Steuerung und Überwachung ermöglicht. " +
+        "Unser Ziel ist es, ein zuverlässiges und leistungsfähiges autonomes Golfcar zu schaffen."
 
 
     return (
@@ -35,7 +40,7 @@ function Home({onLogin}) {
                         <div className="slides">
                             <SlideItem heading="Schulprojekt" text="TEXT ÜBER PROJEKT" image="/assets/images/frosch.jpeg"
                                        altText="Bild"></SlideItem>
-                            <SlideItem heading="Golf Car Projekt" text="TEXT ÜBER PROJEKT" image="/assets/images/frosch.jpeg"
+                            <SlideItem heading="Golf Car Projekt" text={textGolfCar} image="/assets/images/frosch.jpeg"
                                        altText="Bild"></SlideItem>
                             <SlideItem heading="Ziele" text={textZiele} image="/assets/images/frosch.jpeg"
                                        altText="Bild"></SlideItem>
@@ -64,6 +69,7 @@ function Home({onLogin}) {
                     <Item name="Aufbau" description="Filament" imagePath="/assets/images/components/kugellager.png" />
                     <Item name="Power Bank" description="Mini Power Bank 5000mAh " imagePath="/assets/images/components/powerBank.png" />
                 </ItemContainer>
+
                 <h2>Software</h2>
                 <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
                     <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python.jpg"/>
