@@ -18,42 +18,49 @@ function EintragForm(props) {
             notes: formData.get('notes'),
             date: formData.get('date'),
             duration: formData.get('duration')
-
         }
+        debugger;
 
-        // Senden der Daten an den Server
-        const response = await fetch('http://localhost:8000/tagebuch/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-
-        // Verarbeiten der Serverantwort
-        const jsonData = await response.json();
-        // setIsSubmitting(false);
-
-        if (jsonData.success) {
-            toast.success('Daten wurden erfolgreich abgespeichert');
-            console.log("S:DATA:" + JSON.stringify(jsonData));
-            event.target.reset();
-            // Erfolgreiche Verarbeitung
-            // ... (z.B. setData(jsonData) um die Komponente zu aktualisieren)
+        if(data.people === [] || data.description === '' || data.date === '' || data.duration === ''){
+            toast.error("Alle nicht optionale Felder müssen ausgefüllt werden");
         } else {
-            toast.error('Fehler beim abspeichern in der Datenbank');
-        }
+            // Senden der Daten an den Server
+            const response = await fetch('http://localhost:8000/tagebuch/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
 
-        props.onreload();
+            // Verarbeiten der Serverantwort
+            const jsonData = await response.json();
+            // setIsSubmitting(false);
+
+            if (jsonData.success) {
+                toast.success('Daten wurden erfolgreich abgespeichert');
+                console.log("S:DATA:" + JSON.stringify(jsonData));
+                event.target.reset();
+                // Erfolgreiche Verarbeitung
+                // ... (z.B. setData(jsonData) um die Komponente zu aktualisieren)
+            } else {
+                toast.error('Fehler beim abspeichern in der Datenbank');
+            }
+
+            props.onreload();
+        }
+        //|| data.description === '' || data.date === '' || data.duration === ''
+
+
     };
     return (
         <>
             <div className="input-wrapper">
                 <form /* action="http://localhost:8000/tagebuch.html/submit"*/ onSubmit={handleSubmit} className="input-container" /* method="post"*/>
                     <label htmlFor="date">Datum:</label>
-                    <input className="input-date-field" type="date" id="date" name="date" required/>
+                    <input className="input-date-field" type="date" id="date" name="date"/>
                     <label htmlFor="duration">Zeit (h = 50min):</label>
-                    <input className="input-nummer-field" type="number" id="duration" name="duration" required min="0"
+                    <input className="input-nummer-field" type="number" id="duration" name="duration" min="0"
                            step="0.01" pattern="^\d+(\.\d{0,2})?$"/>
 
                     <fieldset className="checkbox-container">
@@ -65,9 +72,9 @@ function EintragForm(props) {
                         <CheckboxElement username="frenerwilma" firstname="Wilma"/>
                     </fieldset>
                     <label htmlFor="description">Beschreibung:</label>
-                    <textarea className="input-text-field" id="description" name="description" rows="4" required></textarea>
+                    <textarea className="input-text-field" id="description" name="description" rows="4"></textarea>
 
-                    <label htmlFor="notes">Notizen:</label>
+                    <label htmlFor="notes">Notizen: (optional)</label>
                     <textarea className="input-text-field" id="notes" name="notes" rows="4"></textarea>
 
                     <button type="submit" className="submitBtn">Eintragen</button>
