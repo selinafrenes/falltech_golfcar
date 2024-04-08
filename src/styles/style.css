@@ -564,6 +564,16 @@ h2 {
 
 #impressum p{
     text-align: left;
+    padding-top: 5px;
+}
+
+#impressum p a{
+    text-decoration: none;
+    color: black;
+}
+
+#impressum p a:hover {
+    color: #E91E63;
 }
 
 #datenschutz p {
