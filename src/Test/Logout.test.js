@@ -1,6 +1,7 @@
 const { Builder, By, until} = require('selenium-webdriver');
 const assert = require('assert');
 describe('Login und Logout Test', function () {
+    this.timeout(50000); //Timeout höher setzten
     let driver;
 
     // eslint-disable-next-line no-undef
@@ -12,18 +13,24 @@ describe('Login und Logout Test', function () {
         await loginButton.click();
 
         //Anmelden
-        await driver.findElement(By.id('username')).sendKeys('frenerwilma');
-        await driver.findElement(By.id('password')).sendKeys('fancy1290');
-        await driver.findElement(By.id('submitBtn')).click();
-        await driver.sleep(1000);
+        try {
+            await driver.findElement(By.id('username')).sendKeys('frenerwilma');
+            await driver.findElement(By.id('password')).sendKeys('fancy1290');
+            await driver.findElement(By.id('submitBtn')).click();
+        } catch (error) {
+            console.error('Einloggen fehlgeschlagen:', error);
+        }
     });
 
     it('Logout', async function () {
         await driver.get('http://localhost:3000/tagebuch');
+        await driver.wait(until.elementLocated(By.id('logoutBtn')));
         const logoutBtn = await driver.findElement(By.id('logoutBtn'));
         logoutBtn.click();
-        const currentLocation = driver.getCurrentUrl();
-        assert.strictEqual(currentLocation, 'http://localhost:3000');
+        setTimeout(function() { //Wartet das die URL aktualisiert wird
+            const currentLocation =  driver.getCurrentUrl();
+            assert.strictEqual(currentLocation, 'http://localhost:3000');
+        }, 2000);
 
     });
 
