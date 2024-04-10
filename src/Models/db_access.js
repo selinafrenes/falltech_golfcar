@@ -45,7 +45,7 @@ const userAuthentication = async (username, userPassword) => {
         }
     } catch(error) {
         console.error('Fehler beim Anmelden', error.message);
-
+        throw error;
     } finally {
         if (connection) await connection.release();
     }
@@ -114,6 +114,7 @@ const getAllEnters = async() => {
     return {entersResult, entryResult};
     } catch(error) {
         console.error('Fehler beim Zurückgeben von den Enters', error.message);
+        throw error;
     } finally {
         if (connection) await connection.release();
     }

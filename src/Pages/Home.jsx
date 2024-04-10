@@ -8,6 +8,7 @@ import {useRef} from "react";
 import { Slide as SlideItem } from "../Components/Slide";
 import Item from "../Components/Item";
 import ItemContainer from "../Components/ItemContainer";
+import {redirect} from "react-router-dom";
 
 function Home({onLogin}) {
     const sponsorRef = useRef(null);
@@ -25,10 +26,14 @@ function Home({onLogin}) {
         "und den Server für das Projekt selbst erstellt, was eine nahtlose Steuerung und Überwachung ermöglicht. " +
         "Unser Ziel ist es, ein zuverlässiges und leistungsfähiges autonomes Golfcar zu schaffen."
 
+    const onClick = () => {
+        redirect("/swagger");
+    }
 
     return (
         <>
             <Login onLogin={onLogin}/>
+            <button onClick={onClick}>Button Swagger</button>
             <div id="zumProjekt">
                 <h1>Zum Projekt</h1>
                 <div id="zumProjekt-Container">

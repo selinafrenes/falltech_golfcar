@@ -6,15 +6,13 @@ const NewEntryController = (req, res) => {
     createNewEntry(data.people, data.description, data.notes, data.date, data.duration)
         .then(response => {
             console.log(response);
-            // res.redirect('/tagebuch');
-            res.json({ success: true });
+            // TODO response evt mit boolenan machen???
+            res.status(201).json({ success: true });
 
         })
         .catch(error => {
             console.log(error);
-            // res.redirect('/tagebuch');
-            res.json({ success: false , message: error.message});
-
+            res.status(500).json({ success: false , message: "Internal server error"});
         });
 }
 module.exports = NewEntryController;

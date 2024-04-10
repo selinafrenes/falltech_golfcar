@@ -9,7 +9,9 @@ import Tagebuch from "./Pages/Tagebuch";
 import {useEffect, useState} from "react";
 import {getCookieValue} from "./script";
 import {Slide, ToastContainer} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import SwaggerUI from "swagger-ui-react"
+import "swagger-ui-react/swagger-ui.css"
+const spec = require("./swaggerSpec.json");
 
 function App() {
     // authentifizierung für Tagebuch
@@ -66,8 +68,9 @@ function App() {
               <Route path="/tagebuch" element={isAuthenticated ? <Tagebuch /> : <Home onLogin={handleLoginSuccess} />}/>
               <Route path="/impressum" element={<Impressum onLogin={handleLoginSuccess}/>} />
               <Route path="/datenschutz" element={<Datenschutz onLogin={handleLoginSuccess}/>} />
+              <Route path="/swagger" element={<SwaggerUI spec={spec} />} />
               <Route path="*" element={<Navigate to="/" />} /> {/* Standardroute */}
-               {/*Definieren Sie weitere Routen hier */}
+              {/*Definieren Sie weitere Routen hier */}
           </Routes>
           <Footer/>
           <ToastContainer
@@ -86,7 +89,5 @@ function App() {
       </>
   );
 }
-// position="top-right"
-// const root = ReactDOM.createRoot(document.getElementById('app'));
-// root.render(<App />);
+
 export default App;
