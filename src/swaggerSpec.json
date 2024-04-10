@@ -23,7 +23,7 @@
     },
     "/login": {
       "post": {
-        "summary": "Benutzeranmeldung",
+        "summary": "Login eines Benutzers",
         "description": "Authentifiziert einen Benutzer mit Benutzername und Passwort.",
         "requestBody": {
           "required": true,
@@ -33,18 +33,20 @@
                 "$ref": "#/components/schemas/LoginData"
               }
             }
-          }
+          },
+          "description": "Anforderungsbody mit den Anmeldedaten des Benutzers."
         },
         "responses": {
           "200": {
-            "description": "Erfolgreiche Anmeldung",
+            "description": "Anmeldung erfolgreich",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "success": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "description": "Kennzeichnet, ob die Anmeldung erfolgreich war."
                     },
                     "data": {
                       "$ref": "#/components/schemas/Person"
@@ -54,20 +56,23 @@
               }
             }
           },
+          "400": {
+            "description": "Ungültige Anforderungsdaten: Fehler im JSON-Format oder fehlende Eigenschaften."
+          },
           "401": {
-            "description": "Unautorisiert: Benutzername oder Passwort falsch"
+            "description": "Anmeldung fehlgeschlagen: Ungültige Anmeldedaten."
           },
           "500": {
-            "description": "Interner Serverfehler: Anmeldeversuch fehlgeschlagen"
+            "description": "Anmeldung fehlgeschlagen: Serverfehler."
           }
         }
       }
     },
     "/tagebuch/submit": {
       "post": {
-        "summary": "Erstellt neuen Resource (Tagebucheintrag in Datenbank)",
+        "summary": "Erstellt neuen Tagebucheintrag",
+        "description": "Erstellt einen neuen Tagebucheintrag in der Datenbank.",
         "requestBody": {
-          "description": "Data for creating the resource",
           "required": true,
           "content": {
             "application/json": {
@@ -75,25 +80,29 @@
                 "$ref": "#/components/schemas/ResourceData"
               }
             }
-          }
+          },
+          "description": "Anforderungsbody mit den Daten für den neuen Tagebucheintrag."
         },
         "responses": {
           "201": {
-            "description": "Resource created successfully"
+            "description": "Tagebucheintrag erfolgreich erstellt"
+          },
+          "400": {
+            "description": "Fehlerhafte Anforderung: Ungültiges JSON-Format oder fehlende Eigenschaften."
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Interner Serverfehler: Tagebucheintrag konnte nicht erstellt werden."
           }
         }
       }
     },
     "/tagebuch/entries": {
       "get": {
-        "summary": "Alle Tagebucheinträge auflisten",
-        "description": "Ruft alle Tagebucheinträge aus der Datenbank ab und gibt sie zurück.",
+        "summary": "Alle Tagebucheinträge abrufen",
+        "description": "Liefert alle in der Datenbank gespeicherten Tagebucheinträge.",
         "responses": {
           "200": {
-            "description": "Erfolgreich: Alle Tagebucheinträge wurden abgerufen",
+            "description": "Erfolgreich: Liste aller Tagebucheinträge",
             "content": {
               "application/json": {
                 "schema": {
@@ -101,12 +110,14 @@
                   "properties": {
                     "entersData": {
                       "type": "array",
+                      "description": "Liste aller EinträgeID-Personen",
                       "items": {
                         "$ref": "#/components/schemas/EntersData"
                       }
                     },
                     "entryData": {
                       "type": "array",
+                      "description": "Liste aller Einträge",
                       "items": {
                         "$ref": "#/components/schemas/EntryData"
                       }
@@ -116,8 +127,11 @@
               }
             }
           },
+          "404": {
+            "description": "Keine Einträge gefunden: Die Datenbank enthält keine Tagebucheinträge."
+          },
           "500": {
-            "description": "Interner Serverfehler: Fehler beim Abrufen der Tagebucheinträge"
+            "description": "Interner Serverfehler: Fehler beim Abrufen der Tagebucheinträge."
           }
         }
       }
