@@ -9,6 +9,7 @@ import Tagebuch from "./Pages/Tagebuch";
 import {useEffect, useState} from "react";
 import {getCookieValue} from "./script";
 import {Slide, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import SwaggerUI from "swagger-ui-react"
 import "swagger-ui-react/swagger-ui.css"
 const spec = require("./swaggerSpec.json");
