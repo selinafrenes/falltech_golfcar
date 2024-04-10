@@ -20,45 +20,12 @@ function App() {
         setIsAuthenticated(true);
     };
 
-
     useEffect(() => {
         const username = getCookieValue("username");
         if (username){
             setIsAuthenticated(true);
         }
     }, []);
-
-    /*
-
-
-    useEffect(() => {
-        const element = document.createElement('style');
-        const linkElement = document.querySelector(`link[href*="${currentStyle}.css"]`);
-
-        if (linkElement){
-            element.textContent = linkElement.sheet.cssRules[0].cssText;
-        } else {
-            const stylesheet = currentStyle === 'style1' ? stylesheet1 : stylesheet2;
-            element.textContent = stylesheet.default;
-        }
-
-        document.head.appendChild(element);
-
-        return () => {
-            document.head.removeChild(element);
-        }
-
-    }, [currentStyle]);
-
-
-
-    const [currentStyle, setCurrentStyle] = useState(false);
-    const changeMode = (!currentStyle) => {
-
-    };
-
-
-     */
 
     return (
       <>

@@ -1,0 +1,219 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FallTech Endpoint API",
+    "version": "3.0.0",
+    "description": "Eine RESTful API für das Management von Benutzern, deren Authentifizierung und deren Aktivitäten."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000/"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Serve the index.html file",
+        "responses": {
+          "200": {
+            "description": "Index.html file is served"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Benutzeranmeldung",
+        "description": "Authentifiziert einen Benutzer mit Benutzername und Passwort.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Erfolgreiche Anmeldung",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Person"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unautorisiert: Benutzername oder Passwort falsch"
+          },
+          "500": {
+            "description": "Interner Serverfehler: Anmeldeversuch fehlgeschlagen"
+          }
+        }
+      }
+    },
+    "/tagebuch/submit": {
+      "post": {
+        "summary": "Erstellt neuen Resource (Tagebucheintrag in Datenbank)",
+        "requestBody": {
+          "description": "Data for creating the resource",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResourceData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Resource created successfully"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/tagebuch/entries": {
+      "get": {
+        "summary": "Alle Tagebucheinträge auflisten",
+        "description": "Ruft alle Tagebucheinträge aus der Datenbank ab und gibt sie zurück.",
+        "responses": {
+          "200": {
+            "description": "Erfolgreich: Alle Tagebucheinträge wurden abgerufen",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "entersData": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/EntersData"
+                      }
+                    },
+                    "entryData": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/EntryData"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Interner Serverfehler: Fehler beim Abrufen der Tagebucheinträge"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ResourceData": {
+        "type": "object",
+        "properties": {
+          "people": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "duration": {
+            "type": "integer"
+          }
+        },
+        "required": ["people", "description", "date", "duration"]
+      },
+      "LoginData": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": ["username", "password"]
+      },
+      "Person": {
+        "type": "array",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "teammember": {
+            "type": "integer"
+          }
+        },
+        "required": ["username", "firstname", "lastname", "teammember"]
+      },
+      "EntersData" : {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "duration": {
+            "type": "integer"
+          }
+        },
+        "required": ["id", "description", "date", "duration"]
+      },
+      "EntryData" : {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "username": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "username"]
+      }
+    }
+  }
+}

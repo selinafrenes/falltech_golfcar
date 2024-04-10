@@ -41,7 +41,6 @@ app.post('/login', (req, res) => {
     AuthController(req, res);
 });
 
-
 app.get('/tagebuch/entries', (req, res) => {
     ListAllEntriesController(req, res);
 });
