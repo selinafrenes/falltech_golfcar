@@ -16,7 +16,6 @@ const PersonsController = require("./Controllers/PersonsController");
 app.use(express.json()); //um Daten in JSON zu erlauben
 app.use(express.urlencoded()); //Um die JSON Daten zu decode
 
-
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
@@ -30,7 +29,6 @@ app.use(cors());
 app.get('/', function (req, res){
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
-
 
 app.post('/tagebuch/submit', function (req, res){
     NewEntryController(req, res);
