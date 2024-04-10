@@ -38,7 +38,6 @@ function App() {
               <Route path="/datenschutz" element={<Datenschutz onLogin={handleLoginSuccess}/>} />
               <Route path="/swagger" element={<SwaggerUI spec={spec} />} />
               <Route path="*" element={<Navigate to="/" />} /> {/* Standardroute */}
-              {/*Definieren Sie weitere Routen hier */}
           </Routes>
           <Footer/>
           <ToastContainer

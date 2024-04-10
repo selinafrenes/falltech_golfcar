@@ -11,13 +11,12 @@ const AuthController = (req, res) => {
                 res.json({ success: true, data: response});
             } else {
                 // TODO Benutzer anzeigen, dass Eingabe falsch war
-                console.error("Es wurde kein Benutzer mit dem angegebenen Benutzername und Passwort gefunden!")
+                console.error("Es wurde kein Benutzer mit dem angegebenen Benutzername und Passwort gefunden!");
                 res.status(401).json({ success: false, message: 'Unautorisiert: Benutzername oder Passwort falsch' });
             }
             res.send();
         })
-        .catch(error => {
-            console.error('Fehler beim Aufrufen der userAuthentication-Funktion:', error);
+        .catch(() => {
             res.status(500).json({ success: false, message: 'Interner Serverfehler: Anmeldeversuch fehlgeschlagen' });
         });
 }

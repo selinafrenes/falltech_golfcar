@@ -44,7 +44,6 @@ const userAuthentication = async (username, userPassword) => {
             }
         }
     } catch(error) {
-        console.error('Fehler beim Anmelden', error.message);
         throw error;
     } finally {
         if (connection) await connection.release();
@@ -75,7 +74,7 @@ const createNewEntry = async (people, description, notes, date, duration) => {
     } catch (error) {
         console.log(date, duration, description, notes, people);
         // res.json({ success: false , message: error.message});
-        console.error('Fehler beim Erstellen des neuen Eintrags:', error.message);
+        console.error('Fehler beim Erstellen des neuen Eintrags');
         throw error;
     } finally {
         if (connection) await connection.release();
@@ -93,7 +92,6 @@ const getTeamMembers = async() => {
         console.log("Result: " + results);
         return results;
     } catch(error) {
-        console.error('Fehler beim Zurückgeben von Teammembers', error.message);
         return error;
     } finally {
         if (connection) await connection.release();
@@ -113,7 +111,6 @@ const getAllEnters = async() => {
         );
     return {entersResult, entryResult};
     } catch(error) {
-        console.error('Fehler beim Zurückgeben von den Enters', error.message);
         throw error;
     } finally {
         if (connection) await connection.release();
