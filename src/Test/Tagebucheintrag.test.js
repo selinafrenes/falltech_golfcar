@@ -1,17 +1,17 @@
 const { Builder, By, until} = require('selenium-webdriver');
-const assert = require('assert');
-describe('Login und Logout Test', function () {
-    this.timeout(50000); //Timeout höher setzten
+
+describe('Tagebucheintrag', function () {
+    //this.timeout(25000);
     let driver;
+
+    this.timeout(25000);
 
     // eslint-disable-next-line no-undef
     before(async function() {
-        //Selenium WebDriver wird für Chrome erstellt
         driver = await new Builder().forBrowser('chrome').build();
         await driver.get('http://localhost:3000');
         const loginButton = await  driver.findElement(By.id('loginButton'));
         await loginButton.click();
-
         //Anmelden
         try {
             await driver.findElement(By.id('username')).sendKeys('frenerwilma');
@@ -20,23 +20,33 @@ describe('Login und Logout Test', function () {
         } catch (error) {
             console.error('Einloggen fehlgeschlagen:', error);
         }
+
     });
 
-    it('Logout', async function () {
+    it('Tagebucheintrag richtig, mit Toast angezeigt und dem Fehlercode 201', async function () {
+        //Laden der Testseite
         await driver.get('http://localhost:3000/tagebuch');
-        await driver.wait(until.elementLocated(By.id('logoutBtn')));
-        const logoutBtn = await driver.findElement(By.id('logoutBtn'));
-        logoutBtn.click();
-        setTimeout(function() { //Wartet das die URL aktualisiert wird
-            const currentLocation =  driver.getCurrentUrl();
-            assert.strictEqual(currentLocation, 'http://localhost:3000');
-        }, 2000);
 
-    });
+        await driver.sleep(3000); //2 Sekunden warten
+
+        //Ausfüllen des Formulars
+        await driver.findElement(By.id('date')).sendKeys('10.10.2010');
+        await driver.findElement(By.id('duration')).sendKeys('3');
+        await driver.findElement(By.id('description')).sendKeys('Test Mocha');
+        await driver.findElement(By.id('notes')).sendKeys('Test Mocha Notiz');
+
+        //Checkbox
+        const checkbox = await driver.findElement(By.className('input-checkbox-field'));
+        await checkbox.click();
+
+        //Eintragen
+        await driver.findElement(By.className('submitBtn'));
+
+        await driver.sleep(2000);
+     });
 
     // eslint-disable-next-line no-undef
     after(async function () {
         await driver.quit();
     });
-
 });

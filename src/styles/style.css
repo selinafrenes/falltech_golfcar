@@ -192,9 +192,16 @@ h1 {
     padding:1rem;
 }
 
+.hardwareContainer {
+    display: flex;
+    justify-content: center;
+}
+
 .unserTeam, .unsereSoftware, .hardwareWrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
     padding: 10px;
 }
 
@@ -202,10 +209,12 @@ h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
     background-color: lightpink;
-    margin: 10px auto;
+    margin: 10px min(20px);
 }
 
 /* Für das Team */
+
+
 .unserTeam > .item > .image-container {
     position: relative;
     display: flex;
@@ -219,15 +228,15 @@ h1 {
     justify-content: center;
     /*aspect-ratio: 4 / 5;*/
     padding: 10px;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
 }
 
 .hardwareWrapper > .item > .image-container img {
     display: block;
     opacity: 1;
     flex: 1 0 100%;
-    object-fit: cover;
+    object-fit: contain; /*TODO*/
     backface-visibility: hidden;
     border-radius: 1rem;
     overflow: hidden;
@@ -274,7 +283,6 @@ h1 {
     padding: 5px 10px;
 }
 
-/*.unserTeamItem p,*/
 .hardwareWrapper > .item p {
     padding: 5px 10px;
     word-wrap: break-word;

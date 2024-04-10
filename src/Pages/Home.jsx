@@ -58,7 +58,7 @@ function Home({onLogin}) {
                         <div className="next" onClick={nextSlide}><FontAwesomeIcon icon={faArrowRight}/></div>
                     </div>
                 </div>
-                {/*{name, description, imagePath}*/}
+                <h2>Bauteile</h2>
                 <ItemContainer classname="hardwareContainer" innerClassname="hardwareWrapper">
                     <Item name="Mikrocontroller" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
                     <Item name="Kamera" description="Rasperry Pi Camera Module 3" imagePath="/assets/images/components/kameraPI3.png" />
@@ -75,6 +75,16 @@ function Home({onLogin}) {
                     <Item name="Power Bank" description="Mini Power Bank 5000mAh " imagePath="/assets/images/components/powerBank.png" />
                 </ItemContainer>
 
+                <h2>Software</h2>
+                <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
+                    <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python.jpg"/>
+                    <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.jpg"/>
+                    <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.jpg"/>
+                    <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/javascript.jpg"/>
+                    <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.jpg"/>
+                    <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.jpg"/>
+                    <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.jpg"/>
+                </ItemContainer>
             </div>
             <div id="aboutUs" className="aboutUS">
                 <h1>Unser Team</h1>
@@ -87,18 +97,6 @@ function Home({onLogin}) {
                 </ItemContainer>
             </div>
             {/*relationales Datenbankverwaltungssystem*/}
-            <div id="software" className="software">
-                <h1>Software</h1>
-                <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
-                    <Item name="Python" description="Vielseitige, interpretierte Programmiersprache" imagePath="/assets/images/software/python.jpg"/>
-                    <Item name="HTML" description="Markup-Sprache für Webinhalte" imagePath="/assets/images/software/html.jpg"/>
-                    <Item name="CSS" description="Stylesheet-Sprache für das Webdesign" imagePath="/assets/images/software/css.jpg"/>
-                    <Item name="JavaScript" description="Skriptsprache für Webentwicklung" imagePath="/assets/images/software/javascript.jpg"/>
-                    <Item name="React" description="JavaScript-Bibliothek für Benutzeroberflächen" imagePath="/assets/images/software/react.jpg"/>
-                    <Item name="Nodejs" description="JavaScript-Laufzeitumgebung für Server" imagePath="/assets/images/software/nodejs.jpg"/>
-                    <Item name="MySQL" description="Relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.jpg"/>
-                </ItemContainer>
-            </div>
             <div id="sponsor" ref={sponsorRef}>
                 <h1>Sponsor</h1>
                 <p>Danke an unseren Sponsor</p>
