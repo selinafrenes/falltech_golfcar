@@ -1,3 +1,4 @@
+
 //Variablen initialisiert
 const slides = document.getElementsByClassName("slide");
 let currenSlide = 0;
@@ -44,4 +45,38 @@ export function getCookieValue(cookieName) {
 }
 
 
+window.onload = () => {
+
+
+const handleMediaQuery = (mediaQuery) => {
+    const slidesSlides = document.getElementsByClassName('slides');
+    const slide = document.getElementsByClassName("slide");
+    if (mediaQuery.matches) {
+        slidesSlides[0].style.flexDirection = 'column';
+        console.log("Slide Lenght: "  + slide.length);
+        //document.addEventListener('DOMContentLoaded', function() {
+            for (let i = 0 ; i < slide.length; i++) {
+                slide[i].style.display = 'block';
+            }
+        //});
+
+    } else {
+        slidesSlides[0].style.flexDirection = 'row';
+        slidesSlides[0].style.overflowX = 'hidden';
+
+
+
+
+    }
+}
+
+
+const mediaQuery600px = window.matchMedia("(max-width: 600px)");
+mediaQuery600px.addEventListener("change", () => {
+    handleMediaQuery(mediaQuery600px);
+}); //Event-Listener wegen Änderungen
+handleMediaQuery(mediaQuery600px); //Initialer Aufruf des Media Querys
+
 /*TODO --> Checken warum Media Query nicht funktioniert wenn das Fenster kleiner als 600px ist*/
+
+}
