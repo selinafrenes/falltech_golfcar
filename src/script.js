@@ -61,12 +61,12 @@ const handleMediaQuery = (mediaQuery) => {
         //});
 
     } else {
+        //ToDo bei größer machen bleibt die erste Slide show immer noch auf block
+        for (let i = 0 ; i < slide.length; i++) {
+            slide[i].style.display = 'grid';
+        }
         slidesSlides[0].style.flexDirection = 'row';
         slidesSlides[0].style.overflowX = 'hidden';
-
-
-
-
     }
 }
 
@@ -76,7 +76,5 @@ mediaQuery600px.addEventListener("change", () => {
     handleMediaQuery(mediaQuery600px);
 }); //Event-Listener wegen Änderungen
 handleMediaQuery(mediaQuery600px); //Initialer Aufruf des Media Querys
-
-/*TODO --> Checken warum Media Query nicht funktioniert wenn das Fenster kleiner als 600px ist*/
 
 }
