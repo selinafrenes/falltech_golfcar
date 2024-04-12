@@ -10,7 +10,7 @@ function Login({ onLogin }) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch('http://localhost:8000/login', {
+        const response = await fetch('http://10.10.31.11:8000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,10 +24,10 @@ function Login({ onLogin }) {
 
             onLogin();
             // cookie speichern
-            if (userInfo.username) document.cookie = "username=" + userInfo.username + "; max-age=86400; path=/; domain=localhost";
-            if (userInfo.firstname) document.cookie = "firstname=" + userInfo.firstname + "; max-age=86400; path=/; domain=localhost";
-            if (userInfo.lastname) document.cookie = "lastname=" + username + "; max-age=86400; path=/; domain=localhost";
-            if (userInfo.teammember) document.cookie = "teammember=" + userInfo.teammember + "; max-age=86400; path=/; domain=localhost";
+            if (userInfo.username) document.cookie = "username=" + userInfo.username + "; max-age=86400; path=/; domain=10.10.31.11";
+            if (userInfo.firstname) document.cookie = "firstname=" + userInfo.firstname + "; max-age=86400; path=/; domain=10.10.31.11";
+            if (userInfo.lastname) document.cookie = "lastname=" + username + "; max-age=86400; path=/; domain=10.10.31.11";
+            if (userInfo.teammember) document.cookie = "teammember=" + userInfo.teammember + "; max-age=86400; path=/; domain=10.10.31.11";
 
             navigate('/tagebuch');
         } else {

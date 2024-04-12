@@ -26,14 +26,10 @@ function Home({onLogin}) {
         "und den Server für das Projekt selbst erstellt, was eine nahtlose Steuerung und Überwachung ermöglicht. " +
         "Unser Ziel ist es, ein zuverlässiges und leistungsfähiges autonomes Golfcar zu schaffen."
 
-    const onClick = () => {
-        redirect("/swagger");
-    }
 
     return (
         <>
             <Login onLogin={onLogin}/>
-            <button onClick={onClick}>Button Swagger</button>
             <div id="zumProjekt">
                 <h1>Zum Projekt</h1>
                 <div id="zumProjekt-Container">

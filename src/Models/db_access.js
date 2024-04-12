@@ -1,17 +1,11 @@
-
-// +++ zuweisung variable _env, um dann z.b. mit console.log falschen pfad zu erkennen
-
-// +++ absolut von root (startpfad) aus gesehen
-// bei z.b. startpfad: node ./src/Controllers/server.js
-// const _env = require('dotenv').config({path: './src/.env' });
-
 // +++ relativ gesehen, mit __dirname
 // TODO: auch noch bei Controllers/server.js
-const _env = require('dotenv').config({path: __dirname + './../.env' });
+const _env = require('dotenv').config({path: __dirname + '/../.env' });
 
-console.log(_env); // +++
+console.log(_env);
 
 const bcrypt = require("bcrypt");
+console.log("-------1 " + process.env.DB_HOST);
 // mysql2 unterstützt neuere async/await-Syntax und Promises für asynchrone Operationen
 const pool = require('mysql2/promise').createPool({
     host: process.env.DB_HOST,
@@ -20,6 +14,8 @@ const pool = require('mysql2/promise').createPool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME
 });
+
+console.log("-------");
 
 const userAuthentication = async (username, userPassword) => {
     console.log(`userAuthentication(username: '${username}' password: '${userPassword}')`);

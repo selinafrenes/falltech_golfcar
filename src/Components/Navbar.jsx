@@ -10,20 +10,20 @@ const deleteCookie = (cookieName) => {
     document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 
-const logout = () => {
-    deleteCookie('username');
-    deleteCookie('firstname');
-    deleteCookie('lastname');
-    deleteCookie('teammember');
-
-    window.location.href = '/';
-}
-
 function Navbar() {
     const location = useLocation();
     const navigate = useNavigate();
     const [isNavigated, setIsNavigated] = useState("/");
+    const logout = () => {
+        deleteCookie('username');
+        deleteCookie('firstname');
+        deleteCookie('lastname');
+        deleteCookie('teammember');
 
+        navigate("/");
+        //window.location.href = '/';
+
+    }
 // Anmelde Cookie setzten und merken
     function openLoginWindow() {
         // Öffne das Anmeldefenster nur, wenn der Benutzer nicht auf der Homepage ist oder der Anmelde-Cookie nicht gesetzt ist
@@ -34,7 +34,7 @@ function Navbar() {
             loginWindow.style.display = 'block';
             console.log('Anmeldefenster öffnen');
         } else {
-            window.location.href = '/tagebuch';
+            navigate('/tagebuch');
             console.log('Tagebuch öffnen');
         }
     }
@@ -65,7 +65,8 @@ function Navbar() {
     };
 
     const toIndex = () => {
-        window.location.href = '/';
+        //window.location.href = '/';
+        navigate("/");
         console.log('Zu Index');
     }
 

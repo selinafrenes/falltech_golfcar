@@ -15,8 +15,9 @@ const AuthController = (req, res) => {
             }
             res.send();
         })
-        .catch(() => {
-            res.status(500).json({ success: false, message: 'Interner Serverfehler: Anmeldeversuch fehlgeschlagen' });
+        .catch((e) => {
+            res.status(500).json({ success: false, message: e.message });
+            //res.status(500).json({ success: false, message: 'Interner Serverfehler: Anmeldeversuch fehlgeschlagen' });
         });
 }
 module.exports = AuthController;
