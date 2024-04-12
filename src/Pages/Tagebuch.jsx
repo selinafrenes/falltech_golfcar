@@ -15,10 +15,8 @@ function Tagebuch() {
     const teammember = getCookieValue("teammember");
     return(
         <>
-            <div id="tagebuch-eintrage">
-                <h1>Tagebuch</h1>
-                <h2>Willkommen {getCookieValue("firstname")}</h2>
-            </div>
+            <h1>Tagebuch</h1>
+            <h2>Willkommen {getCookieValue("firstname")}</h2>
             {teammember === "1" ? <EintragForm onreload={reloadData}/> : <></>}
             <EintraegeOutput onreload={reloadData} trigger={reloadTrigger}/>
         </>
