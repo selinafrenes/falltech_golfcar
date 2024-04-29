@@ -1,5 +1,11 @@
 import Login from "../Components/Login";
 
+/**
+ * Impressum-Komponente zeigt das Impressum der Webseite an.
+ * @param {Object} props - Die Eigenschaften, die an die Impressum-Komponente übergeben werden.
+ * @param {Function} props.onLogin - Rückruffunktion zur Behandlung von Anmeldeereignissen.
+ * @returns {JSX.Element} Eine React-Komponente, die das Impressum der Webseite darstellt.
+ */
 function Impressum({onLogin}){
     return(
         <>

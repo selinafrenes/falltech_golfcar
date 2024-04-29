@@ -1,4 +1,10 @@
 const {getAllEnters} = require("../Models/db_access");
+
+/**
+ * Controller zur Auflistung aller Einträge.
+ * @param {Object} req - Das Anfrageobjekt.
+ * @param {Object} res - Das Antwortobjekt.
+ */
 const ListAllEntriesController = (req, res) => {
     getAllEnters().then(r => {
         console.log("Result getAllEnters: " + JSON.stringify(r));

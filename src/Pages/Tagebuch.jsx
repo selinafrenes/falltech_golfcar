@@ -4,6 +4,10 @@ import {useState} from "react";
 import EintraegeOutput from "../Components/EintraegeOutput";
 import {getCookieValue} from "../script";
 
+/**
+ * Tagebuch-Komponente dient zur Anzeige von Tagebucheinträgen.
+ * @returns {JSX.Element} Eine React-Komponente, die die Tagebuchseite darstellt.
+ */
 function Tagebuch() {
     const [reloadTrigger, setReloadTrigger] = useState(false); // Zustandsvariable für den Neu-Laden-Trigger
 
@@ -13,12 +17,12 @@ function Tagebuch() {
     };
 
     const teammember = getCookieValue("teammember");
+
     return(
         <>
-            <div id="tagebuch-eintrage">
-                <h1>Tagebuch</h1>
-                <h2>Willkommen {getCookieValue("firstname")}</h2>
-            </div>
+            {/*TODO noch swagger einbinden mit kleiner "Navbar darunter*/}
+            <h1>Tagebuch</h1>
+            <h2>Willkommen {getCookieValue("firstname")}</h2>
             {teammember === "1" ? <EintragForm onreload={reloadData}/> : <></>}
             <EintraegeOutput onreload={reloadData} trigger={reloadTrigger}/>
         </>

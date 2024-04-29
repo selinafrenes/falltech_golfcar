@@ -1,11 +1,10 @@
-// +++ relativ gesehen, mit __dirname
-// TODO: auch noch bei Controllers/server.js
-const _env = require('dotenv').config({path: __dirname + '/../.env' });
+const _env = require('dotenv').config({path: __dirname + './../.env' });
 
 console.log(_env);
 
 const bcrypt = require("bcrypt");
 console.log("-------1 " + process.env.DB_HOST);
+
 // mysql2 unterstützt neuere async/await-Syntax und Promises für asynchrone Operationen
 const pool = require('mysql2/promise').createPool({
     host: process.env.DB_HOST,
@@ -15,8 +14,12 @@ const pool = require('mysql2/promise').createPool({
     database: process.env.DB_NAME
 });
 
-console.log("-------");
-
+/**
+ * Authentifizierung eines Benutzers.
+ * @param {string} username - Der Benutzername.
+ * @param {string} userPassword - Das Passwort des Benutzers.
+ * @returns {Promise<Object|boolean>} - Ein Objekt mit Benutzerdaten im Erfolgsfall, ansonsten false.
+ */
 const userAuthentication = async (username, userPassword) => {
     console.log(`userAuthentication(username: '${username}' password: '${userPassword}')`);
     let connection;
@@ -46,6 +49,17 @@ const userAuthentication = async (username, userPassword) => {
     }
 }
 
+/**
+ * Funktion zum Erstellen eines neuen Tagebucheintrags in der Datenbank.
+ * @async
+ * @param {Array<string>} people - Array von Benutzernamen, die dem Eintrag zugeordnet werden sollen.
+ * @param {string} description - Beschreibung des Eintrags.
+ * @param {string} [notes] - (Optional) Notizen zum Eintrag.
+ * @param {string} date - Datum des Eintrags.
+ * @param {number} duration - Dauer des Eintrags.
+ * @returns {Promise<string>} - Eine Erfolgsmeldung, wenn die Operation erfolgreich war.
+ * @throws {Error} - Ein Fehler, falls die Operation fehlschlägt.
+ */
 const createNewEntry = async (people, description, notes, date, duration) => {
     let connection
     try{
@@ -77,7 +91,12 @@ const createNewEntry = async (people, description, notes, date, duration) => {
     }
 }
 
-// get Personen (nur Members)
+/**
+ * Funktion zum Abrufen aller Teammitglieder aus der Datenbank.
+ * @async
+ * @returns {Promise<Array<Object>>} - Ein Array von Objekten, die die Teammitglieder darstellen.
+ * @throws {Error} - Ein Fehler, falls die Operation fehlschlägt.
+ */
 const getTeamMembers = async() => {
     let connection;
     try{
@@ -94,7 +113,12 @@ const getTeamMembers = async() => {
     }
 }
 
-//get-Tagebuch alle Einträge
+/**
+ * Funktion zum Abrufen aller Einträge aus dem Tagebuch aus der Datenbank.
+ * @async
+ * @returns {Promise<Object>} - Ein Objekt mit den Einträgen aus Enters und Entry-Tabellen.
+ * @throws {Error} - Ein Fehler, falls die Operation fehlschlägt.
+ */
 const getAllEnters = async() => {
     let connection;
     try{

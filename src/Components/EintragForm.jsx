@@ -1,17 +1,25 @@
-// import {useState} from "react";
-
 import CheckboxElement from "./CheckboxElement";
 import {toast} from "react-toastify";
 
+/**
+ * Eine Komponente zum Erstellen neuer Einträge im Tagebuch (Form).
+ * @param {object} props - Die Eigenschaften (Props) der EintragForm-Komponente.
+ * @param {function} props.onreload - Die Funktion zum Auslösen des Triggers.
+ * @returns {JSX.Element} Die gerenderte EintragForm-Komponente.
+ */
 function EintragForm(props) {
 
+    /**
+     * Funktion zum Verarbeiten des Formulars beim Abschicken.
+     * @param {Event} event - Das Ereignisobjekt des Formulars.
+     */
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // setIsSubmitting(true);
 
-        // Erstellen Sie ein FormData-Objekt aus dem Formular
+        // FormData-Objekt aus dem Formular erstellen
         const formData = new FormData(event.target);
 
+        // Extrahieren der Daten aus dem FormData-Objekt
         const data = {
             people: formData.getAll('people'),
             description: formData.get('description'),
@@ -19,9 +27,9 @@ function EintragForm(props) {
             date: formData.get('date'),
             duration: formData.get('duration')
         }
-        debugger;
 
-        if(data.people === [] || data.description === '' || data.date === '' || data.duration === ''){
+        // Validierung der Formulardaten
+        if(data.people.length === 0 || data.description === '' || data.date === '' || data.duration === ''){
             toast.error("Alle nicht optionale Felder müssen ausgefüllt werden");
         } else {
             // Senden der Daten an den Server
@@ -35,34 +43,28 @@ function EintragForm(props) {
 
             // Verarbeiten der Serverantwort
             const jsonData = await response.json();
-            // setIsSubmitting(false);
 
             if (jsonData.success) {
                 toast.success('Daten wurden erfolgreich abgespeichert');
                 console.log("S:DATA:" + JSON.stringify(jsonData));
                 event.target.reset();
-                // Erfolgreiche Verarbeitung
-                // ... (z.B. setData(jsonData) um die Komponente zu aktualisieren)
             } else {
                 toast.error('Fehler beim abspeichern in der Datenbank');
             }
-
-            props.onreload();
+            // props.onreload();
         }
-        //|| data.description === '' || data.date === '' || data.duration === ''
-
-
     };
+
+    // Rendern des Eintrag-Formulars
     return (
         <>
             <div className="input-wrapper">
-                <form /* action="http://localhost:8000/tagebuch.html/submit"*/ onSubmit={handleSubmit} className="input-container" /* method="post"*/>
+                <form onSubmit={handleSubmit} className="input-container" /* method="post"*/>
                     <label htmlFor="date">Datum:</label>
                     <input className="input-date-field" type="date" id="date" name="date"/>
                     <label htmlFor="duration">Zeit (h = 50min):</label>
                     <input className="input-nummer-field" type="number" id="duration" name="duration" min="0"
                            step="0.01" pattern="^\d+(\.\d{0,2})?$"/>
-
                     <fieldset className="checkbox-container">
                         <legend className="checkbox-legend">Personen:</legend>
                         <CheckboxElement username="mayrdamian" firstname="Damian"/>
@@ -80,7 +82,6 @@ function EintragForm(props) {
                     <button type="submit" className="submitBtn">Eintragen</button>
                 </form>
             </div>
-
         </>
     );
 }

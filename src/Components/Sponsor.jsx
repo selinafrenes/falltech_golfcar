@@ -1,7 +1,13 @@
 import {useRef} from "react";
 
+/**
+ * Eine Komponente zur Anzeige von Sponsoreninformationen.
+ * @returns {JSX.Element} Die gerenderte Sponsor-Komponente.
+ */
 function Sponsor () {
     const sponsorRef = useRef(null);
+
+    // Rendern der Sponsor-Komponente
     return (
         <>
             <div id="sponsor" ref={sponsorRef}>
