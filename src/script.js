@@ -48,33 +48,37 @@ export function getCookieValue(cookieName) {
 window.onload = () => {
 
 
-const handleMediaQuery = (mediaQuery) => {
-    const slidesSlides = document.getElementsByClassName('slides');
-    const slide = document.getElementsByClassName("slide");
-    if (mediaQuery.matches) {
-        slidesSlides[0].style.flexDirection = 'column';
-        console.log("Slide Lenght: "  + slide.length);
-        //document.addEventListener('DOMContentLoaded', function() {
+    const handleMediaQuery = (mediaQuery) => {
+        const slidesSlides = document.getElementsByClassName('slides');
+        const slide = document.getElementsByClassName("slide");
+
+        if (mediaQuery.matches) {
+            slidesSlides[0].style.flexDirection = 'column';
+            console.log("Slide Lenght: "  + slide.length);
+            //document.addEventListener('DOMContentLoaded', function() {
+                for (let i = 0 ; i < slide.length; i++) {
+                    slide[i].style.display = 'block';
+                }
+            //});
+
+        } else {
             for (let i = 0 ; i < slide.length; i++) {
-                slide[i].style.display = 'block';
+                slide[i].style.display = 'grid';
             }
-        //});
+            slidesSlides[0].style.flexDirection = 'row';
+            slidesSlides[0].style.overflowX = 'hidden';
 
-    } else {
-        //ToDo bei größer machen bleibt die erste Slide show immer noch auf block
-        for (let i = 0 ; i < slide.length; i++) {
-            slide[i].style.display = 'grid';
         }
-        slidesSlides[0].style.flexDirection = 'row';
-        slidesSlides[0].style.overflowX = 'hidden';
     }
-}
 
 
-const mediaQuery600px = window.matchMedia("(max-width: 600px)");
-mediaQuery600px.addEventListener("change", () => {
-    handleMediaQuery(mediaQuery600px);
-}); //Event-Listener wegen Änderungen
-handleMediaQuery(mediaQuery600px); //Initialer Aufruf des Media Querys
+
+    const mediaQuery600px = window.matchMedia("(max-width: 600px)");
+    mediaQuery600px.addEventListener("change", () => {
+        handleMediaQuery(mediaQuery600px);
+    }); //Event-Listener wegen Änderungen
+    handleMediaQuery(mediaQuery600px); //Initialer Aufruf des Media Querys
+
+
 
 }
