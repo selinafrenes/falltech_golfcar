@@ -10,6 +10,12 @@ import Item from "../Components/Item";
 import ItemContainer from "../Components/ItemContainer";
 import {redirect} from "react-router-dom";
 
+/**
+ * Home-Komponente repräsentiert die Startseite der Webseite.
+ * @param {Object} props - Die Eigenschaften, die an die Home-Komponente übergeben werden.
+ * @param {Function} props.onLogin - Rückruffunktion zur Behandlung von Anmeldeereignissen.
+ * @returns {JSX.Element} Eine React-Komponente, die die Startseite der Webseite darstellt.
+ */
 function Home({onLogin}) {
     const sponsorRef = useRef(null);
 
@@ -49,10 +55,7 @@ function Home({onLogin}) {
                                        altText="Bild"></SlideItem>
                             <SlideItem heading="Ziele" text={textZiele} image="/assets/images/frosch.jpeg"
                                        altText="Bild"></SlideItem>
-                            {/*<SlideItem heading="Verwendete Programmiersprachen" text="TEXT ÜBER PROJEKT" image="/assets/images/frosch.jpeg"*/}
-                            {/*           altText="Bild"></SlideItem>*/}
                         </div>
-                    {/*    TODO Programmmierpraschen und Bauteile darunter!*/}
                     </section>
                     <div className="pfeil-rechts">
                         <div className="next" onClick={nextSlide}><FontAwesomeIcon icon={faArrowRight}/></div>

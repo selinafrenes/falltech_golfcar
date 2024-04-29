@@ -1,5 +1,11 @@
 import Login from "../Components/Login";
 
+/**
+ * Datenschutz-Komponente zeigt die Datenschutzerklärung für die FallTech-Seite an.
+ * @param {Object} props - Die Eigenschaften, die an die Datenschutz-Komponente übergeben werden.
+ * @param {Function} props.onLogin - Rückruffunktion zur Behandlung von Anmeldeereignissen.
+ * @returns {JSX.Element} Eine React-Komponente, die die Datenschutzerklärung anzeigt.
+ */
 function Datenschutz({onLogin}){
     return(
         <>

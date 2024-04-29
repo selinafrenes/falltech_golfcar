@@ -1,4 +1,10 @@
 const {getTeamMembers} = require("../Models/db_access");
+
+/**
+ * Controller zur Abfrage der Teammitglieder.
+ * @param {Object} req - Das Anfrageobjekt.
+ * @param {Object} res - Das Antwortobjekt.
+ */
 const PersonsController = (req, res) => {
     getTeamMembers().then(r => {
         if (r.message) {
@@ -9,20 +15,5 @@ const PersonsController = (req, res) => {
             res.status(400).json(r);
         }
     });
-    // const data = req.body;
-    //
-    // createNewEntry(data.people, data.description, data.notes, data.date, data.duration)
-    //     .then(response => {
-    //         console.log(response);
-    //         // res.redirect('/tagebuch');
-    //         res.json({ success: true });
-    //
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //         // res.redirect('/tagebuch');
-    //         res.json({ success: false , message: error.message});
-    //
-    //     });
 }
 module.exports = PersonsController;
