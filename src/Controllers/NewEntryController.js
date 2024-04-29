@@ -1,5 +1,10 @@
 const {createNewEntry} = require("../Models/db_access");
 
+/**
+ * Controller zur Erstellung eines neuen Eintrags.
+ * @param {Object} req - Das Anfrageobjekt.
+ * @param {Object} res - Das Antwortobjekt.
+ */
 const NewEntryController = (req, res) => {
     const data = req.body;
 

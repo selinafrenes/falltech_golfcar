@@ -1,4 +1,10 @@
 const {userAuthentication} = require("../Models/db_access");
+
+/**
+ * Authentifizierungs-Controller, der den Benutzer anhand von Benutzername und Passwort authentifiziert.
+ * @param {Object} req - Das Anfrageobjekt.
+ * @param {Object} res - Das Antwortobjekt.
+ */
 const AuthController = (req, res) => {
     const { username, password } = req.body;
     userAuthentication(username, password)
