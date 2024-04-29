@@ -208,6 +208,7 @@ h1 {
     justify-content: center;
     /*aspect-ratio: 4 / 5;*/
     padding: 15px;
+    max-width: 200px;
 }
 .hardwareWrapper > .item > .image-container {
     position: relative;
