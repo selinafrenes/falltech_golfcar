@@ -1,5 +1,7 @@
 const { Builder, By, until} = require('selenium-webdriver');
 
+/*Noch auf den Server zugreifen damit der Test überprüft werden kann */
+
 describe('Tagebucheintrag', function () {
     //this.timeout(25000);
     let driver;
@@ -27,11 +29,11 @@ describe('Tagebucheintrag', function () {
         //Laden der Testseite
         await driver.get('http://localhost:3000/tagebuch');
 
-        await driver.sleep(3000); //2 Sekunden warten
+        await driver.sleep(4000); //4 Sekunden warten
 
         //Ausfüllen des Formulars
         await driver.findElement(By.id('date')).sendKeys('10.10.2010');
-        await driver.findElement(By.id('duration')).sendKeys('3');
+        await driver.findElement(By.id('duration')).sendKeys('-3');
         await driver.findElement(By.id('description')).sendKeys('Test Mocha');
         await driver.findElement(By.id('notes')).sendKeys('Test Mocha Notiz');
 

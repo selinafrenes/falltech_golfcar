@@ -18,6 +18,8 @@ h1 {
     text-align: center;
 }
 
+
+
 .navbar,.footer {
     background-color: lightpink;
     overflow: hidden;
@@ -46,6 +48,13 @@ h1 {
 }
 
 @media  screen and (min-width: 600px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 99999;
+    }
+
     .navbar, .footer {
         display: flex;
         align-items: center;
@@ -75,7 +84,6 @@ h1 {
 
     .navbar a {
         height: 120px; /*ACHTUNG statisch*/
-
     }
 }
 
@@ -169,14 +177,28 @@ h1 {
     .next:hover , .prev:hover {
         color: rgba(233, 30, 99, 0.8);
     }
+
+
+
+
 }
 
 /*About Us - Unser Team*/
 .aboutUS, #zumProjekt, #sponsor, #impressum, #datenschutz {
     background-color: rgba(255, 182, 193, 0.78);
-    margin: 1rem;
     border-radius: 1rem;
     padding:1rem;
+    margin: 1rem;
+}
+
+@media  screen and (min-width: 600px) {
+    #zumProjekt, #tagebuch-eintrage {
+        margin-top: 120px;
+    }
+
+    #datenschutz, #impressum {
+        margin-top: 136px;
+    }
 }
 
 .hardwareContainer {
@@ -208,6 +230,7 @@ h1 {
     justify-content: center;
     /*aspect-ratio: 4 / 5;*/
     padding: 15px;
+    max-width: 200px;
 }
 .hardwareWrapper > .item > .image-container {
     position: relative;
