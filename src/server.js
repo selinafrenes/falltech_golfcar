@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 //Den Pfad zu den Dateien festlegen (damit die CSS Datei auch mit gesendet wird)
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, "..", 'build')));
 
 // damit man auf anderen port zugreifen kann
 app.use(cors());
@@ -45,6 +45,15 @@ app.get('/tagebuch/entries', (req, res) => {
 
 app.get('/personen', (req, res) => {
     PersonsController(req, res);
+});
+
+app.get('/tagebuch/eintraege/personen', (req, res) => {
+    ListAllEntriesController(req, res);
+    // FilterByPersonController(req, res);
+});
+
+app.get('/tagebuch/eintraege/datum', (req, res) => {
+    ListAllEntriesController(req, res);
 });
 
 app.listen(port, () => {
