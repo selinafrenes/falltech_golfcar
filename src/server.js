@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 //Den Pfad zu den Dateien festlegen (damit die CSS Datei auch mit gesendet wird)
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '..', 'build')));
 
 // damit man auf anderen port zugreifen kann
 app.use(cors());

@@ -1,4 +1,4 @@
-const _env = require('dotenv').config({path: __dirname + './../.env' });
+const _env = require('dotenv').config({path: __dirname + '/../.env' });
 
 console.log(_env);
 
