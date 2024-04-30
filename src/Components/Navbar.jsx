@@ -34,7 +34,8 @@ function Navbar() {
             loginWindow.style.display = 'block';
             console.log('Anmeldefenster öffnen');
         } else {
-            window.location.href = '/tagebuch';
+            // window.location.href = '/tagebuch';
+            navigate("/tagebuch");
             console.log('Tagebuch öffnen');
         }
     }

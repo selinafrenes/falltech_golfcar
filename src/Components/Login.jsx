@@ -36,11 +36,10 @@ function Login({ onLogin }) {
             onLogin();
 
             // Cookies speichern
-
-            if (userInfo.username) document.cookie = "username=" + userInfo.username + "; max-age=86400; path=/; domain=10.10.31.11";
-            if (userInfo.firstname) document.cookie = "firstname=" + userInfo.firstname + "; max-age=86400; path=/; domain=10.10.31.11";
-            if (userInfo.lastname) document.cookie = "lastname=" + userInfo.lastname + "; max-age=86400; path=/; domain=10.10.31.11";
-            if (userInfo.teammember) document.cookie = "teammember=" + userInfo.teammember + "; max-age=86400; path=/; domain=10.10.31.11";
+            if (userInfo.username) document.cookie = "username=" + userInfo.username + "; max-age=86400; path=/; domain=localhost";
+            if (userInfo.firstname) document.cookie = "firstname=" + userInfo.firstname + "; max-age=86400; path=/; domain=localhost";
+            if (userInfo.lastname) document.cookie = "lastname=" + userInfo.lastname + "; max-age=86400; path=/; domain=localhost";
+            if (userInfo.teammember) document.cookie = "teammember=" + userInfo.teammember + "; max-age=86400; path=/; domain=localhost";
 
             // Weiterleiten zum Tagebuch
             navigate('/tagebuch');

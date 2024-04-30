@@ -137,6 +137,29 @@ const getAllEnters = async() => {
     }
 }
 
+// TODO TODO TODO TODO TODO TODO TODO
+const getAllEntersFilterdByPersons = async() => {
+    let connection;
+    try{
+        connection = await pool.getConnection();
+        const [combinedResult] = await connection.execute(`
+            SELECT 
+                p.vorname,
+                p.nachname,
+                p.username,
+                e.*,
+                en.*
+            FROM traegt_ein AS e
+            LEFT JOIN Eintrag AS en ON e.id = en.id
+            LEFT JOIN Person AS p ON en.username = p.username;
+        `);
+        return {combinedResult};
+    } catch(error) {
+        throw error;
+    } finally {
+        if (connection) await connection.release();
+    }
+}
 
 
 
