@@ -29,7 +29,7 @@ function App() {
     }, []);
 
     return (
-      <>
+      <div id="content">
           <Navbar/>
           <Routes>
               <Route exact path="/" element={<Home onLogin={handleLoginSuccess}/>} />
@@ -37,6 +37,7 @@ function App() {
               <Route path="/impressum" element={<Impressum onLogin={handleLoginSuccess}/>} />
               <Route path="/datenschutz" element={<Datenschutz onLogin={handleLoginSuccess}/>} />
               <Route path="/swagger" element={<SwaggerUI spec={spec} />} />
+              {/* TODO route einbinden */}
               <Route path="*" element={<Navigate to="/" />} /> {/* Standardroute */}
           </Routes>
           <Footer/>
@@ -53,7 +54,7 @@ function App() {
               theme="colored"
               transition={Slide}
           />
-      </>
+      </div>
   );
 }
 

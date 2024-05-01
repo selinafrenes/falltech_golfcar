@@ -8,7 +8,6 @@ import {useRef} from "react";
 import { Slide as SlideItem } from "../Components/Slide";
 import Item from "../Components/Item";
 import ItemContainer from "../Components/ItemContainer";
-import {redirect} from "react-router-dom";
 
 /**
  * Home-Komponente repräsentiert die Startseite der Webseite.
@@ -32,80 +31,77 @@ function Home({onLogin}) {
         "und den Server für das Projekt selbst erstellt, was eine nahtlose Steuerung und Überwachung ermöglicht. " +
         "Unser Ziel ist es, ein zuverlässiges und leistungsfähiges autonomes Golfcar zu schaffen."
 
-    const onClick = () => {
-        redirect("/swagger");
-    }
-
     return (
         <>
             <Login onLogin={onLogin}/>
-            {/*<button onClick={onClick}>Button Swagger</button>*/}
-            <div id="zumProjekt">
-                <h1>Zum Projekt</h1>
-                <div id="zumProjekt-Container">
-                    <div className="pfeil-links">
-                        <div className="prev" onClick={prevSlide}><FontAwesomeIcon icon={faArrowLeft} /></div>
-                    </div>
-                    <section id="zumProjektShow">
-                        {/*TODO Problem mit Slideshow und Seite kleiner machen*/}
-                        <div className="slides">
-                            <SlideItem heading="Schulprojekt" text="TEXT ÜBER PROJEKT" image="/assets/images/frosch.jpeg"
-                                       altText="Bild"></SlideItem>
-                            <SlideItem heading="Golf Car Projekt" text={textGolfCar} image="/assets/images/frosch.jpeg"
-                                       altText="Bild"></SlideItem>
-                            <SlideItem heading="Ziele" text={textZiele} image="/assets/images/frosch.jpeg"
-                                       altText="Bild"></SlideItem>
+            <div className="home">
+                <div id="zumProjekt">
+                    <h1>Zum Projekt</h1>
+                    <div id="zumProjekt-Container">
+                        <div className="pfeil-links">
+                            <div className="prev" onClick={prevSlide}><FontAwesomeIcon icon={faArrowLeft} /></div>
                         </div>
-                    </section>
-                    <div className="pfeil-rechts">
-                        <div className="next" onClick={nextSlide}><FontAwesomeIcon icon={faArrowRight}/></div>
+                        <section id="zumProjektShow">
+                            {/*TODO Problem mit Slideshow und Seite kleiner machen*/}
+                            <div className="slides">
+                                <SlideItem heading="Schulprojekt" text="TEXT ÜBER PROJEKT" image="/assets/images/frosch.jpeg"
+                                           altText="Bild"></SlideItem>
+                                <SlideItem heading="Golf Car Projekt" text={textGolfCar} image="/assets/images/frosch.jpeg"
+                                           altText="Bild"></SlideItem>
+                                <SlideItem heading="Ziele" text={textZiele} image="/assets/images/frosch.jpeg"
+                                           altText="Bild"></SlideItem>
+                            </div>
+                        </section>
+                        <div className="pfeil-rechts">
+                            <div className="next" onClick={nextSlide}><FontAwesomeIcon icon={faArrowRight}/></div>
+                        </div>
                     </div>
-                </div>
-                <h2>Bauteile</h2>
-                <ItemContainer classname="hardwareContainer" innerClassname="hardwareWrapper">
-                    <Item name="Mikrocontroller" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3NEU.webp" />
-                    <Item name="Kamera" description="Rasperry Pi Camera Module 3" imagePath="/assets/images/components/kameraPI3NEU.webp" />
-                    <Item name="Abstandssensor" description="3pcs Ultrasonic Sensor" imagePath="/assets/images/components/ultrasonicSensorNEU.webp" />
-                    <Item name="Schrittmotor" description="5pcs 28BYJ-48 Schrittmotor" imagePath="/assets/images/components/stepperMotorNEU.webp" />
-                    <Item name="DC Motor" description="GA12-N20 Gear Motor" imagePath="/assets/images/components/gearMotorNEU.webp" />
-                    <Item name="Motortreiber" description="L298 Motor Drive Controller Board" imagePath="/assets/images/components/MotorControllerBoardNEU.webp" />
-                    <Item name="LED" description="RC Headlight LEDs" imagePath="/assets/images/components/ledsNEU.webp" />
-                    <Item name="Batterie" description="9V 650mA wiederaufladbare Batterie" imagePath="/assets/images/components/batteryNEU.webp" />
-                    <Item name="Batterie Adapter" description="9V Batterie Adapter" imagePath="/assets/images/components/batteryAdapterNEU.webp" />
-                    <Item name="Speicher" description="32GB Micro SD" imagePath="/assets/images/components/storageSDNEU.webp" />
-                    <Item name="Kugellager" description="5pcs 10x3x4 mm" imagePath="/assets/images/components/kugellagerNEU.webp" />
-                    <Item name="Aufbau" description="Filament" imagePath="/assets/images/components/kugellagerNEU.webp" />
-                    <Item name="Power Bank" description="Mini Power Bank 5000mAh " imagePath="/assets/images/components/powerBankNEU.webp" />
-                </ItemContainer>
+                    <h2>Bauteile</h2>
+                    <ItemContainer classname="hardwareContainer" innerClassname="hardwareWrapper">
+                        <Item name="Mikrocontroller" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3NEU.webp" />
+                        <Item name="Kamera" description="Rasperry Pi Camera Module 3" imagePath="/assets/images/components/kameraPI3NEU.webp" />
+                        <Item name="Abstandssensor" description="3pcs Ultrasonic Sensor" imagePath="/assets/images/components/ultrasonicSensorNEU.webp" />
+                        <Item name="Schrittmotor" description="5pcs 28BYJ-48 Schrittmotor" imagePath="/assets/images/components/stepperMotorNEU.webp" />
+                        <Item name="DC Motor" description="GA12-N20 Gear Motor" imagePath="/assets/images/components/gearMotorNEU.webp" />
+                        <Item name="Motortreiber" description="L298 Motor Drive Controller Board" imagePath="/assets/images/components/MotorControllerBoardNEU.webp" />
+                        <Item name="LED" description="RC Headlight LEDs" imagePath="/assets/images/components/ledsNEU.webp" />
+                        <Item name="Batterie" description="9V 650mA wiederaufladbare Batterie" imagePath="/assets/images/components/batteryNEU.webp" />
+                        <Item name="Batterie Adapter" description="9V Batterie Adapter" imagePath="/assets/images/components/batteryAdapterNEU.webp" />
+                        <Item name="Speicher" description="32GB Micro SD" imagePath="/assets/images/components/storageSDNEU.webp" />
+                        <Item name="Kugellager" description="5pcs 10x3x4 mm" imagePath="/assets/images/components/kugellagerNEU.webp" />
+                        <Item name="Aufbau" description="Filament" imagePath="/assets/images/components/kugellagerNEU.webp" />
+                        <Item name="Power Bank" description="Mini Power Bank 5000mAh " imagePath="/assets/images/components/powerBankNEU.webp" />
+                    </ItemContainer>
 
-                <h2>Software</h2>
-                <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
-                    <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python.jpg"/>
-                    <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.jpg"/>
-                    <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.jpg"/>
-                    <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/javascript.jpg"/>
-                    <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.jpg"/>
-                    <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.jpg"/>
-                    <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.jpg"/>
-                </ItemContainer>
-            </div>
-            <div id="aboutUs" className="aboutUS">
-                <h1>Unser Team</h1>
-                <ItemContainer classname="unserTeamContainer" innerClassname="unserTeam">
-                    <Item name="Damian Mayr, PM" description="3D CAD Designer" imagePath="/assets/images/teamMembers/DamianMayr.webp"/>
-                    <Item name="David Maierhofer" description="Robotics Engineer" imagePath="/assets/images/teamMembers/DavidMaierhofer.webp"/>
-                    <Item name="Fabian Reifer" description="Software Engineer" imagePath="/assets/images/teamMembers/FabianReifer.webp"/>
-                    <Item name="Selina Frenes" description="Full Stack Developer" imagePath="/assets/images/teamMembers/SelinaFrenes.webp"/>
-                    <Item name="Wilma Frener" description="Full Stack Developer" imagePath="/assets/images/teamMembers/WilmaFrener.webp"/>
-                </ItemContainer>
-            </div>
-            {/*relationales Datenbankverwaltungssystem*/}
-            <div id="sponsor" ref={sponsorRef}>
-                <h1>Sponsor</h1>
-                <p>Danke an unseren Sponsor</p>
-                <a href="https://www.acs.it/de/">
-                    <img src="/assets/images/acsLogo.svg" alt="Logo ACS"/>
-                </a>
+                    <h2>Software</h2>
+                    <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
+                        <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python.jpg"/>
+                        <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.jpg"/>
+                        <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.jpg"/>
+                        <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/javascript.jpg"/>
+                        <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.jpg"/>
+                        <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.jpg"/>
+                        <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.jpg"/>
+                    </ItemContainer>
+                </div>
+                <div id="aboutUs" className="aboutUS">
+                    <h1>Unser Team</h1>
+                    <ItemContainer classname="unserTeamContainer" innerClassname="unserTeam">
+                        <Item name="Damian Mayr, PM" description="3D CAD Designer" imagePath="/assets/images/teamMembers/DamianMayr.webp"/>
+                        <Item name="David Maierhofer" description="Robotics Engineer" imagePath="/assets/images/teamMembers/DavidMaierhofer.webp"/>
+                        <Item name="Fabian Reifer" description="Software Engineer" imagePath="/assets/images/teamMembers/FabianReifer.webp"/>
+                        <Item name="Selina Frenes" description="Full Stack Developer" imagePath="/assets/images/teamMembers/SelinaFrenes.webp"/>
+                        <Item name="Wilma Frener" description="Full Stack Developer" imagePath="/assets/images/teamMembers/WilmaFrener.webp"/>
+                    </ItemContainer>
+                </div>
+                {/*relationales Datenbankverwaltungssystem*/}
+                <div id="sponsor" ref={sponsorRef}>
+                    <h1>Sponsor</h1>
+                    <p>Danke an unseren Sponsor</p>
+                    <a href="https://www.acs.it/de/">
+                        <img src="/assets/images/acsLogo.svg" alt="Logo ACS"/>
+                    </a>
+                </div>
             </div>
 
 
