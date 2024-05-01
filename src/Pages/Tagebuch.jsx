@@ -3,6 +3,7 @@ import EintragForm from "../Components/EintragForm";
 import {useState} from "react";
 import EintraegeOutput from "../Components/EintraegeOutput";
 import {getCookieValue} from "../script";
+import TagebuchNavbar from "../Components/TagebuchNavbar";
 
 /**
  * Tagebuch-Komponente dient zur Anzeige von Tagebucheinträgen.
@@ -21,10 +22,14 @@ function Tagebuch() {
     return(
         <>
             {/*TODO noch swagger einbinden mit kleiner "Navbar darunter*/}
-            <h1>Tagebuch</h1>
-            <h2>Willkommen {getCookieValue("firstname")}</h2>
-            {teammember === "1" ? <EintragForm onreload={reloadData}/> : <></>}
-            <EintraegeOutput onreload={reloadData} trigger={reloadTrigger}/>
+
+            <div className="tagebuch">
+                <h1 id="tagebuchTitel">Tagebuch</h1>
+                <h2>Willkommen {getCookieValue("firstname")}</h2>
+                <TagebuchNavbar />
+                {teammember === "1" ? <EintragForm onreload={reloadData}/> : <></>}
+                <EintraegeOutput onreload={reloadData} trigger={reloadTrigger}/>
+            </div>
         </>
     );
 }
