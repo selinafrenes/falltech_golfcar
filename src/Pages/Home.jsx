@@ -1,12 +1,14 @@
 import '../../src/styles/style.css';
-import {prevSlide} from '../script';
+import {prevSlide, nextSlide} from '../script';
 import Login from "../Components/Login";
+import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useRef} from "react";
-import { Slide as SlideItem } from "../Components/Slide";
+import {Slide as SlideItem} from "../Components/Slide";
 import Item from "../Components/Item";
 import ItemContainer from "../Components/ItemContainer";
+
 
 /**
  * Home-Komponente repräsentiert die Startseite der Webseite.
@@ -24,39 +26,53 @@ function Home({onLogin}) {
         "Zusätzlich wird das Fahrzeug bei Dunkelheit automatisch Licht einschalten, um die Sichtbarkeit zu verbessern " +
         "und seine Aufgaben effektiv zu erfüllen.";
 
+
     const textGolfCar = "Unser Projekt umfasst die Entwicklung eines Autos, welches autonom einen Golfball auf einem " +
         "Parcours findet und ihn sicher zum Ziel bringt. Wir haben die Karosserie und das Chassis mit einem 3D-Drucker " +
         "selbst entworfen. Das Auto erkennt Hindernisse autonom und weicht ihnen aus. Zudem haben wir die Webseite " +
         "und den Server für das Projekt selbst erstellt, was eine nahtlose Steuerung und Überwachung ermöglicht. " +
         "Unser Ziel ist es, ein zuverlässiges und leistungsfähiges autonomes Golfcar zu schaffen."
 
+
     return (
         <>
             <Login onLogin={onLogin}/>
-            <div id="zumProjekt">
-                <h1>Zum Projekt</h1>
-                <div id="zumProjekt-Container">
-                    <div className="pfeil-links">
-                        <div className="prev" onClick={prevSlide}><FontAwesomeIcon icon={faArrowLeft} /></div>
-                    </div>
-                    <section id="zumProjektShow">
-                        {/*TODO Problem mit Slideshow und Seite kleiner machen*/}
-                        <div className="slides">
-                            <SlideItem heading="Schulprojekt" text="TEXT ÜBER PROJEKT" image="/assets/images/frosch.jpeg"
-                                       altText="Bild"></SlideItem>
-                            <SlideItem heading="Golf Car Projekt" text={textGolfCar} image="/assets/images/frosch.jpeg"
-                                       altText="Bild"></SlideItem>
-                            <SlideItem heading="Ziele" text={textZiele} image="/assets/images/frosch.jpeg"
-                                       altText="Bild"></SlideItem>
+            <div className="home">
+                <div id="zumProjekt">
+                    <h1>Zum Projekt</h1>
+                    <div id="zumProjekt-Container">
+                        <div className="pfeil-links">
+                            <div className="prev" onClick={prevSlide}><FontAwesomeIcon icon={faArrowLeft}/></div>
                         </div>
-                    </section>
+                        <section id="zumProjektShow">
+                            {/*TODO Problem mit Slideshow und Seite kleiner machen*/}
+                            <div className="slides">
+                                <SlideItem heading="Schulprojekt" text="TEXT ÜBER PROJEKT"
+                                           image="/assets/images/frosch.jpeg"
+                                           altText="Bild"></SlideItem>
+                                <SlideItem heading="Golf Car Projekt" text={textGolfCar}
+                                           image="/assets/images/frosch.jpeg"
+                                           altText="Bild"></SlideItem>
+                                <SlideItem heading="Ziele" text={textZiele} image="/assets/images/frosch.jpeg"
+                                           altText="Bild"></SlideItem>
+                            </div>
+                        </section>
+                        <div className="pfeil-rechts">
+                            <div className="next" onClick={nextSlide}><FontAwesomeIcon icon={faArrowRight}/></div>
+                        </div>
+                    </div>
                     <h2>Bauteile</h2>
                     <ItemContainer classname="hardwareContainer" innerClassname="hardwareWrapper">
-                        <Item name="Mikrocontroller" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3NEU.webp" />
-                        <Item name="Kamera" description="Rasperry Pi Camera Module 3" imagePath="/assets/images/components/kameraPI3NEU.webp" />
-                        <Item name="Abstandssensor" description="3pcs Ultrasonic Sensor" imagePath="/assets/images/components/ultrasonicSensorNEU.webp" />
-                        <Item name="Schrittmotor" description="5pcs 28BYJ-48 Schrittmotor" imagePath="/assets/images/components/stepperMotorNEU.webp" />
-                        <Item name="DC Motor" description="GA12-N20 Gear Motor" imagePath="/assets/images/components/gearMotorNEU.webp" />
+                        <Item name="Mikrocontroller" description="Raspberry PI 3"
+                              imagePath="/assets/images/components/raspberry3NEU.webp"/>
+                        <Item name="Kamera" description="Rasperry Pi Camera Module 3"
+                              imagePath="/assets/images/components/kameraPI3NEU.webp"/>
+                        <Item name="Abstandssensor" description="3pcs Ultrasonic Sensor"
+                              imagePath="/assets/images/components/ultrasonicSensorNEU.webp"/>
+                        <Item name="Schrittmotor" description="5pcs 28BYJ-48 Schrittmotor"
+                              imagePath="/assets/images/components/stepperMotorNEU.webp"/>
+                        <Item name="DC Motor" description="GA12-N20 Gear Motor"
+                              imagePath="/assets/images/components/gearMotorNEU.webp"/>
                         <Item name="Motortreiber" description="L298 Motor Drive Controller Board" imagePath="/assets/images/components/MotorControllerBoardNEU.webp" />
                         <Item name="LED" description="RC Headlight LEDs" imagePath="/assets/images/components/ledsNEU.webp" />
                         <Item name="Batterie" description="9V 650mA wiederaufladbare Batterie" imagePath="/assets/images/components/batteryNEU.webp" />
@@ -66,6 +82,7 @@ function Home({onLogin}) {
                         <Item name="Aufbau" description="Filament" imagePath="/assets/images/components/kugellagerNEU.webp" />
                         <Item name="Power Bank" description="Mini Power Bank 5000mAh " imagePath="/assets/images/components/powerBankNEU.webp" />
                     </ItemContainer>
+
 
                     <h2>Software</h2>
                     <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
@@ -77,7 +94,7 @@ function Home({onLogin}) {
                         <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.jpg"/>
                         <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.jpg"/>
                     </ItemContainer>
-
+                </div>
                 <div id="aboutUs" className="aboutUS">
                     <h1>Unser Team</h1>
                     <ItemContainer classname="unserTeamContainer" innerClassname="unserTeam">
@@ -96,15 +113,10 @@ function Home({onLogin}) {
                         <img src="/assets/images/acsLogo.svg" alt="Logo ACS"/>
                     </a>
                 </div>
-                </div>
             </div>
         </>
     );
-
-
-
-
-
 }
+
 
 export default Home;
