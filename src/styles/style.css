@@ -190,7 +190,7 @@ h1 {
 
 @media  screen and (min-width: 600px) {
     #zumProjekt, #tagebuchTitel {
-        margin-top: 120px;
+        margin-top: 130px;
     }
 
     #datenschutz, #impressum {
@@ -220,7 +220,6 @@ h1 {
 
 /* Für das Team */
 
-
 .unserTeam > .item > .image-container {
     position: relative;
     display: flex;
@@ -229,6 +228,7 @@ h1 {
     padding: 15px;
     max-width: 200px;
 }
+
 .hardwareWrapper > .item > .image-container {
     position: relative;
     display: flex;
@@ -274,6 +274,7 @@ h1 {
     /*max-height: 400px;*/
     padding: 15px;
 }
+
 .unsereSoftware > .item {
     width: auto;
 }
@@ -315,6 +316,7 @@ h1 {
 .datenschutz span {
     font-weight: bold;
 }
+
 
 /*Tagebuch*/
 
@@ -581,7 +583,8 @@ h2 {
 }
 
 #impressum p a{
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: #E91E63;
     color: black;
 }
 

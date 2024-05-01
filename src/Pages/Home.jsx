@@ -39,7 +39,7 @@ function Home({onLogin}) {
     return (
         <>
             <Login onLogin={onLogin}/>
-            <button onClick={onClick}>Button Swagger</button>
+            {/*<button onClick={onClick}>Button Swagger</button>*/}
             <div id="zumProjekt">
                 <h1>Zum Projekt</h1>
                 <div id="zumProjekt-Container">
