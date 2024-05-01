@@ -75,13 +75,13 @@ function Home({onLogin}) {
 
                     <h2>Software</h2>
                     <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
-                        <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python.jpg"/>
-                        <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.jpg"/>
-                        <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.jpg"/>
-                        <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/javascript.jpg"/>
-                        <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.jpg"/>
-                        <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.jpg"/>
-                        <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.jpg"/>
+                        <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python.webp"/>
+                        <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.webp"/>
+                        <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.webp"/>
+                        <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/javascript.webp"/>
+                        <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.webp"/>
+                        <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.webp"/>
+                        <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.webp"/>
                     </ItemContainer>
                 </div>
                 <div id="aboutUs" className="aboutUS">
