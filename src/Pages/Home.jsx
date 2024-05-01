@@ -63,19 +63,19 @@ function Home({onLogin}) {
                 </div>
                 <h2>Bauteile</h2>
                 <ItemContainer classname="hardwareContainer" innerClassname="hardwareWrapper">
-                    <Item name="Mikrocontroller" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3.png" />
-                    <Item name="Kamera" description="Rasperry Pi Camera Module 3" imagePath="/assets/images/components/kameraPI3.png" />
-                    <Item name="Abstandssensor" description="3pcs Ultrasonic Sensor" imagePath="/assets/images/components/ultrasonicSensor.png" />
-                    <Item name="Schrittmotor" description="5pcs 28BYJ-48 Schrittmotor" imagePath="/assets/images/components/stepperMotor.png" />
-                    <Item name="DC Motor" description="GA12-N20 Gear Motor" imagePath="/assets/images/components/gearMotor.png" />
-                    <Item name="Motortreiber" description="L298 Motor Drive Controller Board" imagePath="/assets/images/components/MotorControllerBoard.png" />
-                    <Item name="LED" description="RC Headlight LEDs" imagePath="/assets/images/components/leds.png" />
-                    <Item name="Batterie" description="9V 650mA wiederaufladbare Batterie" imagePath="/assets/images/components/battery.png" />
-                    <Item name="Batterie Adapter" description="9V Batterie Adapter" imagePath="/assets/images/components/batteryAdapter.png" />
-                    <Item name="Speicher" description="32GB Micro SD" imagePath="/assets/images/components/storageSD.png" />
-                    <Item name="Kugellager" description="5pcs 10x3x4 mm" imagePath="/assets/images/components/kugellager.png" />
-                    <Item name="Aufbau" description="Filament" imagePath="/assets/images/components/kugellager.png" />
-                    <Item name="Power Bank" description="Mini Power Bank 5000mAh " imagePath="/assets/images/components/powerBank.png" />
+                    <Item name="Mikrocontroller" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3NEU.webp" />
+                    <Item name="Kamera" description="Rasperry Pi Camera Module 3" imagePath="/assets/images/components/kameraPI3NEU.webp" />
+                    <Item name="Abstandssensor" description="3pcs Ultrasonic Sensor" imagePath="/assets/images/components/ultrasonicSensorNEU.webp" />
+                    <Item name="Schrittmotor" description="5pcs 28BYJ-48 Schrittmotor" imagePath="/assets/images/components/stepperMotorNEU.webp" />
+                    <Item name="DC Motor" description="GA12-N20 Gear Motor" imagePath="/assets/images/components/gearMotorNEU.webp" />
+                    <Item name="Motortreiber" description="L298 Motor Drive Controller Board" imagePath="/assets/images/components/MotorControllerBoardNEU.webp" />
+                    <Item name="LED" description="RC Headlight LEDs" imagePath="/assets/images/components/ledsNEU.webp" />
+                    <Item name="Batterie" description="9V 650mA wiederaufladbare Batterie" imagePath="/assets/images/components/batteryNEU.webp" />
+                    <Item name="Batterie Adapter" description="9V Batterie Adapter" imagePath="/assets/images/components/batteryAdapterNEU.webp" />
+                    <Item name="Speicher" description="32GB Micro SD" imagePath="/assets/images/components/storageSDNEU.webp" />
+                    <Item name="Kugellager" description="5pcs 10x3x4 mm" imagePath="/assets/images/components/kugellagerNEU.webp" />
+                    <Item name="Aufbau" description="Filament" imagePath="/assets/images/components/kugellagerNEU.webp" />
+                    <Item name="Power Bank" description="Mini Power Bank 5000mAh " imagePath="/assets/images/components/powerBankNEU.webp" />
                 </ItemContainer>
 
                 <h2>Software</h2>
