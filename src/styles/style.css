@@ -20,12 +20,12 @@ h1 {
 
 
 
-.navbar,.footer {
+.navbar,.footer, .tagebuchNavbar {
     background-color: lightpink;
     overflow: hidden;
 }
 
-.navbar button, .navbar a, .footer a{
+.navbar button, .navbar a, .footer a, .tagebuchNavbarItem button{
     display: block;
     text-align: center;
     text-decoration: none;
@@ -38,12 +38,16 @@ h1 {
     background: transparent;
 }
 
+.navbar button, .navbar a, .footer a{
+    padding: 14px;
+}
+
 #navbar-logo {
     padding: 10px;
 }
 
 
-.navbar button:hover, .navbar a:hover, .footer a:hover {
+.navbar button:hover, .navbar a:hover, .footer a:hover, .tagebuchNavbar div:hover {
     background-color: rgba(233, 30, 99, 0.5);
 }
 
@@ -54,12 +58,21 @@ h1 {
         width: 100%;
         z-index: 99999;
     }
+    /*.tagebuchNavbar{*/
+    /*    display: flex;*/
+    /*    align-items: center;*/
+    /*    justify-content: ;*/
+    /*}*/
 
-    .navbar, .footer {
+    .navbar, .footer, .tagebuchNavbar {
         display: flex;
         align-items: center;
         justify-content: space-between;
         background-color: lightpink;
+        /*margin-left: 10px;*/
+        /*margin-right: 10px;*/
+        margin: auto;
+
     }
 
     .navbar-a-container {
@@ -189,13 +202,10 @@ h1 {
 }
 
 @media  screen and (min-width: 600px) {
-    #zumProjekt, #tagebuchTitel {
-        margin-top: 120px;
-    }
-
-    #datenschutz, #impressum {
+    #content{
         margin-top: 136px;
     }
+
 }
 
 .hardwareContainer {
