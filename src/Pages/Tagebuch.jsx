@@ -21,7 +21,7 @@ function Tagebuch() {
     return(
         <>
             {/*TODO noch swagger einbinden mit kleiner "Navbar darunter*/}
-            <h1>Tagebuch</h1>
+            <h1 id="tagebuchTitel">Tagebuch</h1>
             <h2>Willkommen {getCookieValue("firstname")}</h2>
             {teammember === "1" ? <EintragForm onreload={reloadData}/> : <></>}
             <EintraegeOutput onreload={reloadData} trigger={reloadTrigger}/>

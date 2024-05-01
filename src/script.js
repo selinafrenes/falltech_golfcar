@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alleSlidesAusblenden();  // Call the function with a delay
 
         //console.log("Windows.onload");
-    }, 500);
+    }, 1000);
 });
 
 
