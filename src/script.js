@@ -74,42 +74,68 @@ export function getCookieValue(cookieName) {
 }
 
 
-window.onload = () => {
 
-    /**
-     * Eine Funktion, die das Layout der Slides basierend auf der Bildschirmgröße ändert.
-     * @param {MediaQueryList} mediaQuery - Das Media-Query-Objekt, das den Status der Bildschirmgröße überwacht.
-     */
-    const handleMediaQuery = (mediaQuery) => {
-        const slidesSlides = document.getElementsByClassName('slides');
-        const slide = document.getElementsByClassName("slide");
-        if (mediaQuery.matches) {
-            slidesSlides[0].style.flexDirection = 'column';
-            console.log("Slide Lenght: "  + slide.length);
-            //document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOMContentLoaded ausgelöst");
+    setTimeout(() => {
+        console.log("Ausführen von alleSlidesAusblenden nach Timeout");
+        const alleSlidesAusblenden = () => {
+            console.log("allesSlideAusblenden");
+            const slides = document.getElementsByClassName("slide");
+            if (slides.length > 0) {
+                console.log("Slides ist nicht 0");
+            } else {
+                console.log("Slides ist 0");
+            }
+            for(let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            if (slides.length > 0) {
+                slides[0].style.display = "grid";
+            }
+        };
+
+        /**
+         * Eine Funktion, die das Layout der Slides basierend auf der Bildschirmgröße ändert.
+         * @param {MediaQueryList} mediaQuery - Das Media-Query-Objekt, das den Status der Bildschirmgröße überwacht.
+         */
+        const handleMediaQuery = (mediaQuery) => {
+            const slidesSlides = document.getElementsByClassName('slides');
+            const slide = document.getElementsByClassName("slide");
+            if (mediaQuery.matches) {
+                slidesSlides[0].style.flexDirection = 'column';
+                console.log("Slide Lenght: "  + slide.length);
+                //document.addEventListener('DOMContentLoaded', function() {
                 for (let i = 0 ; i < slide.length; i++) {
                     slide[i].style.display = 'block';
                 }
-            //});
+                //});
 
-        } else {
-            //ToDo bei größer machen bleibt die erste Slide show immer noch auf block
-            for (let i = 0 ; i < slide.length; i++) {
-                slide[i].style.display = 'grid';
+            } else {
+
+                for (let i = 0 ; i < slide.length; i++) {
+                    slide[i].style.display = 'grid';
+                }
+                slidesSlides[0].style.flexDirection = 'row';
+                slidesSlides[0].style.overflowX = 'hidden';
             }
-            slidesSlides[0].style.flexDirection = 'row';
-            slidesSlides[0].style.overflowX = 'hidden';
         }
-    }
 
-    // Das Media-Query-Objekt für Bildschirme mit einer maximalen Breite von 600px.
-    const mediaQuery600px = window.matchMedia("(max-width: 600px)");
+        // Das Media-Query-Objekt für Bildschirme mit einer maximalen Breite von 600px.
+        const mediaQuery600px = window.matchMedia("(max-width: 600px)");
 
-    // Ein Event-Listener, der auf Änderungen in der Bildschirmgröße reagiert und die handleMediaQuery-Funktion aufruft.
-    mediaQuery600px.addEventListener("change", () => {
+        // Ein Event-Listener, der auf Änderungen in der Bildschirmgröße reagiert und die handleMediaQuery-Funktion aufruft.
+        mediaQuery600px.addEventListener("change", () => {
+            handleMediaQuery(mediaQuery600px);
+        });
+
+        // Initialer Aufruf der handleMediaQuery-Funktion, um das Layout entsprechend der Bildschirmgröße festzulegen.
         handleMediaQuery(mediaQuery600px);
-    });
-    // Initialer Aufruf der handleMediaQuery-Funktion, um das Layout entsprechend der Bildschirmgröße festzulegen.
-    handleMediaQuery(mediaQuery600px);
 
-}
+        alleSlidesAusblenden();  // Call the function with a delay
+
+        //console.log("Windows.onload");
+    }, 500);
+});
+
+

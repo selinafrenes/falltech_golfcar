@@ -236,10 +236,10 @@ h1 {
     position: relative;
     display: flex;
     justify-content: center;
-    /*aspect-ratio: 4 / 5;*/
     padding: 10px;
-    width: 250px;
+    width: 205px;
     height: 250px;
+    border-radius: 50px;
 }
 
 .hardwareWrapper > .item > .image-container img {
