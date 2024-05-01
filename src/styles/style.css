@@ -591,7 +591,8 @@ h2 {
 }
 
 #impressum p a{
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: #E91E63;
     color: black;
 }
 
