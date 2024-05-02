@@ -1,4 +1,4 @@
-
+const {getAllEntersFilterdByPersons} = require("../Models/db_access");
 
 /**
  * Controller zur Auflistung aller Einträge.
@@ -6,11 +6,12 @@
  * @param {Object} res - Das Antwortobjekt.
  */
 const FilterByPersonController = (req, res) => {
-    getAllEnters().then(r => {
+    getAllEntersFilterdByPersons().then(r => {
         console.log("Result getAllEnters: " + JSON.stringify(r));
         res.status(200).json(r);
-    }).catch(() => {
-        res.status(500).json("Internal Server Error")
+    }).catch((e) => {
+        console.error(e.message);
+        res.status(500).json(e.message);
     });
 }
 module.exports = FilterByPersonController;

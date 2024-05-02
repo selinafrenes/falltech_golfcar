@@ -64,7 +64,7 @@ h1 {
     /*    justify-content: ;*/
     /*}*/
 
-    .navbar, .footer, .tagebuchNavbar {
+    .navbar, .footer {
         display: flex;
         align-items: center;
         justify-content: space-between;

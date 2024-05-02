@@ -14,20 +14,30 @@ import {toast} from "react-toastify";
 function EintraegeOutput(props){
 
     // Zustand für die geholten Daten der Einträge
-    const [entersData, setEntersData] = useState(null);
+    const [data, setData] = useState(null);
+    // Zustand und Funktionen für das Filtern der Einträge
+    const [filterPerson, setFilterPerson] = useState(false);
 
     // Effekt zum Holen der Einträge beim Laden der Komponente oder bei Änderungen des Triggers
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8000/tagebuch/entries', {
+                let path;
+                if (filterPerson){
+                    console.log("Anfrage an: http://localhost:8000/tagebuch/eintraege/personen");
+                    path = "http://localhost:8000/tagebuch/eintraege/personen";
+                }else{
+                    path = "http://localhost:8000/tagebuch/eintraege/personen"
+                }
+                console.log("PATH: " + path);
+                const response = await fetch(path, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
                     }
                 });
                 const jsonData = await response.json();
-                setEntersData(jsonData);
+                setData(jsonData);
             } catch (err) {
                 toast.error("Fehler beim holen der Daten aus der Datenbank");
             }
@@ -35,11 +45,11 @@ function EintraegeOutput(props){
         fetchData();
     }, [props.trigger]);
 
-    // Zustand und Funktionen für das Filtern der Einträge
-    const [filterPerson, setFilterPerson] = useState(false);
+
     const filterByPerson = () => {
         setFilterPerson(!filterPerson);
     };
+
     // Funktion zum neu Laden der Daten
     const reloadData = () => {
         toast.info("Daten wurden neu geladen");
@@ -60,7 +70,7 @@ function EintraegeOutput(props){
 
                 <div className="output-field" id="enters">
                     {/*<p>Hello OUTPUT</p>*/}
-                    {entersData && <Table filter={filterPerson} data={entersData}/>}
+                    {data && <Table filter={filterPerson} data={data}/>}
                 </div>
             </div>
         </div>

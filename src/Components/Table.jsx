@@ -11,60 +11,26 @@ import React, { Fragment } from 'react';
  * @returns {JSX.Element} - JSX-Element zur Darstellung der Tabelle.
  */
 function Table(props){
-    const { entersResult, entryResult } = props.data;
-    const combinedEntries = [];
-
-    for (let i = 0; i < entersResult.length; i++) {
-        const e = entersResult[i];
-        const res = entryResult.find((entry) => entry.id === e.id);
-        const result = {
-            username: entersResult[i].username,
-            id: res.id,
-            description: res.description,
-            notes: res.notes,
-            date: res.date,
-            duration: res.duration
-        }
-        combinedEntries.push(result);
-    }
-
 
     return(
         <>
-            {props.filter ? filterTableByUsername(combinedEntries) : filterTableByDate(combinedEntries)}
+            {filterTableByUsername(props.data)}
+            {/*{props.filter ? filterTableByUsername(props.data) : filterTableByDate(props.data)}*/}
         </>
     );
 }
 
 /**
- * Filtert und organisiert kombinierte Einträge nach Benutzernamen, gruppiert sie und sortiert sie dann nach Datum.
- * @param {Array} combinedEntries - Die kombinierten Einträge enthalten Daten für mehrere Benutzer.
- * @returns {JSX.Element} - JSX-Element, das eine Tabelle darstellt, in der gefilterte und sortierte Einträge angezeigt werden.
+ * Filtert die übergebenen Daten nach Benutzernamen und rendert eine JSX-Tabelle mit den gruppierten und sortierten Einträgen.
+ * @param {Array.<{ username: string, eintraege: Array.<{ date: string, duration: string, description: string, notes?: string }> }>} data - Die Daten, die nach Benutzernamen gefiltert werden sollen.
+ * @returns {JSX.Element} - JSX-Element, das eine Tabelle mit den gruppierten und sortierten Einträgen darstellt.
  */
-const filterTableByUsername = (combinedEntries) => {
-    // Gruppiert alle Einträge nach Username
-    const groupedEntries = combinedEntries.reduce((acc, entry) => {
-        // debugger;
-        const username = entry.username;
-        if (!acc.hasOwnProperty(username)) {
-            acc[username] = [];
-        }
-        acc[username].push(entry);
-        return acc;
-    }, {});
-
-    // Sortiert alle Einträge innerhalb des Users nach Datum
-    for (const groupedEntry in groupedEntries) {
-        //debugger;
-        groupedEntries[groupedEntry].sort((a, b) => {
-            const dateA = new Date(a.date);
-            const dateB = new Date(b.date);
-            return dateA.getTime() - dateB.getTime();
-        });
+const filterTableByUsername = (data) => {
+    for (let i = 0; i < data.length; i++) {
+        data[i].eintraege = JSON.parse(data[i].eintraege);
     }
 
     // Rendert JSX-Tabelle mit gruppierten und sortierten Einträgen
-
     return (
         <table className="output-filed-table-person">
             <thead className="output-filed-table-thead-person">
@@ -77,21 +43,25 @@ const filterTableByUsername = (combinedEntries) => {
             </tr>
             </thead>
             <tbody className="output-filed-table-tbody-person">
-            {Object.entries(groupedEntries).map(([username, entries]) => (
-                <Fragment key={username}>
-                    <tr>
-                        <th rowSpan={entries.length+1}>{username}</th>{/*TODO Warum +1*/}
+            {data.map(user => (
+                <Fragment key={user.username}>
+                <tr>
+                <th rowSpan={user.eintraege.length+1}>{user.username}</th>{/*TODO Warum +1*/}
+                </tr>
+                {user.eintraege.map((entry) => (
+                    <tr key={entry.description}>
+                        <td>{new Date(entry.date).toLocaleDateString('de-DE')}</td>
+                        <td>{entry.duration}</td>
+                        <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                        <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
                     </tr>
-                    {entries.map((entry) => (
-                        <tr key={entry.id}>
-                            <td>{new Date(entry.date).toLocaleDateString('de-DE')}</td>
-                            <td>{entry.duration}</td>
-                            <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-                            <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-                        </tr>
-                    ))}
+                    ))};
                 </Fragment>
+
             ))}
+
+
+            {/*TODO ausgeben*/}
             </tbody>
         </table>
     )
@@ -157,57 +127,57 @@ const filterTableByDate = (combinedEntries) => {
 
 
 
-const filterTableByDate = (combinedEntries) => {
+// const filterTableByDate = (combinedEntries) => {
     // sortieren nach Datum
-    combinedEntries.sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        return dateA.getTime() - dateB.getTime();
-    });
-
-    // nach Datum gruppieren
-    const groupedEntries = combinedEntries.reduce((acc, entry) => {
-        const date = entry.date;
-        if (!acc.hasOwnProperty(date)) {
-            acc[date] = [];
-        }
-        acc[date].push(entry);
-        return acc;
-    }, {});
+    // combinedEntries.sort((a, b) => {
+    //     const dateA = new Date(a.date);
+    //     const dateB = new Date(b.date);
+    //     return dateA.getTime() - dateB.getTime();
+    // });
+    //
+    // // nach Datum gruppieren
+    // const groupedEntries = combinedEntries.reduce((acc, entry) => {
+    //     const date = entry.date;
+    //     if (!acc.hasOwnProperty(date)) {
+    //         acc[date] = [];
+    //     }
+    //     acc[date].push(entry);
+    //     return acc;
+    // }, {});
 
     // Rendert JSX-Tabelle mit gruppierten Einträgen nach Datum sortiert
-    return (
-        <table className="output-filed-table-datum">
-            <thead className="output-filed-table-thead-datum">
-            <tr>
-                <th>Datum</th>
-                <th>Person</th>
-                <th>Zeit</th>
-                <th>Beschreibung</th>
-                <th>Notiz</th>
-            </tr>
-            </thead>
-            <tbody className="output-filed-table-tbody-datum">
-            {Object.entries(groupedEntries).map(([date, entries]) => (
-                entries.map((entry, index) => (
-                    <tr key={`${entry.id}-${index}`}>
-                        {index === 0 && (
-                            <th rowSpan={entries.length}>
-                                {new Date(date).toLocaleDateString('de-DE')}
-                            </th>
-                        )}
-                        <td>{entry.username}</td>
-                        <td>{entry.duration}</td>
-                        <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-                        <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-                    </tr>
-                ))
-            ))}
-            </tbody>
-        </table>
-    );
+    // return (
+    //     <table className="output-filed-table-datum">
+    //         <thead className="output-filed-table-thead-datum">
+    //         <tr>
+    //             <th>Datum</th>
+    //             <th>Person</th>
+    //             <th>Zeit</th>
+    //             <th>Beschreibung</th>
+    //             <th>Notiz</th>
+    //         </tr>
+    //         </thead>
+    //         <tbody className="output-filed-table-tbody-datum">
+    //         {Object.entries(groupedEntries).map(([date, entries]) => (
+    //             entries.map((entry, index) => (
+    //                 <tr key={`${entry.id}-${index}`}>
+    //                     {index === 0 && (
+    //                         <th rowSpan={entries.length}>
+    //                             {new Date(date).toLocaleDateString('de-DE')}
+    //                         </th>
+    //                     )}
+    //                     <td>{entry.username}</td>
+    //                     <td>{entry.duration}</td>
+    //                     <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+    //                     <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+    //                 </tr>
+    //             ))
+    //         ))}
+    //         </tbody>
+    //     </table>
+    // );
 
-}
+// }
 
 
 export default Table
