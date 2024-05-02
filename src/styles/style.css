@@ -18,8 +18,6 @@ h1 {
     text-align: center;
 }
 
-
-
 .navbar,.footer, .tagebuchNavbar {
     background-color: lightpink;
     overflow: hidden;
@@ -46,7 +44,6 @@ h1 {
     padding: 10px;
 }
 
-
 .navbar button:hover, .navbar a:hover, .footer a:hover, .tagebuchNavbar div:hover {
     background-color: rgba(233, 30, 99, 0.5);
 }
@@ -57,10 +54,11 @@ h1 {
         top: 0;
         width: 100%;
         z-index: 99999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
     /*.tagebuchNavbar{*/
     /*    display: flex;*/
-    /*    align-items: center;*/
+
     /*    justify-content: ;*/
     /*}*/
 
@@ -127,8 +125,8 @@ h1 {
 }
 
 .slide-text {
-    padding: 10px;
-    text-align: justify;
+    padding: 15px;
+    text-align: left;
 }
 
 .prev, .next {
@@ -591,7 +589,8 @@ h2 {
 }
 
 #impressum p a{
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: #E91E63;
     color: black;
 }
 

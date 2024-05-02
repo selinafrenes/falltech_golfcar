@@ -18,6 +18,10 @@ import ItemContainer from "../Components/ItemContainer";
 function Home({onLogin}) {
     const sponsorRef = useRef(null);
 
+    const textSchulprojekt = "Seit dem Schuljahr 2017/18 führt die Fachoberschule J. Ph. Fallmerayer in der " +
+        "Fachrichtung Informatik in den Abschlussklassen ein interdisziplinäres Projekt durch. Dieses Projekt soll die " +
+        "technischen Fähigkeiten, die Teamarbeit und die Kreativität der Maturant*innen auf die Probe stellen.";
+
     const textZiele = "Unser Ziel besteht darin, ein autonomes Fahrzeug zu entwickeln, das in der Lage ist, " +
         "einen Ball auf einem Spielfeld zu lokalisieren und sicher in ein definiertes Zielgebiet zu bringen. " +
         "Dabei soll das Fahrzeug Hindernisse erkennen und umfahren können, sowie flexibel an verschiedene Umgebungen " +
@@ -39,14 +43,16 @@ function Home({onLogin}) {
                     <h1>Zum Projekt</h1>
                     <div id="zumProjekt-Container">
                         <div className="pfeil-links">
-                            <div className="prev" onClick={prevSlide}><FontAwesomeIcon icon={faArrowLeft} /></div>
+                            <div className="prev" onClick={prevSlide}><FontAwesomeIcon icon={faArrowLeft}/></div>
                         </div>
                         <section id="zumProjektShow">
                             {/*TODO Problem mit Slideshow und Seite kleiner machen*/}
                             <div className="slides">
-                                <SlideItem heading="Schulprojekt" text="TEXT ÜBER PROJEKT" image="/assets/images/frosch.jpeg"
+                                <SlideItem heading="Schulprojekt" text="TEXT ÜBER PROJEKT"
+                                           image="/assets/images/frosch.jpeg"
                                            altText="Bild"></SlideItem>
-                                <SlideItem heading="Golf Car Projekt" text={textGolfCar} image="/assets/images/frosch.jpeg"
+                                <SlideItem heading="Golf Car Projekt" text={textGolfCar}
+                                           image="/assets/images/frosch.jpeg"
                                            altText="Bild"></SlideItem>
                                 <SlideItem heading="Ziele" text={textZiele} image="/assets/images/frosch.jpeg"
                                            altText="Bild"></SlideItem>
@@ -58,11 +64,16 @@ function Home({onLogin}) {
                     </div>
                     <h2>Bauteile</h2>
                     <ItemContainer classname="hardwareContainer" innerClassname="hardwareWrapper">
-                        <Item name="Mikrocontroller" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3NEU.webp" />
-                        <Item name="Kamera" description="Rasperry Pi Camera Module 3" imagePath="/assets/images/components/kameraPI3NEU.webp" />
-                        <Item name="Abstandssensor" description="3pcs Ultrasonic Sensor" imagePath="/assets/images/components/ultrasonicSensorNEU.webp" />
-                        <Item name="Schrittmotor" description="5pcs 28BYJ-48 Schrittmotor" imagePath="/assets/images/components/stepperMotorNEU.webp" />
-                        <Item name="DC Motor" description="GA12-N20 Gear Motor" imagePath="/assets/images/components/gearMotorNEU.webp" />
+                        <Item name="Mikrocontroller" description="Raspberry PI 3"
+                              imagePath="/assets/images/components/raspberry3NEU.webp"/>
+                        <Item name="Kamera" description="Rasperry Pi Camera Module 3"
+                              imagePath="/assets/images/components/kameraPI3NEU.webp"/>
+                        <Item name="Abstandssensor" description="3pcs Ultrasonic Sensor"
+                              imagePath="/assets/images/components/ultrasonicSensorNEU.webp"/>
+                        <Item name="Schrittmotor" description="5pcs 28BYJ-48 Schrittmotor"
+                              imagePath="/assets/images/components/stepperMotorNEU.webp"/>
+                        <Item name="DC Motor" description="GA12-N20 Gear Motor"
+                              imagePath="/assets/images/components/gearMotorNEU.webp"/>
                         <Item name="Motortreiber" description="L298 Motor Drive Controller Board" imagePath="/assets/images/components/MotorControllerBoardNEU.webp" />
                         <Item name="LED" description="RC Headlight LEDs" imagePath="/assets/images/components/ledsNEU.webp" />
                         <Item name="Batterie" description="9V 650mA wiederaufladbare Batterie" imagePath="/assets/images/components/batteryNEU.webp" />
@@ -75,13 +86,13 @@ function Home({onLogin}) {
 
                     <h2>Software</h2>
                     <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
-                        <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python.jpg"/>
-                        <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.jpg"/>
-                        <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.jpg"/>
-                        <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/javascript.jpg"/>
-                        <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.jpg"/>
-                        <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.jpg"/>
-                        <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.jpg"/>
+                        <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python.webp"/>
+                        <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.webp"/>
+                        <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.webp"/>
+                        <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/javascript.webp"/>
+                        <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.webp"/>
+                        <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.webp"/>
+                        <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.webp"/>
                     </ItemContainer>
                 </div>
                 <div id="aboutUs" className="aboutUS">
