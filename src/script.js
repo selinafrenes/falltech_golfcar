@@ -132,10 +132,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Initialer Aufruf der handleMediaQuery-Funktion, um das Layout entsprechend der Bildschirmgröße festzulegen.
         handleMediaQuery(mediaQuery600px);
 
-        alleSlidesAusblenden();  // Call the function with a delay
+        //alleSlidesAusblenden();  // Call the function with a delay
 
         //console.log("Windows.onload");
-    }, 1000);
+    }, 500);
 });
 
 
