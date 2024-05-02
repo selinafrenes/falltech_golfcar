@@ -48,7 +48,7 @@ function Home({onLogin}) {
                         <section id="zumProjektShow">
                             {/*TODO Problem mit Slideshow und Seite kleiner machen*/}
                             <div className="slides">
-                                <SlideItem heading="Schulprojekt" text="TEXT ÜBER PROJEKT"
+                                <SlideItem heading="Schulprojekt" text={textSchulprojekt}
                                            image="/assets/images/frosch.jpeg"
                                            altText="Bild"></SlideItem>
                                 <SlideItem heading="Golf Car Projekt" text={textGolfCar}
