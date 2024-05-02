@@ -57,6 +57,7 @@ h1 {
         top: 0;
         width: 100%;
         z-index: 99999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
     /*.tagebuchNavbar{*/
     /*    display: flex;*/

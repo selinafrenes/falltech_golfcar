@@ -3,12 +3,21 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import posthog from 'posthog-js';
+import { PostHogProvider } from "posthog-js/react";
+
+posthog.init('phc_Bop9iNVWk00BPjMDl4eqEfgGBBHmT7vGSJmdpIwda3P',
+    {api_host:'https://us.i.posthog.com'})
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(
-    <Router>
-        <App />
-    </Router>
+    <PostHogProvider client={posthog}>
+        <Router>
+            <App />
+        </Router>
+    </PostHogProvider>
 );
 
 // TODO
