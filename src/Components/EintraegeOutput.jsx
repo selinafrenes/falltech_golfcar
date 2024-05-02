@@ -20,7 +20,7 @@ function EintraegeOutput(props){
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8000/tagebuch/entries', {
+                const response = await fetch('http://10.10.31.11:8000/tagebuch/entries', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

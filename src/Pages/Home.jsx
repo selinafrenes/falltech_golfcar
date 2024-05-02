@@ -43,14 +43,16 @@ function Home({onLogin}) {
                     <h1>Zum Projekt</h1>
                     <div id="zumProjekt-Container">
                         <div className="pfeil-links">
-                            <div className="prev" onClick={prevSlide}><FontAwesomeIcon icon={faArrowLeft} /></div>
+                            <div className="prev" onClick={prevSlide}><FontAwesomeIcon icon={faArrowLeft}/></div>
                         </div>
                         <section id="zumProjektShow">
                             {/*TODO Problem mit Slideshow und Seite kleiner machen*/}
                             <div className="slides">
-                                <SlideItem heading="Schulprojekt" text={textSchulprojekt} image="/assets/images/frosch.jpeg"
+                                <SlideItem heading="Schulprojekt" text="TEXT ÜBER PROJEKT"
+                                           image="/assets/images/frosch.jpeg"
                                            altText="Bild"></SlideItem>
-                                <SlideItem heading="Golf Car Projekt" text={textGolfCar} image="/assets/images/frosch.jpeg"
+                                <SlideItem heading="Golf Car Projekt" text={textGolfCar}
+                                           image="/assets/images/frosch.jpeg"
                                            altText="Bild"></SlideItem>
                                 <SlideItem heading="Ziele" text={textZiele} image="/assets/images/frosch.jpeg"
                                            altText="Bild"></SlideItem>
@@ -62,11 +64,16 @@ function Home({onLogin}) {
                     </div>
                     <h2>Bauteile</h2>
                     <ItemContainer classname="hardwareContainer" innerClassname="hardwareWrapper">
-                        <Item name="Mikrocontroller" description="Raspberry PI 3" imagePath="/assets/images/components/raspberry3NEU.webp" />
-                        <Item name="Kamera" description="Rasperry Pi Camera Module 3" imagePath="/assets/images/components/kameraPI3NEU.webp" />
-                        <Item name="Abstandssensor" description="3pcs Ultrasonic Sensor" imagePath="/assets/images/components/ultrasonicSensorNEU.webp" />
-                        <Item name="Schrittmotor" description="5pcs 28BYJ-48 Schrittmotor" imagePath="/assets/images/components/stepperMotorNEU.webp" />
-                        <Item name="DC Motor" description="GA12-N20 Gear Motor" imagePath="/assets/images/components/gearMotorNEU.webp" />
+                        <Item name="Mikrocontroller" description="Raspberry PI 3"
+                              imagePath="/assets/images/components/raspberry3NEU.webp"/>
+                        <Item name="Kamera" description="Rasperry Pi Camera Module 3"
+                              imagePath="/assets/images/components/kameraPI3NEU.webp"/>
+                        <Item name="Abstandssensor" description="3pcs Ultrasonic Sensor"
+                              imagePath="/assets/images/components/ultrasonicSensorNEU.webp"/>
+                        <Item name="Schrittmotor" description="5pcs 28BYJ-48 Schrittmotor"
+                              imagePath="/assets/images/components/stepperMotorNEU.webp"/>
+                        <Item name="DC Motor" description="GA12-N20 Gear Motor"
+                              imagePath="/assets/images/components/gearMotorNEU.webp"/>
                         <Item name="Motortreiber" description="L298 Motor Drive Controller Board" imagePath="/assets/images/components/MotorControllerBoardNEU.webp" />
                         <Item name="LED" description="RC Headlight LEDs" imagePath="/assets/images/components/ledsNEU.webp" />
                         <Item name="Batterie" description="9V 650mA wiederaufladbare Batterie" imagePath="/assets/images/components/batteryNEU.webp" />

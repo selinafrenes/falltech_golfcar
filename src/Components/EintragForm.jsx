@@ -32,8 +32,8 @@ function EintragForm(props) {
         if(data.people.length === 0 || data.description === '' || data.date === '' || data.duration === ''){
             toast.error("Alle nicht optionale Felder müssen ausgefüllt werden");
         } else {
-            // Daten an den Server senden
-            const response = await fetch('http://localhost:8000/tagebuch/submit', {
+            // Senden der Daten an den Server
+            const response = await fetch('http://10.10.31.11:8000/tagebuch/submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,8 +48,6 @@ function EintragForm(props) {
                 toast.success('Daten wurden erfolgreich abgespeichert');
                 console.log("S:DATA:" + JSON.stringify(jsonData));
                 event.target.reset();
-                // Aktualisieren der Einträge nach erfolgreichem Speichern
-                props.onreload();
             } else {
                 toast.error('Fehler beim abspeichern in der Datenbank');
             }

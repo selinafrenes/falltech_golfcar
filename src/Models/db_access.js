@@ -3,6 +3,7 @@ const _env = require('dotenv').config({path: __dirname + '/../.env' });
 console.log(_env);
 
 const bcrypt = require("bcrypt");
+console.log("-------1 " + process.env.DB_HOST);
 
 // mysql2 unterstützt neuere async/await-Syntax und Promises für asynchrone Operationen
 const pool = require('mysql2/promise').createPool({

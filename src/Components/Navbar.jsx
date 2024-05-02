@@ -3,35 +3,31 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {getCookieValue} from '../script';
+import ToggleButton from "./ToggleButton";
+import {changeMode} from '../App';
 
-// Funktion zum Löschen eines Cookies
 const deleteCookie = (cookieName) => {
     document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 
-// Funktion zum Ausloggen
 const logout = () => {
-    // Lösche alle relevanten Cookies
     deleteCookie('username');
     deleteCookie('firstname');
     deleteCookie('lastname');
     deleteCookie('teammember');
 
-    // Leite den Benutzer zur Startseite
     window.location.href = '/';
 }
 
-/**
- * Eine Navigationsleisten-Komponente.
- * @returns {JSX.Element} Die gerenderte Navbar-Komponente.
- */
 function Navbar() {
     const location = useLocation();
     const navigate = useNavigate();
     const [isNavigated, setIsNavigated] = useState("/");
 
-    // Funktion zum Öffnen des Anmeldefensters
+// Anmelde Cookie setzten und merken
     function openLoginWindow() {
+        // Öffne das Anmeldefenster nur, wenn der Benutzer nicht auf der Homepage ist oder der Anmelde-Cookie nicht gesetzt ist
+
         const loginWindow = document.getElementById('loginWindow');
         if (!getCookieValue("username")) {
             // Führe hier die Aktion aus, um das Anmeldefenster zu öffnen
@@ -44,7 +40,6 @@ function Navbar() {
         }
     }
 
-    // Funktion zum Rendern des richtigen Textes im Tagebuch-Button
     function textTagebuch (currentLocation) {
         let location = currentLocation;
         if(location.pathname === '/' || location.pathname === '/index' || location.pathname === '/impressum' || location.pathname === '/datenschutz'){
@@ -73,7 +68,8 @@ function Navbar() {
 
     // Funktion zum Weiterleiten zur Startseite
     const toIndex = () => {
-        window.location.href = '/';
+        //window.location.href = '/';
+        navigate("/");
         console.log('Zu Index');
     }
 
