@@ -54,6 +54,7 @@ function Navbar() {
         if (isNavigated !== "/") {
             const element = document.getElementById(isNavigated);
             if (element) {
+                element.style.scrollMarginTop = '136px';
                 element.scrollIntoView({ behavior: 'smooth' });
             }
             setIsNavigated("/");
@@ -62,10 +63,9 @@ function Navbar() {
 
     // Funktion zum Scrollen zu einem bestimmten Element
     const scrollToElement = (elementId) => {
-        const element = document.getElementById(elementId);
-        element.style.scrollMarginTop = '136px';
-        setIsNavigated(elementId);
+
         navigate('/');
+        setIsNavigated(elementId);
         /*
         if(elementId === 'zumProjekt'){
             window.scroll({ top: 500 });
