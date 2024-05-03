@@ -54,15 +54,44 @@ h1 {
         top: 0;
         width: 100%;
         z-index: 99999;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);*/
     }
 
-    .navbar, .footer, .tagebuchNavbar {
+    .tagebuchNavbar {
+        position: sticky;
+        top: 120px;
+        width: 100%;
+        z-index: 99999;
+        /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);*/
+    }
+
+    .navbar, .footer,  .tagebuchNavbar {
         display: flex;
         align-items: center;
-        justify-content: space-between;
         background-color: lightpink;
         margin: auto;
+    }
+
+    .navbar, .footer{
+        justify-content: space-between;
+    }
+
+    .tagebuchNavbar {
+        justify-content: space-evenly;
+    }
+
+    .tagebuchNavbarItem button {
+        width: auto;
+    }
+
+    .tagebuchNavbarItem {
+        flex: 1;
+        text-align: center;
+    }
+
+    .tagebuchNavbarItem button {
+        width: 100%;
+        padding: 10px;
     }
 
     .navbar-a-container {
@@ -201,15 +230,6 @@ h1 {
     padding:1rem;
     margin: 1rem;
 }
-
-/*
-@media  screen and (min-width: 600px) {
-    #content{
-        padding-top: 136px;
-    }
-}
-
- */
 
 .hardwareContainer {
     display: flex;
