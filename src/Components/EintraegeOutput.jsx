@@ -1,4 +1,3 @@
-
 import { useEffect, useState} from "react";
 import Table from "./Table";
 import ToggleButton from "./ToggleButton";
@@ -6,28 +5,24 @@ import {toast} from "react-toastify";
 
 /* TODO KOMMENTARRRR*/
 function EintraegeOutput(props){
-
     // Zustand für die geholten Daten der Einträge
     const [data, setData] = useState(null);
     // Zustand und Funktionen für das Filtern der Einträge
     const [filter, setFilter] = useState(false);
-
-    const [loading, setLoading] = useState(true); // Zustand für den Ladeindikator
+    // Zustand für den Ladeindikator
+    const [loading, setLoading] = useState(true);
 
     const fetchData = async (newFilter) => {
         setLoading(true);
         console.log("EO_fetchData beginning: filterPers: " + filter);
         try {
             let path;
-            const f = newFilter ?? filter;
-            if (f){
-                console.log("Anfrage an: http://localhost:8000/tagebuch/eintraege/personen");
+            if (newFilter ?? filter){
                 path = "http://localhost:8000/tagebuch/eintraege/personen";
             }else{
-                console.log("Anfrage an: http://localhost:8000/tagebuch/eintraege/datum");
                 path = "http://localhost:8000/tagebuch/eintraege/datum"
             }
-            console.log("EO_fetchData path: " + path);
+            console.log("Anfrage an: " + path);
             const response = await fetch(path, {
                 method: 'GET',
                 headers: {
@@ -36,11 +31,11 @@ function EintraegeOutput(props){
             });
             const jsonData = await response.json();
             setData(jsonData);
-            console.log("EO_fetchData result: "+JSON.stringify(data));
         } catch (err) {
             toast.error("Fehler beim holen der Daten aus der Datenbank");
         } finally {
-            setLoading(false); // Setze loading auf false, nachdem die Daten geladen wurden oder ein Fehler aufgetreten ist
+            // Setze loading auf false, nachdem die Daten geladen wurden oder ein Fehler aufgetreten ist
+            setLoading(false);
         }
     };
 
@@ -48,26 +43,18 @@ function EintraegeOutput(props){
     // Effekt zum Holen der Einträge beim Laden der Komponente oder bei Änderungen des Triggers
     useEffect(() => {
         fetchData();
-        console.log("EO_useEffect: Fetching the new Data ")
+        console.log("Fetching the new Data ")
     }, [props.trigger]);
 
 
-    // const filterByPerson = () => {
-    //     console.log("EO_filterByPerson: change filter and call fetchData")
-    //     debugger;
-    //     setFilter(prevFilter => !prevFilter);
-    //     debugger;
-    //     fetchData();
-    // };
 
     const filterByPerson = () => {
+        // weil fetchData async ist
         setFilter(prevFilter => {
             const newFilter = !prevFilter;
             fetchData(newFilter);
             return newFilter;
         });
-
-        // return !filter; // Rückgabe des neuen Filterwerts für den Toggle Button WICHITG!
     };
 
     // Funktion zum neu Laden der Daten
@@ -87,14 +74,13 @@ function EintraegeOutput(props){
                     <ToggleButton onChange={filterByPerson}/>
                     <p>Person</p>
                 </div>
-
                 <div className="output-field" id="enters">
                     {loading ? (
+                        // TODO noch das mit dem Springen fixen
                         <p>Laden...</p>
                     ) : (
                         data &&  <Table data={data} filter={filter} />
                     )}
-
                 </div>
             </div>
         </div>

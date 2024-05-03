@@ -137,7 +137,7 @@ const getAllEnters = async() => {
     }
 }
 
-// TODO TODO TODO TODO TODO TODO TODO
+// TODO kommentare
 const getAllEntersFilterdByPersons = async() => {
     let connection;
     try{
