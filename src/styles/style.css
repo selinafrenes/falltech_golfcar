@@ -50,27 +50,19 @@ h1 {
 
 @media  screen and (min-width: 600px) {
     .navbar {
-        position: fixed;
+        position: sticky;
         top: 0;
         width: 100%;
         z-index: 99999;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
-    /*.tagebuchNavbar{*/
-    /*    display: flex;*/
-
-    /*    justify-content: ;*/
-    /*}*/
 
     .navbar, .footer {
         display: flex;
         align-items: center;
         justify-content: space-between;
         background-color: lightpink;
-        /*margin-left: 10px;*/
-        /*margin-right: 10px;*/
         margin: auto;
-
     }
 
     .navbar-a-container {
@@ -90,11 +82,11 @@ h1 {
     .navbar button {
         background: transparent;
         border: 0;
-        height: 120px; /*ACHTUNG statisch*/
+        height: 120px;
     }
 
     .navbar a {
-        height: 120px; /*ACHTUNG statisch*/
+        height: 120px;
     }
 }
 
@@ -103,10 +95,6 @@ h1 {
     height: 100px;
     object-fit: cover;
 }
-
-
-/*Zum Projekt*/
-
 
 .slides {
     display: flex;
@@ -120,6 +108,12 @@ h1 {
     border-radius: 20px;
     margin: 10px;
 }
+
+.slide:nth-child(2),
+.slide:nth-child(3) {
+    display:block;
+}
+
 .slide-uberschrift {
     padding: 10px;
 }
@@ -133,7 +127,16 @@ h1 {
     display: none;
 }
 
+.scrollMarginTop {
+    scroll-margin-top: 136px;
+}
+
 @media  screen and (min-width: 600px) {
+    .slide:nth-child(2),
+    .slide:nth-child(3) {
+        display:none;
+    }
+
     #zumProjekt-Container {
         display: grid;
         grid-template-rows: 1fr;
@@ -199,12 +202,14 @@ h1 {
     margin: 1rem;
 }
 
+/*
 @media  screen and (min-width: 600px) {
     #content{
-        margin-top: 136px;
+        padding-top: 136px;
     }
-
 }
+
+ */
 
 .hardwareContainer {
     display: flex;
@@ -225,9 +230,6 @@ h1 {
     background-color: lightpink;
     margin: 10px min(20px);
 }
-
-/* Für das Team */
-
 
 .unserTeam > .item > .image-container {
     position: relative;
@@ -269,7 +271,6 @@ h1 {
     overflow:hidden;
 }
 
-/* Für die Software */
 .unsereSoftware > .item > .image-container {
     position: relative;
     display: flex;
@@ -324,21 +325,6 @@ h1 {
     font-weight: bold;
 }
 
-/*Tagebuch*/
-
-/*
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-*/
-
 .input-wrapper, .output-wrapper {
     padding: 20px;
 }
@@ -384,7 +370,6 @@ body {
 .checkbox-label, .checkbox-input {
     margin: 5px;
 }
-
 
 .form-container button {
     background-color: #007BFF;
@@ -475,7 +460,6 @@ body {
     margin: 20px 0;
 }
 
-/*Zum Sponsor*/
 #sponsor p, #sponsor img {
     text-align: center;
     padding: 20px;
