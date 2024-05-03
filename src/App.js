@@ -29,32 +29,36 @@ function App() {
     }, []);
 
     return (
-      <div id="content">
-          <Navbar/>
-          <Routes>
-              <Route exact path="/" element={<Home onLogin={handleLoginSuccess}/>} />
-              <Route path="/tagebuch" element={isAuthenticated ? <Tagebuch /> : <Home onLogin={handleLoginSuccess} />}/>
-              <Route path="/impressum" element={<Impressum onLogin={handleLoginSuccess}/>} />
-              <Route path="/datenschutz" element={<Datenschutz onLogin={handleLoginSuccess}/>} />
-              <Route path="/swagger" element={<SwaggerUI spec={spec} />} />
-              {/* TODO route einbinden */}
-              <Route path="*" element={<Navigate to="/" />} /> {/* Standardroute */}
-          </Routes>
-          <Footer/>
-          <ToastContainer
-              position="bottom-right"
-              autoClose={3000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="colored"
-              transition={Slide}
-          />
-      </div>
+        <>
+
+            <Navbar/>
+            <div id="content">
+                <Routes>
+                    <Route exact path="/" element={<Home onLogin={handleLoginSuccess}/>} />
+                    <Route path="/tagebuch" element={isAuthenticated ? <Tagebuch /> : <Home onLogin={handleLoginSuccess} />}/>
+                    <Route path="/impressum" element={<Impressum onLogin={handleLoginSuccess}/>} />
+                    <Route path="/datenschutz" element={<Datenschutz onLogin={handleLoginSuccess}/>} />
+                    <Route path="/swagger" element={<SwaggerUI spec={spec} />} />
+                    {/* TODO route einbinden */}
+                    <Route path="*" element={<Navigate to="/" />} /> {/* Standardroute */}
+                </Routes>
+                <Footer/>
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="colored"
+                    transition={Slide}
+                />
+            </div>
+        </>
+
   );
 }
 

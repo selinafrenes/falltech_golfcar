@@ -18,9 +18,9 @@ import ItemContainer from "../Components/ItemContainer";
 function Home({onLogin}) {
     const sponsorRef = useRef(null);
 
-    const textSchulprojekt = "Seit dem Schuljahr 2017/18 führt die Fachoberschule J. Ph. Fallmerayer in der " +
-        "Fachrichtung Informatik in den Abschlussklassen ein interdisziplinäres Projekt durch. Dieses Projekt soll die " +
-        "technischen Fähigkeiten, die Teamarbeit und die Kreativität der Maturant*innen auf die Probe stellen.";
+    const textSchulprojekt = "Seit dem Schuljahr 2017/18 führt die Fachoberschule J.Ph.Fallmerayer in der " +
+        "Fachrichtung Informatik in den Abschlussklassen ein interdisziplinäres Projekt durch. Dabei sollen die " +
+        "technischen Fähigkeiten, die Teamarbeit und die Kreativität der Maturant*innen auf die Probe gestellt werde."
 
     const textZiele = "Unser Ziel besteht darin, ein autonomes Fahrzeug zu entwickeln, das in der Lage ist, " +
         "einen Ball auf einem Spielfeld zu lokalisieren und sicher in ein definiertes Zielgebiet zu bringen. " +

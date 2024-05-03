@@ -62,8 +62,16 @@ function Navbar() {
 
     // Funktion zum Scrollen zu einem bestimmten Element
     const scrollToElement = (elementId) => {
+        const element = document.getElementById(elementId);
+        element.style.scrollMarginTop = '136px';
         setIsNavigated(elementId);
         navigate('/');
+        /*
+        if(elementId === 'zumProjekt'){
+            window.scroll({ top: 500 });
+            console.log("a")
+        }
+        */
     };
 
     // Funktion zum Weiterleiten zur Startseite
