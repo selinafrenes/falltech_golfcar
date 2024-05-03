@@ -96,30 +96,61 @@
         }
       }
     },
-    "/tagebuch/entries": {
+  "/tagebuch/eintraege/personen": {
+    "get": {
+      "summary": "Abrufen von Tagebucheinträgen gruppiert nach Personen",
+      "description": "Liefert alle Tagebucheinträge gruppiert nach der Person, die sie erstellt hat.",
+      "responses": {
+        "200": {
+          "description": "Liste der Tagebucheinträge gruppiert nach Personen",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string",
+                      "description": "Benutzername der Person, die den Eintrag erstellt hat."
+                    },
+                    "eintraege": {
+                      "type": "string",
+                      "description": "JSON-String mit den zusammengefassten Tagebucheinträgen der Person."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "Interner Serverfehler: Tagebucheinträge konnten nicht abgerufen werden."
+        }
+      }
+    }
+  },
+    "/tagebuch/eintraege/datum": {
       "get": {
-        "summary": "Alle Tagebucheinträge abrufen",
-        "description": "Liefert alle in der Datenbank gespeicherten Tagebucheinträge.",
+        "summary": "Abrufen von Tagebucheinträgen gruppiert nach Datum",
+        "description": "Liefert alle Tagebucheinträge gruppiert nach dem Erstellungsdatum.",
         "responses": {
           "200": {
-            "description": "Erfolgreich: Liste aller Tagebucheinträge",
+            "description": "Liste der Tagebucheinträge gruppiert nach Datum",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "entersData": {
-                      "type": "array",
-                      "description": "Liste aller EinträgeID-Personen",
-                      "items": {
-                        "$ref": "#/components/schemas/EntersData"
-                      }
-                    },
-                    "entryData": {
-                      "type": "array",
-                      "description": "Liste aller Einträge",
-                      "items": {
-                        "$ref": "#/components/schemas/EntryData"
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "date": {
+                        "type": "string",
+                        "description": "Datum des Tagebucheintrags."
+                      },
+                      "eintraege": {
+                        "type": "string",
+                        "description": "JSON-String mit den zusammengefassten Tagebucheinträgen des Tages."
                       }
                     }
                   }
@@ -127,16 +158,14 @@
               }
             }
           },
-          "404": {
-            "description": "Keine Einträge gefunden: Die Datenbank enthält keine Tagebucheinträge."
-          },
           "500": {
-            "description": "Interner Serverfehler: Fehler beim Abrufen der Tagebucheinträge."
+            "description": "Interner Serverfehler: Tagebucheinträge konnten nicht abgerufen werden."
           }
         }
       }
     }
-  },
+},
+
   "components": {
     "schemas": {
       "ResourceData": {
