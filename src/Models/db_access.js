@@ -143,27 +143,13 @@ const getAllEntersFilterdByPersons = async() => {
     try{
         connection = await pool.getConnection();
         const [combinedResult] = await connection.execute(`
-            SELECT p.username, GROUP_CONCAT('{"description":', '"', e.description, '"', ',"notes": ', '"', e.notes, '"', ', "date":', '"', e.date, '"', ',"duration":', '"', e.duration, '"', '}') AS eintraege
+            SELECT p.username, GROUP_CONCAT('{"description":"', e.description, '","notes":"', e.notes, '", "date":"', e.date, '","duration":"', e.duration, '"}') AS eintraege
             FROM Person p
             INNER JOIN Enters te ON p.username = te.username
             INNER JOIN Entry e ON te.id = e.id
             GROUP BY p.username;
         `);
 
-        // SELECT p.username, GROUP_CONCAT(CONCAT(e.id, ': ', e.description, ', ', e.notes, ', ', e.date, ', ', e.duration) SEPARATOR '\n') AS eintraege
-        // FROM Person p
-        // INNER JOIN Enters te ON p.username = te.username
-        // INNER JOIN Entry e ON te.id = e.id
-        // GROUP BY p.username;
-
-        //             SELECT p.username, e.description, e.notes, e.date, e.duration
-//             FROM Person p
-//             INNER JOIN Enters te ON p.username = te.username
-//             INNER JOIN Entry e ON te.id = e.id;
-        console.log("RE_lenght:" + combinedResult.length);
-        // for (const val in combinedResult[0]) {
-        //     val.eintraege = "[" + val.eintraege + "]";
-        // }
         for (let i = 0; i < combinedResult.length; i++) {
             combinedResult[i].eintraege =  "[" + combinedResult[i].eintraege + "]";
         }
@@ -175,6 +161,31 @@ const getAllEntersFilterdByPersons = async() => {
     }
 }
 
+const getAllEntersFilterdByDate = async() => {
+    let connection;
+    try{
+        connection = await pool.getConnection();
+        const [combinedResult] = await connection.execute(`
+            SELECT e.date, GROUP_CONCAT('{"person":"', p.username, '","description":"', e.description, '","notes":"', e.notes, '" ,"duration":"', e.duration, '"}') AS eintraege
+            FROM Person p
+            INNER JOIN Enters te ON p.username = te.username
+            INNER JOIN Entry e ON te.id = e.id
+            GROUP BY e.date;
+        `);
+
+        for (let i = 0; i < combinedResult.length; i++) {
+            combinedResult[i].eintraege =  "[" + combinedResult[i].eintraege + "]";
+        }
+
+        console.log(combinedResult);
+
+        return combinedResult;
+    } catch(error) {
+        throw error;
+    } finally {
+        if (connection) await connection.release();
+    }
+}
 
 
 module.exports = {
@@ -182,7 +193,8 @@ module.exports = {
     createNewEntry,
     getTeamMembers,
     getAllEnters,
-    getAllEntersFilterdByPersons
+    getAllEntersFilterdByPersons,
+    getAllEntersFilterdByDate
 };
 
 

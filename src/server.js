@@ -11,6 +11,7 @@ const AuthController = require("./Controllers/AuthController");
 const ListAllEntriesController = require("./Controllers/ListAllEntriesController");
 const PersonsController = require("./Controllers/PersonsController");
 const FilterByPersonController = require("./Controllers/FilterByPersonController");
+const FilterByDateController = require("./Controllers/FilterByDateController");
 
 
 //Api Middlewares
@@ -54,7 +55,7 @@ app.get('/tagebuch/eintraege/personen', (req, res) => {
 });
 
 app.get('/tagebuch/eintraege/datum', (req, res) => {
-    ListAllEntriesController(req, res);
+    FilterByDateController(req, res);
 });
 
 app.listen(port, () => {

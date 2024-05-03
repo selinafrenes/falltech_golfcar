@@ -1,34 +1,24 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 
-/**
- * Komponente zur Darstellung einer Tabelle basierend auf den übergebenen Daten.
- * Die Tabelle kann entweder nach Benutzername oder nach Datum gefiltert und organisiert werden.
- * @param {object} props - Die Eigenschaften, die der Tabelle übergeben werden.
- * @param {object} props.data - Objekt, das die Daten für die Tabelle enthält.
- * @param {Array} props.data.entersResult - Einträge zur Darstellung in der Tabelle.
- * @param {Array} props.data.entryResult - Zusätzliche Informationen für die Einträge.
- * @param {string} [props.filter] - Optionaler Parameter, der angibt, ob die Tabelle nach Benutzername oder Datum gefiltert werden soll.
- * @returns {JSX.Element} - JSX-Element zur Darstellung der Tabelle.
- */
+/*TODO*/
 function Table(props){
+    // const [filterByPerson, setFilterByPerson] = useState(false);
+    // const {data, filter} = props;
+
+    // if (!props.data || !props.data.data || !Array.isArray(props.data.data)) {
+    //     return null; // Return null if data is not available or in the expected format
+    // }
 
     return(
         <>
-            {filterTableByUsername(props.data)}
-            {/*{props.filter ? filterTableByUsername(props.data) : filterTableByDate(props.data)}*/}
+            {props.filter ? filterTableByUsername(props) : filterTableByDate(props)}
         </>
-    );
+    )
 }
 
-/**
- * Filtert die übergebenen Daten nach Benutzernamen und rendert eine JSX-Tabelle mit den gruppierten und sortierten Einträgen.
- * @param {Array.<{ username: string, eintraege: Array.<{ date: string, duration: string, description: string, notes?: string }> }>} data - Die Daten, die nach Benutzernamen gefiltert werden sollen.
- * @returns {JSX.Element} - JSX-Element, das eine Tabelle mit den gruppierten und sortierten Einträgen darstellt.
- */
+// TODO OOOO kommentare!!!
 const filterTableByUsername = (data) => {
-    for (let i = 0; i < data.length; i++) {
-        data[i].eintraege = JSON.parse(data[i].eintraege);
-    }
+    console.log("TAB_filterByUsername");
 
     // Rendert JSX-Tabelle mit gruppierten und sortierten Einträgen
     return (
@@ -43,36 +33,84 @@ const filterTableByUsername = (data) => {
             </tr>
             </thead>
             <tbody className="output-filed-table-tbody-person">
-            {data.map(user => (
+            {data.data.map(user => (
                 <Fragment key={user.username}>
-                <tr>
-                <th rowSpan={user.eintraege.length+1}>{user.username}</th>{/*TODO Warum +1*/}
-                </tr>
-                {user.eintraege.map((entry) => (
-                    <tr key={entry.description}>
-                        <td>{new Date(entry.date).toLocaleDateString('de-DE')}</td>
-                        <td>{entry.duration}</td>
-                        <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-                        <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-                    </tr>
-                    ))};
+                    {
+                        <th rowSpan={JSON.parse(user.eintraege).length +1}>
+                            {user.username}
+                        </th>
+                    }
+                    {JSON.parse(user.eintraege) !== null && //yxc
+                            JSON.parse(user.eintraege).map((entry) => (
+                        <tr key={"_" + entry.id + "_" + entry.date + "_" + entry.duration}>
+                            <td>{new Date(entry.date).toLocaleDateString('de-DE')}</td>
+                            <td>{entry.duration}</td>
+                            <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                            <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                        </tr>
+                    ))}
+
                 </Fragment>
-
             ))}
-
-
-            {/*TODO ausgeben*/}
             </tbody>
         </table>
     )
 
     };
 
-/**
- * Filtert und organisiert kombinierte Einträge nach Datum, sortiert sie chronologisch und gruppiert sie nach Datum.
- * @param {Array} combinedEntries - Die kombinierten Einträge enthalten Daten für mehrere Datumswerte.
- * @returns {JSX.Element} - JSX-Element, das eine Tabelle darstellt, in der gefilterte und nach Datum sortierte Einträge angezeigt werden.
- */
+
+
+
+// todo kommentareeeeeeee
+const filterTableByDate = (data) => {
+    // for (let i = 0; i < data.length; i++) {
+    //     data[i].eintraege = JSON.parse(data[i].eintraege);
+    // }
+
+    console.log("TAB_filterByDate");
+
+    // Rendert JSX-Tabelle mit gruppierten und sortierten Einträgen
+    return (
+        <table className="output-filed-table-person">
+            <thead className="output-filed-table-thead-person">
+            <tr>
+                <th>Datum</th>
+                <th>Person</th>
+                <th>Zeit</th>
+                <th>Beschreibung</th>
+                <th>Notizen</th>
+            </tr>
+            </thead>
+            <tbody className="output-filed-table-tbody-person">
+            {/*//yxc old*/}
+            {/*{data.data.map(e => (*/}
+            {data.data && Array.isArray(data.data) && data.data.map(e => (  //yxc
+                <Fragment key={new Date(e.date).toLocaleDateString('de-DE')}>
+                    {
+                        <th rowSpan={JSON.parse(e.eintraege).length +1}>
+                            {new Date(e.date).toLocaleDateString('de-DE')}
+                        </th>
+                    }
+                    {JSON.parse(e.eintraege).map((entry) => (
+                        <tr key={"_" + entry.person + "_" + entry.id + "_" + entry.duration}>
+                            <td>{entry.person}</td>
+                            <td>{entry.duration}</td>
+                            <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                            <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                        </tr>
+                    ))}
+                </Fragment>
+            ))}
+
+            </tbody>
+        </table>
+    )
+
+
+};
+
+export default Table;
+
 /*
 const filterTableByDate = (combinedEntries) => {
     // sortieren nach Datum
@@ -180,4 +218,3 @@ const filterTableByDate = (combinedEntries) => {
 // }
 
 
-export default Table

@@ -4,50 +4,70 @@ import Table from "./Table";
 import ToggleButton from "./ToggleButton";
 import {toast} from "react-toastify";
 
-/**
- * Eine Komponente zur Anzeige von Einträgen aus einem Tagebuch.
- * @param {object} props - Die Eigenschaften (Props) der Komponente.
- * @param {function} props.onreload - Die Funktion zum Auslösen des Triggers.
- * @param {boolean} props.trigger - Der Trigger für das Aktualisieren der Einträge.
- * @returns {JSX.Element} Die gerenderte EintraegeOutput-Komponente.
- */
+/* TODO KOMMENTARRRR*/
 function EintraegeOutput(props){
 
     // Zustand für die geholten Daten der Einträge
     const [data, setData] = useState(null);
     // Zustand und Funktionen für das Filtern der Einträge
-    const [filterPerson, setFilterPerson] = useState(false);
+    const [filter, setFilter] = useState(false);
+
+    const [loading, setLoading] = useState(true); // Zustand für den Ladeindikator
+
+    const fetchData = async (newFilter) => {
+        setLoading(true);
+        console.log("EO_fetchData beginning: filterPers: " + filter);
+        try {
+            let path;
+            const f = newFilter ?? filter;
+            if (f){
+                console.log("Anfrage an: http://localhost:8000/tagebuch/eintraege/personen");
+                path = "http://localhost:8000/tagebuch/eintraege/personen";
+            }else{
+                console.log("Anfrage an: http://localhost:8000/tagebuch/eintraege/datum");
+                path = "http://localhost:8000/tagebuch/eintraege/datum"
+            }
+            console.log("EO_fetchData path: " + path);
+            const response = await fetch(path, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            const jsonData = await response.json();
+            setData(jsonData);
+            console.log("EO_fetchData result: "+JSON.stringify(data));
+        } catch (err) {
+            toast.error("Fehler beim holen der Daten aus der Datenbank");
+        } finally {
+            setLoading(false); // Setze loading auf false, nachdem die Daten geladen wurden oder ein Fehler aufgetreten ist
+        }
+    };
+
 
     // Effekt zum Holen der Einträge beim Laden der Komponente oder bei Änderungen des Triggers
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                let path;
-                if (filterPerson){
-                    console.log("Anfrage an: http://localhost:8000/tagebuch/eintraege/personen");
-                    path = "http://localhost:8000/tagebuch/eintraege/personen";
-                }else{
-                    path = "http://localhost:8000/tagebuch/eintraege/personen"
-                }
-                console.log("PATH: " + path);
-                const response = await fetch(path, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
-                const jsonData = await response.json();
-                setData(jsonData);
-            } catch (err) {
-                toast.error("Fehler beim holen der Daten aus der Datenbank");
-            }
-        };
         fetchData();
+        console.log("EO_useEffect: Fetching the new Data ")
     }, [props.trigger]);
 
 
+    // const filterByPerson = () => {
+    //     console.log("EO_filterByPerson: change filter and call fetchData")
+    //     debugger;
+    //     setFilter(prevFilter => !prevFilter);
+    //     debugger;
+    //     fetchData();
+    // };
+
     const filterByPerson = () => {
-        setFilterPerson(!filterPerson);
+        setFilter(prevFilter => {
+            const newFilter = !prevFilter;
+            fetchData(newFilter);
+            return newFilter;
+        });
+
+        // return !filter; // Rückgabe des neuen Filterwerts für den Toggle Button WICHITG!
     };
 
     // Funktion zum neu Laden der Daten
@@ -69,8 +89,12 @@ function EintraegeOutput(props){
                 </div>
 
                 <div className="output-field" id="enters">
-                    {/*<p>Hello OUTPUT</p>*/}
-                    {data && <Table filter={filterPerson} data={data}/>}
+                    {loading ? (
+                        <p>Laden...</p>
+                    ) : (
+                        data &&  <Table data={data} filter={filter} />
+                    )}
+
                 </div>
             </div>
         </div>
