@@ -67,7 +67,6 @@ function Navbar() {
 
     // Funktion zum Weiterleiten zur Startseite
     const toIndex = () => {
-        //window.location.href = '/';
         navigate("/");
         console.log('Zu Index');
     }

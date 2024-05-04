@@ -2,13 +2,6 @@ import React, {Fragment} from 'react';
 
 /*TODO*/
 function Table(props){
-    // const [filterByPerson, setFilterByPerson] = useState(false);
-    // const {data, filter} = props;
-
-    // if (!props.data || !props.data.data || !Array.isArray(props.data.data)) {
-    //     return null; // Return null if data is not available or in the expected format
-    // }
-
     return(
         <>
             {props.filter ? filterTableByUsername(props) : filterTableByDate(props)}
@@ -22,8 +15,8 @@ const filterTableByUsername = (data) => {
 
     // Rendert JSX-Tabelle mit gruppierten und sortierten Einträgen
     return (
-        <table className="output-filed-table-person">
-            <thead className="output-filed-table-thead-person">
+        <table className="output-filed-table">
+            <thead className="output-filed-table-thead">
             <tr>
                 <th>Person</th>
                 <th>Datum</th>
@@ -32,15 +25,15 @@ const filterTableByUsername = (data) => {
                 <th>Notizen</th>
             </tr>
             </thead>
-            <tbody className="output-filed-table-tbody-person">
+            <tbody className="output-filed-table-tbody">
             {data.data.map(user => (
                 <Fragment key={user.username}>
                     {
-                        <th rowSpan={JSON.parse(user.eintraege).length +1}>
+                        <th className="tableHeader" rowSpan={JSON.parse(user.eintraege).length +1}>
                             {user.username}
                         </th>
                     }
-                    {JSON.parse(user.eintraege) !== null && //yxc
+                    {JSON.parse(user.eintraege) !== null &&
                             JSON.parse(user.eintraege).map((entry) => (
                         <tr key={"_" + entry.id + "_" + entry.date + "_" + entry.duration}>
                             <td>{new Date(entry.date).toLocaleDateString('de-DE')}</td>
@@ -71,8 +64,8 @@ const filterTableByDate = (data) => {
 
     // Rendert JSX-Tabelle mit gruppierten und sortierten Einträgen
     return (
-        <table className="output-filed-table-person">
-            <thead className="output-filed-table-thead-person">
+        <table className="output-filed-table">
+            <thead className="output-filed-table-thead">
             <tr>
                 <th>Datum</th>
                 <th>Person</th>
@@ -81,7 +74,7 @@ const filterTableByDate = (data) => {
                 <th>Notizen</th>
             </tr>
             </thead>
-            <tbody className="output-filed-table-tbody-person">
+            <tbody className="output-filed-table-tbody">
             {/*//yxc old*/}
             {/*{data.data.map(e => (*/}
             {data.data && Array.isArray(data.data) && data.data.map(e => (  //yxc
