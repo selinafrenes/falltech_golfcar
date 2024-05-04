@@ -103,7 +103,7 @@ function Navbar() {
         <>
             <nav className="navbar">
                 <div className="navbar-a-container">
-                    <button id="navbar-logo" onClick={toIndex}><img className="logo_FallTech" src="/assets/images/FallTech_Logo.svg" alt="Logo FallTech"/></button>
+                    <button id="navbar-logo" onClick={toIndex}><img className="logo_FallTech" src="/assets/images/FallTech_Logo.webp" alt="Logo FallTech"/></button>
                 </div>
                 <div className="navbar-a-container">
                     <button id="zumProjektBtn" onClick={() => scrollToElement("zumProjekt")}>Zum Projekt</button>
