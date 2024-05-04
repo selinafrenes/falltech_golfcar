@@ -25,7 +25,7 @@ function Tagebuch() {
                 <h1 id="tagebuchTitel">Tagebuch</h1>
                 <h2>Willkommen {getCookieValue("firstname")}</h2>
                 <TagebuchNavbar />
-                {teammember === "1" ? <EintragForm onreload={reloadData}/> : <></>}
+                {teammember === "1" ? <EintragForm reloadData={reloadData}/> : <></>}
                 <EintraegeOutput onreload={reloadData} trigger={reloadTrigger}/>
             </div>
         </>

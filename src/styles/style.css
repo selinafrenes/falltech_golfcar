@@ -633,7 +633,7 @@ textarea {
 }
 
 .toggle-btn.toggled {
-    background: rgba(233, 30, 99, .4);
+    /*background: rgba(233, 30, 99, .4);*/
     /*border-color: rgba(233, 30, 99, .4);*/
 }
 

@@ -96,7 +96,7 @@
         }
       }
     },
-  "/tagebuch/eintraege/personen": {
+    "/tagebuch/eintraege/personen": {
     "get": {
       "summary": "Abrufen von Tagebucheinträgen gruppiert nach Personen",
       "description": "Liefert alle Tagebucheinträge gruppiert nach der Person, die sie erstellt hat.",

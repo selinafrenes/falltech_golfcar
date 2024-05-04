@@ -18,9 +18,9 @@ function EintraegeOutput(props){
         try {
             let path;
             if (newFilter ?? filter){
-                path = "http://localhost:8000/tagebuch/eintraege/personen";
+                path = "http://10.10.31.11:8000/tagebuch/eintraege/personen";
             }else{
-                path = "http://localhost:8000/tagebuch/eintraege/datum"
+                path = "http://10.10.31.11:8000/tagebuch/eintraege/datum"
             }
             console.log("Anfrage an: " + path);
             const response = await fetch(path, {
@@ -42,8 +42,9 @@ function EintraegeOutput(props){
 
     // Effekt zum Holen der Einträge beim Laden der Komponente oder bei Änderungen des Triggers
     useEffect(() => {
+        console.log("Fetching the new Data ");
         fetchData();
-        console.log("Fetching the new Data ")
+        debugger;
     }, [props.trigger]);
 
 
