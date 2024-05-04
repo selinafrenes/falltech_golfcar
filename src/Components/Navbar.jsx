@@ -3,26 +3,23 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {getCookieValue} from '../script';
-import ToggleButton from "./ToggleButton";
-import {changeMode} from '../App';
-
-const deleteCookie = (cookieName) => {
-    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-}
-
-const logout = () => {
-    deleteCookie('username');
-    deleteCookie('firstname');
-    deleteCookie('lastname');
-    deleteCookie('teammember');
-
-    window.location.href = '/';
-}
 
 function Navbar() {
     const location = useLocation();
     const navigate = useNavigate();
     const [isNavigated, setIsNavigated] = useState("/");
+
+    const deleteCookie = (cookieName) => {
+        document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    }
+    const logout = () => {
+        deleteCookie('username');
+        deleteCookie('firstname');
+        deleteCookie('lastname');
+        deleteCookie('teammember');
+
+        navigate("/");
+    }
 
 // Anmelde Cookie setzten und merken
     function openLoginWindow() {
@@ -42,7 +39,7 @@ function Navbar() {
 
     function textTagebuch (currentLocation) {
         let location = currentLocation;
-        if(location.pathname === '/' || location.pathname === '/index' || location.pathname === '/impressum' || location.pathname === '/datenschutz'){
+        if(location.pathname === '/' || location.pathname === '/impressum' || location.pathname === '/datenschutz' || location.pathname === '/swagger'){
             return (<button id="tagebuchBtn" onClick={openLoginWindow}><p>Tagebuch</p></button>);
         } else if (location.pathname === '/tagebuch'){
             return (<button id="logoutBtn" onClick={logout}><FontAwesomeIcon icon={faRightFromBracket} /></button>);
@@ -63,20 +60,12 @@ function Navbar() {
 
     // Funktion zum Scrollen zu einem bestimmten Element
     const scrollToElement = (elementId) => {
-
         navigate('/');
         setIsNavigated(elementId);
-        /*
-        if(elementId === 'zumProjekt'){
-            window.scroll({ top: 500 });
-            console.log("a")
-        }
-        */
     };
 
     // Funktion zum Weiterleiten zur Startseite
     const toIndex = () => {
-        //window.location.href = '/';
         navigate("/");
         console.log('Zu Index');
     }

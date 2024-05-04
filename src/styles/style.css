@@ -540,11 +540,19 @@ h2 {
     font-size: 30px;
 }
 
+.tableHeader {
+    border-right: ;
+}
+
 #loginForm label, .label-input-text-field {
     display: block;
     margin: 10px 0 5px;
     color: black;
     font-size: 16px;
+}
+
+textarea {
+    resize: none;
 }
 
 .input-text-field {
@@ -648,10 +656,10 @@ h2 {
     transition: left 0.15s ease;
 }
 
-.toggle-btn.toggled {
-    background: rgba(233, 30, 99, .4);
-    /*border-color: rgba(233, 30, 99, .4);*/
-}
+/*.toggle-btn.toggled {*/
+/*    !*background: rgba(233, 30, 99, .4);*!*/
+/*    !*border-color: rgba(233, 30, 99, .4);*!*/
+/*}*/
 
 .toggle-btn:hover {
     border-color: #E91E63;
@@ -663,19 +671,19 @@ h2 {
 
 
 /*Output Tabelle*/
-.output-filed-table-datum, .output-filed-table-person {
+.output-filed-table {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
 }
 
-.output-filed-table-thead-datum, .output-filed-table-thead-person {
+.output-filed-table-thead {
     background: transparent;
     color: black;
     width: 100%;
 }
 
-.output-filed-table-thead-datum th , .output-filed-table-thead-person th {
+.output-filed-table-thead th {
     padding: 10px;
     border: 2px solid #E91E63;
     text-align: center;
@@ -683,18 +691,17 @@ h2 {
     margin: auto;
 }
 
-.output-filed-table-tbody-datum, .output-filed-table-tbody-person {
+.output-filed-table-tbody {
     background: transparent;
     color: black;
     width: 100%;
 }
 
-.output-filed-table-tbody-datum tr, .output-filed-table-tbody-person tr {
+.output-filed-table-tbody tr {
     border: 2px solid #E91E63;
 }
 
-.output-filed-table-tbody-datum tr td, .output-filed-table-tbody-datum tr th
-, .output-filed-table-tbody-person tr td, .output-filed-table-tbody-person tr th{
+.output-filed-table-tbody tr td, .output-filed-table-tbody th {
     border-right: 2px solid #E91E63;
     padding: 10px;
     text-align: center;

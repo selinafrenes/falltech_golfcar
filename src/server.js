@@ -8,8 +8,9 @@ const path = require('path');
 const cors = require("cors");
 const NewEntryController = require("./Controllers/NewEntryController");
 const AuthController = require("./Controllers/AuthController");
-const ListAllEntriesController = require("./Controllers/ListAllEntriesController");
 const PersonsController = require("./Controllers/PersonsController");
+const FilterByPersonController = require("./Controllers/FilterByPersonController");
+const FilterByDateController = require("./Controllers/FilterByDateController");
 
 
 //Api Middlewares
@@ -39,12 +40,21 @@ app.post('/login', (req, res) => {
     AuthController(req, res);
 });
 
-app.get('/tagebuch/entries', (req, res) => {
-    ListAllEntriesController(req, res);
-});
+// app.get('/tagebuch/eintraege', (req, res) => {
+//     ListAllEntriesController(req, res);
+// });
 
 app.get('/personen', (req, res) => {
     PersonsController(req, res);
+});
+
+app.get('/tagebuch/eintraege/personen', (req, res) => {
+    FilterByPersonController(req, res);
+    // FilterByPersonController(req, res);
+});
+
+app.get('/tagebuch/eintraege/datum', (req, res) => {
+    FilterByDateController(req, res);
 });
 
 app.listen(port, () => {

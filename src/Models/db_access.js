@@ -137,23 +137,49 @@ const getAllEnters = async() => {
     }
 }
 
-// TODO TODO TODO TODO TODO TODO TODO
+// TODO kommentare
 const getAllEntersFilterdByPersons = async() => {
     let connection;
     try{
         connection = await pool.getConnection();
         const [combinedResult] = await connection.execute(`
-            SELECT 
-                p.vorname,
-                p.nachname,
-                p.username,
-                e.*,
-                en.*
-            FROM traegt_ein AS e
-            LEFT JOIN Eintrag AS en ON e.id = en.id
-            LEFT JOIN Person AS p ON en.username = p.username;
+            SELECT p.username, GROUP_CONCAT('{"description":"', e.description, '","notes":"', e.notes, '", "date":"', e.date, '","duration":"', e.duration, '"}') AS eintraege
+            FROM Person p
+            INNER JOIN Enters te ON p.username = te.username
+            INNER JOIN Entry e ON te.id = e.id
+            GROUP BY p.username;
         `);
-        return {combinedResult};
+
+        for (let i = 0; i < combinedResult.length; i++) {
+            combinedResult[i].eintraege =  "[" + combinedResult[i].eintraege + "]";
+        }
+        return combinedResult;
+    } catch(error) {
+        throw error;
+    } finally {
+        if (connection) await connection.release();
+    }
+}
+
+const getAllEntersFilterdByDate = async() => {
+    let connection;
+    try{
+        connection = await pool.getConnection();
+        const [combinedResult] = await connection.execute(`
+            SELECT e.date, GROUP_CONCAT('{"person":"', p.username, '","description":"', e.description, '","notes":"', e.notes, '" ,"duration":"', e.duration, '"}') AS eintraege
+            FROM Person p
+            INNER JOIN Enters te ON p.username = te.username
+            INNER JOIN Entry e ON te.id = e.id
+            GROUP BY e.date;
+        `);
+
+        for (let i = 0; i < combinedResult.length; i++) {
+            combinedResult[i].eintraege =  "[" + combinedResult[i].eintraege + "]";
+        }
+
+        console.log(combinedResult);
+
+        return combinedResult;
     } catch(error) {
         throw error;
     } finally {
@@ -162,12 +188,13 @@ const getAllEntersFilterdByPersons = async() => {
 }
 
 
-
 module.exports = {
     userAuthentication,
     createNewEntry,
     getTeamMembers,
-    getAllEnters
+    getAllEnters,
+    getAllEntersFilterdByPersons,
+    getAllEntersFilterdByDate
 };
 
 

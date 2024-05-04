@@ -4,7 +4,7 @@ import {toast} from "react-toastify";
 /**
  * Eine Komponente zum Erstellen neuer Einträge im Tagebuch (Form).
  * @param {object} props - Die Eigenschaften (Props) der EintragForm-Komponente.
- * @param {function} props.onreload - Die Funktion zum Auslösen des Triggers.
+ * @param {function} props.reloadData - Die Funktion zum Auslösen des Triggers und zum Neuladen der Daten.
  * @returns {JSX.Element} Die gerenderte EintragForm-Komponente.
  */
 function EintragForm(props) {
@@ -46,12 +46,11 @@ function EintragForm(props) {
 
             if (jsonData.success) {
                 toast.success('Daten wurden erfolgreich abgespeichert');
-                console.log("S:DATA:" + JSON.stringify(jsonData));
                 event.target.reset();
             } else {
                 toast.error('Fehler beim abspeichern in der Datenbank');
             }
-            // props.onreload();
+            props.reloadData();
         }
     };
 

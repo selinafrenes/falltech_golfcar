@@ -1,12 +1,12 @@
-const {getAllEntersFilterdByPersons} = require("../Models/db_access");
+const {getAllEntersFilterdByDate} = require("../Models/db_access");
 
 /**
  * Controller zur Auflistung aller Einträge.
  * @param {Object} req - Das Anfrageobjekt.
  * @param {Object} res - Das Antwortobjekt.
  */
-const FilterByPersonController = (req, res) => {
-    getAllEntersFilterdByPersons().then(r => {
+const FilterByDateController = (req, res) => {
+    getAllEntersFilterdByDate().then(r => {
         console.log("Result getAllEnters: " + JSON.stringify(r));
         res.status(200).json(r);
     }).catch((e) => {
@@ -14,4 +14,4 @@ const FilterByPersonController = (req, res) => {
         res.status(500).json(e.message);
     });
 }
-module.exports = FilterByPersonController;
+module.exports = FilterByDateController;

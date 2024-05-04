@@ -1,45 +1,63 @@
-
 import { useEffect, useState} from "react";
 import Table from "./Table";
 import ToggleButton from "./ToggleButton";
 import {toast} from "react-toastify";
 
-/**
- * Eine Komponente zur Anzeige von Einträgen aus einem Tagebuch.
- * @param {object} props - Die Eigenschaften (Props) der Komponente.
- * @param {function} props.onreload - Die Funktion zum Auslösen des Triggers.
- * @param {boolean} props.trigger - Der Trigger für das Aktualisieren der Einträge.
- * @returns {JSX.Element} Die gerenderte EintraegeOutput-Komponente.
- */
+/* TODO KOMMENTARRRR*/
 function EintraegeOutput(props){
-
     // Zustand für die geholten Daten der Einträge
-    const [entersData, setEntersData] = useState(null);
+    const [data, setData] = useState(null);
+    // Zustand und Funktionen für das Filtern der Einträge
+    const [filter, setFilter] = useState(false);
+    // Zustand für den Ladeindikator
+    const [loading, setLoading] = useState(true);
+
+    const fetchData = async (newFilter) => {
+        setLoading(true);
+        console.log("EO_fetchData beginning: filterPers: " + filter);
+        try {
+            let path;
+            if (newFilter ?? filter){
+                path = "http://10.10.31.11:8000/tagebuch/eintraege/personen";
+            }else{
+                path = "http://10.10.31.11:8000/tagebuch/eintraege/datum"
+            }
+            console.log("Anfrage an: " + path);
+            const response = await fetch(path, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            const jsonData = await response.json();
+            setData(jsonData);
+        } catch (err) {
+            toast.error("Fehler beim holen der Daten aus der Datenbank");
+        } finally {
+            // Setze loading auf false, nachdem die Daten geladen wurden oder ein Fehler aufgetreten ist
+            setLoading(false);
+        }
+    };
+
 
     // Effekt zum Holen der Einträge beim Laden der Komponente oder bei Änderungen des Triggers
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://10.10.31.11:8000/tagebuch/entries', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
-                const jsonData = await response.json();
-                setEntersData(jsonData);
-            } catch (err) {
-                toast.error("Fehler beim holen der Daten aus der Datenbank");
-            }
-        };
+        console.log("Fetching the new Data ");
         fetchData();
+        debugger;
     }, [props.trigger]);
 
-    // Zustand und Funktionen für das Filtern der Einträge
-    const [filterPerson, setFilterPerson] = useState(false);
+
+
     const filterByPerson = () => {
-        setFilterPerson(!filterPerson);
+        // weil fetchData async ist
+        setFilter(prevFilter => {
+            const newFilter = !prevFilter;
+            fetchData(newFilter);
+            return newFilter;
+        });
     };
+
     // Funktion zum neu Laden der Daten
     const reloadData = () => {
         toast.info("Daten wurden neu geladen");
@@ -57,10 +75,13 @@ function EintraegeOutput(props){
                     <ToggleButton onChange={filterByPerson}/>
                     <p>Person</p>
                 </div>
-
                 <div className="output-field" id="enters">
-                    {/*<p>Hello OUTPUT</p>*/}
-                    {entersData && <Table filter={filterPerson} data={entersData}/>}
+                    {loading ? (
+                        // TODO noch das mit dem Springen fixen
+                        <p>Laden...</p>
+                    ) : (
+                        data &&  <Table data={data} filter={filter} />
+                    )}
                 </div>
             </div>
         </div>
