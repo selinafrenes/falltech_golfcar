@@ -86,13 +86,13 @@ function Home({onLogin}) {
 
                     <h2>Software</h2>
                     <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
-                        <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python.webp"/>
-                        <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.webp"/>
-                        <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.webp"/>
-                        <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/javascript.webp"/>
-                        <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.webp"/>
-                        <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.webp"/>
-                        <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.webp"/>
+                        <Item name="Python" description="Vielseitige Hochsprache für schnelle Entwicklung und Skripting" imagePath="/assets/images/software/python.webp"/>
+                        <Item name="HTML" description="Auszeichnungssprache für Webseitenstruktur" imagePath="/assets/images/software/html.webp"/>
+                        <Item name="CSS" description="Stylesheet-Sprache für das Styling von Webseiten" imagePath="/assets/images/software/css.webp"/>
+                        <Item name="JavaScript" description="Skriptsprache für Webseiteninteraktion" imagePath="/assets/images/software/javascript.webp"/>
+                        <Item name="React" description="JavaScript-Bibliothek für interaktive Benutzeroberflächenentwicklung auf Webseiten" imagePath="/assets/images/software/react.webp"/>
+                        <Item name="Nodejs" description="Laufzeitumgebung für serverseitige JavaScript-Anwendungen" imagePath="/assets/images/software/nodejs.webp"/>
+                        <Item name="MySQL" description="Relationales Datenbankverwaltungssystem für Datenbanken" imagePath="/assets/images/software/mysql.webp"/>
                     </ItemContainer>
                 </div>
                 <div id="aboutUs" className="aboutUS">

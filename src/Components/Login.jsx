@@ -29,7 +29,7 @@ function Login({ onLogin }) {
         });
         const data = await response.json();
         if (data.success) {
-            toast.success('🦄 Anmeldung war erfolgreich.');
+            toast.success('Anmeldung war erfolgreich.');
             const userInfo = data.data;
 
             // Aufrufen der onLogin-Funktion
@@ -44,7 +44,7 @@ function Login({ onLogin }) {
             // Weiterleiten zum Tagebuch
             navigate('/tagebuch');
         } else {
-            toast.error('🦄 Fehler beim Anmelden in der Datenbank');
+            toast.error('Fehler beim Anmelden in der Datenbank');
         }
     };
 
