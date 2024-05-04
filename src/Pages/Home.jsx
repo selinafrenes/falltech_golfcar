@@ -80,7 +80,7 @@ function Home({onLogin}) {
                         <Item name="Batterie Adapter" description="9V Batterie Adapter" imagePath="/assets/images/components/batteryAdapterNEU.webp" />
                         <Item name="Speicher" description="32GB Micro SD" imagePath="/assets/images/components/storageSDNEU.webp" />
                         <Item name="Kugellager" description="5pcs 10x3x4 mm" imagePath="/assets/images/components/kugellagerNEU.webp" />
-                        <Item name="Aufbau" description="Filament" imagePath="/assets/images/components/kugellagerNEU.webp" />
+                        <Item name="Aufbau" description="Filament" imagePath="/assets/images/components/filament.webp" />
                         <Item name="Power Bank" description="Mini Power Bank 5000mAh " imagePath="/assets/images/components/powerBankNEU.webp" />
                     </ItemContainer>
 
