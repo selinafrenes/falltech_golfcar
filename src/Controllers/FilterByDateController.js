@@ -1,7 +1,7 @@
 const {getAllEntersFilterdByDate} = require("../Models/db_access");
 
 /**
- * Controller zur Auflistung aller Einträge.
+ * Controller zur Auflistung aller Einträge sortiert und gruppiert nach Datum.
  * @param {Object} req - Das Anfrageobjekt.
  * @param {Object} res - Das Antwortobjekt.
  */

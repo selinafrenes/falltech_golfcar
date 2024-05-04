@@ -1,5 +1,6 @@
 const {getTeamMembers} = require("../Models/db_access");
 
+// TODO wegtian? weil werd nia verwendet!
 /**
  * Controller zur Abfrage der Teammitglieder.
  * @param {Object} req - Das Anfrageobjekt.

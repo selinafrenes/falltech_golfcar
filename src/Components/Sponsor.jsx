@@ -1,7 +1,7 @@
 import {useRef} from "react";
 
 /**
- * Eine Komponente zur Anzeige von Sponsoreninformationen.
+ * Eine Komponente zur Anzeige des Sponsors.
  * @returns {JSX.Element} Die gerenderte Sponsor-Komponente.
  */
 function Sponsor () {

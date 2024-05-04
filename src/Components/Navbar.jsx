@@ -4,14 +4,27 @@ import {faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {getCookieValue} from '../script';
 
+/**
+ * Eine Navigationsleistenkomponente für die Website.
+ * Enthält Links zur Startseite, zum Projekt, zum Team, zum Sponsor und zum Tagebuch.
+ * @returns {JSX.Element} Die gerenderte Navbar-Komponente.
+ */
 function Navbar() {
     const location = useLocation();
     const navigate = useNavigate();
     const [isNavigated, setIsNavigated] = useState("/");
 
+    /**
+     * Löscht einen Cookie anhand seines Namens.
+     * @param {string} cookieName - Der Name des Cookies, der gelöscht werden soll.
+     */
     const deleteCookie = (cookieName) => {
         document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     }
+
+    /**
+     * Loggt den Benutzer aus, indem die entsprechenden Cookies gelöscht werden und er zur Startseite weitergeleitet wird.
+     */
     const logout = () => {
         deleteCookie('username');
         deleteCookie('firstname');
@@ -21,7 +34,9 @@ function Navbar() {
         navigate("/");
     }
 
-// Anmelde Cookie setzten und merken
+    /**
+     * Öffnet das Anmeldefenster oder leitet den Benutzer zum Tagebuch weiter, je nach aktuellem Standort.
+     */
     function openLoginWindow() {
         // Öffne das Anmeldefenster nur, wenn der Benutzer nicht auf der Homepage ist oder der Anmelde-Cookie nicht gesetzt ist
 
@@ -37,6 +52,11 @@ function Navbar() {
         }
     }
 
+    /**
+     * Rendert den Text/das Symbol für den Tagebuch-Button je nach Standort.
+     * @param {Object} currentLocation - Der aktuelle Standort der Seite.
+     * @returns {JSX.Element} - Ein Button-Element für das Tagebuch oder den Logout.
+     */
     function textTagebuch (currentLocation) {
         let location = currentLocation;
         if(location.pathname === '/' || location.pathname === '/impressum' || location.pathname === '/datenschutz' || location.pathname === '/swagger'){
@@ -46,7 +66,9 @@ function Navbar() {
         }
     }
 
-    // Funktion zum Scrollen zum entsprechenden Abschnitt
+    /**
+     * Scrollt zum Abschnitt mit der angegebenen ID, wenn `isNavigated` sich ändert.
+     */
     useEffect(() => {
         if (isNavigated !== "/") {
             const element = document.getElementById(isNavigated);
@@ -59,13 +81,18 @@ function Navbar() {
         }
     }, [isNavigated]);
 
-    // Funktion zum Scrollen zu einem bestimmten Element
+    /**
+     * Scrollt zur angegebenen Seitelement-ID und setzt den Zustand für das Scrollen.
+     * @param {string} elementId - Die ID des Elements, zu dem gescrollt werden soll.
+     */
     const scrollToElement = (elementId) => {
         navigate('/');
         setIsNavigated(elementId);
     };
 
-    // Funktion zum Weiterleiten zur Startseite
+    /**
+     * Leitet den Benutzer zur Startseite weiter.
+     */
     const toIndex = () => {
         navigate("/");
         console.log('Zu Index');
