@@ -693,3 +693,7 @@ textarea {
 .tableHeader {
     background-color: rgba(233, 30, 99, .2);
 }
+
+.tableHeader:hover {
+    cursor: pointer;
+}
