@@ -3,13 +3,14 @@ const {getTotalWorkingTime} = require("../Models/db_access");
 const WorkingTimeController = (req, res) => {
     getTotalWorkingTime()
         .then(response => {
-            console.log("RESPONSE: " + JSON.stringify(response));
-            res.json({response});
-            const r = JSON.parse(response);
             let time = 0;
-            for (let i = 0; i < r.length; i++) {
-                time += r[i].TotalDuration;
+            for (const r of response) {
+                console.log(r);
+                if (r.TotalDuration) console.log("TRUEEEEE");
+                else console.log("FALSEEEEEEEEEEEEEEE");
+                time += r.TotalDuration;
             }
+
             res.status(200).json({totalTime: time})
         })
         .catch((e) => {
