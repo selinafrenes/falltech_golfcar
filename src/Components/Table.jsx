@@ -26,37 +26,38 @@ function Table(props){
 const filterTableByUsername = (data) => {
     // Rendert JSX-Tabelle mit gruppierten und sortierten Einträgen
     return (
-        <table className="output-filed-table">
-            <thead className="output-filed-table-thead">
-            <tr>
-                <th>Person</th>
-                <th>Datum</th>
-                <th>Zeit</th>
-                <th>Beschreibung</th>
-                <th>Notizen</th>
-            </tr>
-            </thead>
-            <tbody className="output-filed-table-tbody">
-            {data.data.map(user => (
+        data.data.map(user => (
+            <table className="output-filed-table">
                 <Fragment key={user.username}>
                     {
-                        <th className="tableHeader" rowSpan={JSON.parse(user.eintraege).length +1}>
+                        <thead className="output-filed-table-thead">
+                        <th className="tableHeader" colSpan={4}>
                             {user.username}
                         </th>
-                    }
-                    {JSON.parse(user.eintraege) !== null &&
-                            JSON.parse(user.eintraege).map((entry) => (
-                        <tr key={"_" + entry.id + "_" + entry.date + "_" + entry.duration}>
-                            <td>{new Date(entry.date).toLocaleDateString('de-DE')}</td>
-                            <td>{entry.duration}</td>
-                            <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-                            <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                        <tr>
+                            <th>Datum</th>
+                            <th>Zeit</th>
+                            <th>Beschreibung</th>
+                            <th>Notizen</th>
                         </tr>
-                    ))}
+                        </thead>
+                    }
+
+                    {<tbody className="output-filed-table-tbody">
+                    {JSON.parse(user.eintraege) !== null &&
+                        JSON.parse(user.eintraege).map((entry) => (
+                            <tr key={"_" + entry.id + "_" + entry.date + "_" + entry.duration}>
+                                <td>{new Date(entry.date).toLocaleDateString('de-DE')}</td>
+                                <td>{entry.duration}</td>
+                                <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                                <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                    }
                 </Fragment>
-            ))}
-            </tbody>
-        </table>
+            </table>
+        ))
     )
     };
 
