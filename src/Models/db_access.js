@@ -127,31 +127,31 @@ const getTeamMembers = async() => {
     }
 }
 
-// /**
-//  * Funktion zum Abrufen aller Einträge aus dem Tagebuch aus der Datenbank.
-//  * @async
-//  * @returns {Promise<Object>} - Ein Objekt mit den Einträgen aus Enters und Entry-Tabellen.
-//  * @throws {Error} - Ein Fehler, falls die Operation fehlschlägt.
-//  */
-// const getAllEnters = async() => {
-//     let connection;
-//     try{
-//         // Verbindung zur Datenbank herstellen
-//         connection = await pool.getConnection();
-//         const [entersResult] = await connection.execute(
-//             'SELECT * FROM Enters;'
-//         );
-//         const [entryResult] = await connection.execute(
-//             'SELECT * FROM Entry;'
-//         );
-//     return {entersResult, entryResult};
-//     } catch(error) {
-//         throw error;
-//     } finally {
-//         // Verbindung freigeben, wenn sie vorhanden ist
-//         if (connection) await connection.release();
-//     }
-// }
+// TODO yxc Kommentare
+const getTotalWorkingTime = async() => {
+    let connection;
+    try{
+        // Verbindung zur Datenbank herstellen
+        connection = await pool.getConnection();
+
+        // SQL-Abfrage zum Abrufen der Einträge gruppiert nach Personen ausführen
+        const [time] = await connection.execute(`
+            SELECT p.Username, SUM(e.Duration) AS TotalDuration
+            FROM Person p
+            JOIN Enters en ON p.Username = en.Username
+            JOIN Entry e ON en.ID = e.ID
+            GROUP BY p.Username;
+        `);
+
+        // Die gefilterten und gruppierten Einträge zurückgeben
+        return time;
+    } catch(error) {
+        throw error;
+    } finally {
+        // Verbindung freigeben, wenn sie vorhanden ist
+        if (connection) await connection.release();
+    }
+}
 
 /**
  * Funktion zum Abrufen aller Einträge, gruppiert nach Personen.
@@ -233,7 +233,8 @@ module.exports = {
     createNewEntry,
     getTeamMembers,
     getAllEntersFilterdByPersons,
-    getAllEntersFilterdByDate
+    getAllEntersFilterdByDate,
+    getTotalWorkingTime
 };
 
 
