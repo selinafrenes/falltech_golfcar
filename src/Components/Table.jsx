@@ -75,26 +75,24 @@ const filterTableByUsername = (data) => {
 const filterTableByDate = (data) => {
     // Rendert JSX-Tabelle mit gruppierten und sortierten Einträgen
     return (
-        <table className="output-filed-table">
-            <thead className="output-filed-table-thead">
-            <tr>
-                <th>Datum</th>
-                <th>Person</th>
-                <th>Zeit</th>
-                <th>Beschreibung</th>
-                <th>Notizen</th>
-            </tr>
-            </thead>
-            <tbody className="output-filed-table-tbody">
-            {/*//yxc old*/}
-            {/*{data.data.map(e => (*/}
-            {data.data && Array.isArray(data.data) && data.data.map(e => (  //yxc
+            data.data.map(e => (
+            <table className="output-filed-table">
                 <Fragment key={new Date(e.date).toLocaleDateString('de-DE')}>
                     {
-                        <th rowSpan={JSON.parse(e.eintraege).length +1}>
+                        <thead className="output-filed-table-thead">
+                        <th colSpan={4}>
                             {new Date(e.date).toLocaleDateString('de-DE')}
                         </th>
+                        <tr>
+                            <th>Person</th>
+                            <th>Zeit</th>
+                            <th>Beschreibung</th>
+                            <th>Notizen</th>
+                        </tr>
+                        </thead>
+
                     }
+                    <tbody className="output-filed-table-tbody">
                     {JSON.parse(e.eintraege).map((entry) => (
                         <tr key={"_" + entry.person + "_" + entry.id + "_" + entry.duration}>
                             <td>{entry.person}</td>
@@ -103,10 +101,10 @@ const filterTableByDate = (data) => {
                             <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
                         </tr>
                     ))}
+                    </tbody>
                 </Fragment>
-            ))}
-            </tbody>
-        </table>
+            </table>
+            ))
     )
 };
 
