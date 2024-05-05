@@ -66,7 +66,7 @@ function Navbar() {
         }
     }
 
-    /**
+    /*
      * Scrollt zum Abschnitt mit der angegebenen ID, wenn `isNavigated` sich ändert.
      */
     useEffect(() => {
