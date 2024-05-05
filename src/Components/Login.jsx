@@ -20,7 +20,7 @@ function Login({ onLogin }) {
      */
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch('http://10.10.31.11:8000/login', {
+        const response = await fetch('http://10.10.31.11:8000/api/v1/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

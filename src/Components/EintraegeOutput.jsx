@@ -28,9 +28,9 @@ function EintraegeOutput(props){
         try {
             let path;
             if (newFilter ?? filter){
-                path = "http://10.10.31.11:8000/tagebuch/eintraege/personen";
+                path = "http://10.10.31.11:8000/api/v1/diary/entries/grouped-by-user";
             }else{
-                path = "http://10.10.31.11:8000/tagebuch/eintraege/datum"
+                path = "http://10.10.31.11:8000/api/v1/diary/entries/grouped-by-date"
             }
             console.log("Anfrage an: " + path);
             const response = await fetch(path, {

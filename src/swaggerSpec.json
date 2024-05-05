@@ -21,7 +21,7 @@
         }
       }
     },
-    "/login": {
+    "/api/v1/auth/login": {
       "post": {
         "summary": "Login eines Benutzers",
         "description": "Authentifiziert einen Benutzer mit Benutzername und Passwort.",
@@ -68,7 +68,7 @@
         }
       }
     },
-    "/tagebuch/submit": {
+    "/api/v1/diary/entries": {
       "post": {
         "summary": "Erstellt neuen Tagebucheintrag",
         "description": "Erstellt einen neuen Tagebucheintrag in der Datenbank.",
@@ -96,7 +96,7 @@
         }
       }
     },
-    "/tagebuch/eintraege/personen": {
+    "/api/v1/diary/entries/grouped-by-user": {
     "get": {
       "summary": "Abrufen von Tagebucheinträgen gruppiert nach Personen",
       "description": "Liefert alle Tagebucheinträge gruppiert nach der Person, die sie erstellt hat.",
@@ -130,7 +130,7 @@
       }
     }
   },
-    "/tagebuch/eintraege/datum": {
+    "/api/v1/diary/entries/grouped-by-date": {
       "get": {
         "summary": "Abrufen von Tagebucheinträgen gruppiert nach Datum",
         "description": "Liefert alle Tagebucheinträge gruppiert nach dem Erstellungsdatum.",

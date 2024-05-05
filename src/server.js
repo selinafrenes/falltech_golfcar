@@ -32,12 +32,12 @@ app.get('/', function (req, res){
     res.sendFile(path.join(__dirname, 'build', '..', 'index.html'));
 });
 
-app.post('/tagebuch/submit', function (req, res){
+app.post('/api/v1/diary/entries', function (req, res){
     NewEntryController(req, res);
 });
 
 // Routen-Handler für das Überprüfen des Passworts
-app.post('/login', (req, res) => {
+app.post('/api/v1/auth/login', (req, res) => {
     AuthController(req, res);
 });
 
@@ -45,20 +45,21 @@ app.post('/login', (req, res) => {
 //     ListAllEntriesController(req, res);
 // });
 
-app.get('/personen', (req, res) => {
+//TODO evtl löschen?
+app.get('/api/v1/users', (req, res) => {
     PersonsController(req, res);
 });
 
-app.get('/tagebuch/eintraege/personen', (req, res) => {
+app.get('/api/v1/diary/entries/grouped-by-user', (req, res) => {
     FilterByPersonController(req, res);
     // FilterByPersonController(req, res);
 });
 
-app.get('/tagebuch/eintraege/datum', (req, res) => {
+app.get('/api/v1/diary/entries/grouped-by-date', (req, res) => {
     FilterByDateController(req, res);
 });
 
-app.get('/tagebuch/totalworkingtime', (req, res) => {
+app.get('/api/v1/statistics/work-time', (req, res) => {
     WorkingTimeController(req, res);
 });
 
