@@ -80,7 +80,7 @@ const filterTableByDate = (data) => {
                 <Fragment key={new Date(e.date).toLocaleDateString('de-DE')}>
                     {
                         <thead className="output-filed-table-thead">
-                        <th colSpan={4}>
+                        <th className="tableHeader" colSpan={4}>
                             {new Date(e.date).toLocaleDateString('de-DE')}
                         </th>
                         <tr>

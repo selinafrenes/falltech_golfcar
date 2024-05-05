@@ -353,11 +353,11 @@ h1 {
 
 .checkbox-legend {
     font-weight: bold;
-    color: #007BFF;
+    color: var(--ft_dunkelesPink);
 }
 
 .checkbox-container {
-    border: 1px solid #ddd;
+    border: 1px solid var(--ft_dunkelesPink);
     border-radius: 4px;
     padding: 10px;
     margin-bottom: 16px;
@@ -688,4 +688,8 @@ textarea {
     padding: 10px;
     text-align: center;
     word-wrap: break-word;
+}
+
+.tableHeader {
+    background-color: rgba(233, 30, 99, .2);
 }
