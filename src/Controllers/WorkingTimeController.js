@@ -1,20 +1,21 @@
 const {getTotalWorkingTime} = require("../Models/db_access");
-// TODO yxc kommi
+
+/**
+ * Controller-Funktion zum Abrufen der Gesamtarbeitszeit und Senden der Antwort an den Client.
+ * @param {Object} req - Das Anfrageobjekt.
+ * @param {Object} res - Das Antwortobjekt.
+ */
 const WorkingTimeController = (req, res) => {
     getTotalWorkingTime()
         .then(response => {
             let time = 0;
             for (const r of response) {
-                console.log(r);
-                if (r.TotalDuration) console.log("TRUEEEEE");
-                else console.log("FALSEEEEEEEEEEEEEEE");
                 time += r.TotalDuration;
             }
-
             res.status(200).json({totalTime: time})
         })
-        .catch((e) => {
-            res.status(500).json({ success: false, message: e.message });
+        .catch(() => {
+            res.status(500).json({message: "Internal Server Error: Fehler beim Laden der Daten"});
             //res.status(500).json({ success: false, message: 'Interner Serverfehler: Anmeldeversuch fehlgeschlagen' });
         });
 }

@@ -127,7 +127,13 @@ const getTeamMembers = async() => {
     }
 }
 
-// TODO yxc Kommentare
+/**
+ * Funktion zum Abrufen der gesamten Arbeitszeit pro Benutzer aus der Datenbank.
+ * @async
+ * @returns {Promise<Array<{Username: string, TotalDuration: number}>>} Ein Array von Objekten,
+ *          das die Benutzernamen und ihre gesamte Arbeitszeit enthält.
+ * @throws {Error} Ein Fehler, der während der Ausführung der Datenbankabfrage auftritt.
+ */
 const getTotalWorkingTime = async() => {
     let connection;
     try{

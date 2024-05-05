@@ -7,11 +7,9 @@ const {getAllEntersFilterdByDate} = require("../Models/db_access");
  */
 const FilterByDateController = (req, res) => {
     getAllEntersFilterdByDate().then(r => {
-        console.log("Result getAllEnters: " + JSON.stringify(r));
         res.status(200).json(r);
-    }).catch((e) => {
-        console.error(e.message);
-        res.status(500).json(e.message);
+    }).catch(() => {
+        res.status(500).json("Internal Server Error: Fehler beim Holen der Daten");
     });
 }
 module.exports = FilterByDateController;

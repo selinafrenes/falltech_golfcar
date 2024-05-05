@@ -14,7 +14,7 @@ const NewEntryController = (req, res) => {
             res.status(201).json({ success: true });
         })
         .catch(() => {
-            res.status(500).json({ success: false , message: "Internal server error"});
+            res.status(500).json({ success: false , message: "Internal server error: Fehler beim Abspeichern"});
         });
 }
 module.exports = NewEntryController;
