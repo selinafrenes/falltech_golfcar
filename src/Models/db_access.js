@@ -42,6 +42,8 @@ const userAuthentication = async (username, userPassword) => {
             // Benutzerdaten und Passwort aus dem Ergebnis extrahieren
             const { password, ...data } = await results[0];
 
+            console.log("Passwort: " + password + "__userpassword: " + userPassword);
+            console.log("Result[0]: "+ results[0]);
             // Passwort mit dem gehashten Passwort in der Datenbank vergleichen
             if (results[0] && bcrypt.compare(userPassword, password)) {
                 // Authentifizierung erfolgreich, Benutzerdaten zurückgeben
