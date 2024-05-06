@@ -20,7 +20,7 @@ function Login({ onLogin }) {
      */
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch('http://10.10.31.11:8000/login', {
+        const response = await fetch('http://185.5.199.33:8080/api/v1/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,22 +29,27 @@ function Login({ onLogin }) {
         });
         const data = await response.json();
         if (data.success) {
-            toast.success('🦄 Anmeldung war erfolgreich.');
+            toast.success('Anmeldung war erfolgreich.');
             const userInfo = data.data;
 
             // Aufrufen der onLogin-Funktion
             onLogin();
 
+
+            // Unterscheidung production und development
+            let domain = "185.5.199.33"//"10.10.31.11";
+            if (process.env.NODE_ENV === 'development') domain = "localhost"
+            console.log("UMGEBUNG: " + domain);
             // Cookies speichern
-            if (userInfo.username) document.cookie = "username=" + userInfo.username + "; max-age=86400; path=/; domain=localhost";
-            if (userInfo.firstname) document.cookie = "firstname=" + userInfo.firstname + "; max-age=86400; path=/; domain=localhost";
-            if (userInfo.lastname) document.cookie = "lastname=" + userInfo.lastname + "; max-age=86400; path=/; domain=localhost";
-            if (userInfo.teammember) document.cookie = "teammember=" + userInfo.teammember + "; max-age=86400; path=/; domain=localhost";
+            if (userInfo.username) document.cookie = "username=" + userInfo.username + "; max-age=86400; path=/; domain=" + domain;
+            if (userInfo.firstname) document.cookie = "firstname=" + userInfo.firstname + "; max-age=86400; path=/; domain=" + domain;
+            if (userInfo.lastname) document.cookie = "lastname=" + userInfo.lastname + "; max-age=86400; path=/; domain=" + domain;
+            if (userInfo.teammember) document.cookie = "teammember=" + userInfo.teammember + "; max-age=86400; path=/; domain=" + domain;
 
             // Weiterleiten zum Tagebuch
             navigate('/tagebuch');
         } else {
-            toast.error('🦄 Fehler beim Anmelden in der Datenbank');
+            toast.error('Fehler beim Anmelden in der Datenbank');
         }
     };
 

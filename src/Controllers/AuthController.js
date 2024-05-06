@@ -10,7 +10,6 @@ const AuthController = (req, res) => {
     userAuthentication(username, password)
         .then(response => {
             if (response && response.username){
-                console.log("response --> " + response)
                 // TODO Cookie evt wieder setzten und bei client löschen (logout) und automatisch anmelden?
                 // res.cookie()
                 // res.cookie('username', username, { maxAge: 24*60*60*1000, path: '/', domain: 'localhost' });
@@ -21,9 +20,8 @@ const AuthController = (req, res) => {
             }
             res.send();
         })
-        .catch((e) => {
-            res.status(500).json({ success: false, message: e.message });
-            //res.status(500).json({ success: false, message: 'Interner Serverfehler: Anmeldeversuch fehlgeschlagen' });
+        .catch(() => {
+            res.status(500).json({ success: false, message: 'Interner Serverfehler: Anmeldeversuch fehlgeschlagen' });
         });
 }
 module.exports = AuthController;

@@ -7,8 +7,7 @@
  * @param {string} props.altText - Der alternative Text für das Bild der Slide.
  * @returns {JSX.Element} Die gerenderte Slide-Komponente.
  */
-export function Slide(props) {
-    const {heading, text, image, altText} = props;
+export function Slide({heading, text, image, altText}) {
 
      // Rendern der Folie
     return(

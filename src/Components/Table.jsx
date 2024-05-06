@@ -1,6 +1,12 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 
-/*TODO*/
+/**
+ * Eine Tabelle zum Anzeigen von Tagebucheinträgen.
+ * @param {Object} props - Die Eigenschaften (Props) der Tabelle.
+ * @param {Object[]} props.data - Die Daten der Einträge.
+ * @param {boolean} props.filter - Der Filterwert für die Tabelle.
+ * @returns {JSX.Element} Die gerenderte Table-Komponente.
+ */
 function Table(props){
     return(
         <>
@@ -9,205 +15,119 @@ function Table(props){
     )
 }
 
-// TODO OOOO kommentare!!!
+/**
+ * Rendert eine Tabelle mit gruppierten und sortierten Einträgen nach Benutzername.
+ * @param {Object} data - Die Daten der Einträge.
+ * @param {Object[]} data.data - Die Daten der Einträge.
+ * @param {string} data.data[].username - Der Benutzername.
+ * @param {string} data.data[].eintraege - Die Einträge des Benutzers als JSON-String.
+ * @returns {JSX.Element} Die gerenderte Tabelle.
+ */
 const filterTableByUsername = (data) => {
-    console.log("TAB_filterByUsername");
 
-    // Rendert JSX-Tabelle mit gruppierten und sortierten Einträgen
-    return (
-        <table className="output-filed-table">
-            <thead className="output-filed-table-thead">
-            <tr>
-                <th>Person</th>
-                <th>Datum</th>
-                <th>Zeit</th>
-                <th>Beschreibung</th>
-                <th>Notizen</th>
-            </tr>
-            </thead>
-            <tbody className="output-filed-table-tbody">
-            {data.data.map(user => (
-                <Fragment key={user.username}>
-                    {
-                        <th className="tableHeader" rowSpan={JSON.parse(user.eintraege).length +1}>
-                            {user.username}
-                        </th>
-                    }
-                    {JSON.parse(user.eintraege) !== null &&
-                            JSON.parse(user.eintraege).map((entry) => (
-                        <tr key={"_" + entry.id + "_" + entry.date + "_" + entry.duration}>
-                            <td>{new Date(entry.date).toLocaleDateString('de-DE')}</td>
-                            <td>{entry.duration}</td>
-                            <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-                            <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-                        </tr>
-                    ))}
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [isExpanded, setIsExpanded] = useState("");
 
-                </Fragment>
-            ))}
-            </tbody>
-        </table>
-    )
-
+    const toggleExpand = (username) => {
+        setIsExpanded(username === isExpanded ? "" : username);
     };
 
-
-
-
-// todo kommentareeeeeeee
-const filterTableByDate = (data) => {
-    // for (let i = 0; i < data.length; i++) {
-    //     data[i].eintraege = JSON.parse(data[i].eintraege);
-    // }
-
-    console.log("TAB_filterByDate");
-
-    // Rendert JSX-Tabelle mit gruppierten und sortierten Einträgen
     return (
-        <table className="output-filed-table">
-            <thead className="output-filed-table-thead">
-            <tr>
-                <th>Datum</th>
-                <th>Person</th>
-                <th>Zeit</th>
-                <th>Beschreibung</th>
-                <th>Notizen</th>
-            </tr>
-            </thead>
-            <tbody className="output-filed-table-tbody">
-            {/*//yxc old*/}
-            {/*{data.data.map(e => (*/}
-            {data.data && Array.isArray(data.data) && data.data.map(e => (  //yxc
+        data.data.map(user => (
+            <table className="output-filed-table">
+                <Fragment key={user.username}>
+                    <thead className="output-filed-table-thead">
+                    <th className="tableHeader" colSpan={4} onClick={() => toggleExpand(user.username)}>
+                        {user.username}
+                    </th>
+                    {isExpanded === user.username && (
+                        <tr>
+                            <th>Datum</th>
+                            <th>Zeit</th>
+                            <th>Beschreibung</th>
+                            <th>Notizen</th>
+                        </tr>
+                    )}
+                    </thead>
+
+                    {isExpanded === user.username && (
+                        <tbody className="output-filed-table-tbody">
+                        {JSON.parse(user.eintraege) !== null &&
+                            JSON.parse(user.eintraege).map((entry) => (
+                                <tr key={"_" + entry.id + "_" + entry.date + "_" + entry.duration}>
+                                    <td>{new Date(entry.date).toLocaleDateString('de-DE')}</td>
+                                    <td>{entry.duration}</td>
+                                    <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                                    <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    )}
+                </Fragment>
+            </table>
+        ))
+    );
+};
+
+
+
+
+/**
+ * Rendert eine Tabelle mit gruppierten und sortierten Einträgen nach Datum.
+ * @param {Object} data - Die Daten der Einträge.
+ * @param {Object[]} data.data - Die Daten der Einträge.
+ * @param {string} data.data[].date - Das Datum der Einträge.
+ * @param {string} data.data[].eintraege - Die Einträge des Datums als JSON-String.
+ * @returns {JSX.Element} Die gerenderte Tabelle.
+ */
+const filterTableByDate = (data) => {
+    // Rendert JSX-Tabelle mit gruppierten und sortierten Einträgen
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [isExpanded, setIsExpanded] = useState("");
+
+    const toggleExpand = (date) => {
+        setIsExpanded(date === isExpanded ? "" : date);
+    };
+    return (
+            data.data.map(e => (
+            <table className="output-filed-table">
                 <Fragment key={new Date(e.date).toLocaleDateString('de-DE')}>
                     {
-                        <th rowSpan={JSON.parse(e.eintraege).length +1}>
+                        <thead className="output-filed-table-thead">
+                        <th className="tableHeader" colSpan={4} onClick={() => toggleExpand(e.date)}>
                             {new Date(e.date).toLocaleDateString('de-DE')}
                         </th>
+                        {isExpanded === e.date && (
+                            <tr>
+                                <th>Person</th>
+                                <th>Zeit</th>
+                                <th>Beschreibung</th>
+                                <th>Notizen</th>
+                            </tr>
+                        )}
+
+                        </thead>
+
                     }
-                    {JSON.parse(e.eintraege).map((entry) => (
-                        <tr key={"_" + entry.person + "_" + entry.id + "_" + entry.duration}>
-                            <td>{entry.person}</td>
-                            <td>{entry.duration}</td>
-                            <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-                            <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-                        </tr>
-                    ))}
+
+                    {isExpanded === e.date && (
+                        <tbody className="output-filed-table-tbody">
+                        {JSON.parse(e.eintraege).map((entry) => (
+                                <tr key={"_" + entry.person + "_" + entry.id + "_" + entry.duration}>
+                                    <td>{entry.person}</td>
+                                    <td>{entry.duration}</td>
+                                    <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                                    <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    )}
+
                 </Fragment>
-            ))}
-
-            </tbody>
-        </table>
+            </table>
+            ))
     )
-
-
 };
 
 export default Table;
-
-/*
-const filterTableByDate = (combinedEntries) => {
-    // sortieren nach Datum
-    combinedEntries.sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        return dateA.getTime() - dateB.getTime();
-    });
-
-    // nach Datum gruppieren
-    const groupedEntries = combinedEntries.reduce((acc, entry) => {
-        const date = entry.date;
-        if (!acc.hasOwnProperty(date)) {
-            acc[date] = [];
-        }
-        acc[date].push(entry);
-        return acc;
-    }, {});
-
-    // Rendert JSX-Tabelle mit gruppierten Einträgen nach Datum sortiert
-    return(
-        <table className="output-filed-table">
-            <thead className="output-filed-table-thead">
-            <tr>
-                <th>Datum</th>
-                <th>Person</th>
-                <th>Zeit</th>
-                <th>Beschreibung</th>
-                <th>Notiz</th>
-            </tr>
-            </thead>
-            <tbody className="output-filed-table-tbody">
-            {Object.entries(groupedEntries).map(([date, entries]) => (
-                <tr key={date}>
-                    <th colSpan="6">{date}</th>
-                    {/* Group header }
-                    {entries.map((entry) => (
-                        <tr key={entry.id}>
-                            <td>{entry.username}</td>
-                            <td>{entry.duration}</td>
-                            <td>{entry.description}</td>
-                            <td>{entry.notes}</td>
-                        </tr>
-                    ))}
-                </tr>
-            ))}
-            </tbody>
-        </table>);
-}
-*/
-
-
-
-
-// const filterTableByDate = (combinedEntries) => {
-    // sortieren nach Datum
-    // combinedEntries.sort((a, b) => {
-    //     const dateA = new Date(a.date);
-    //     const dateB = new Date(b.date);
-    //     return dateA.getTime() - dateB.getTime();
-    // });
-    //
-    // // nach Datum gruppieren
-    // const groupedEntries = combinedEntries.reduce((acc, entry) => {
-    //     const date = entry.date;
-    //     if (!acc.hasOwnProperty(date)) {
-    //         acc[date] = [];
-    //     }
-    //     acc[date].push(entry);
-    //     return acc;
-    // }, {});
-
-    // Rendert JSX-Tabelle mit gruppierten Einträgen nach Datum sortiert
-    // return (
-    //     <table className="output-filed-table-datum">
-    //         <thead className="output-filed-table-thead-datum">
-    //         <tr>
-    //             <th>Datum</th>
-    //             <th>Person</th>
-    //             <th>Zeit</th>
-    //             <th>Beschreibung</th>
-    //             <th>Notiz</th>
-    //         </tr>
-    //         </thead>
-    //         <tbody className="output-filed-table-tbody-datum">
-    //         {Object.entries(groupedEntries).map(([date, entries]) => (
-    //             entries.map((entry, index) => (
-    //                 <tr key={`${entry.id}-${index}`}>
-    //                     {index === 0 && (
-    //                         <th rowSpan={entries.length}>
-    //                             {new Date(date).toLocaleDateString('de-DE')}
-    //                         </th>
-    //                     )}
-    //                     <td>{entry.username}</td>
-    //                     <td>{entry.duration}</td>
-    //                     <td>{entry.description.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-    //                     <td>{entry.notes.replaceAll(/'/g, '').replaceAll(/\\n/g, ' ')}</td>
-    //                 </tr>
-    //             ))
-    //         ))}
-    //         </tbody>
-    //     </table>
-    // );
-
-// }
-
-

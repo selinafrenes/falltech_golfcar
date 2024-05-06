@@ -80,19 +80,19 @@ function Home({onLogin}) {
                         <Item name="Batterie Adapter" description="9V Batterie Adapter" imagePath="/assets/images/components/batteryAdapterNEU.webp" />
                         <Item name="Speicher" description="32GB Micro SD" imagePath="/assets/images/components/storageSDNEU.webp" />
                         <Item name="Kugellager" description="5pcs 10x3x4 mm" imagePath="/assets/images/components/kugellagerNEU.webp" />
-                        <Item name="Aufbau" description="Filament" imagePath="/assets/images/components/kugellagerNEU.webp" />
+                        <Item name="Aufbau" description="Filament" imagePath="/assets/images/components/filament.webp" />
                         <Item name="Power Bank" description="Mini Power Bank 5000mAh " imagePath="/assets/images/components/powerBankNEU.webp" />
                     </ItemContainer>
 
                     <h2>Software</h2>
                     <ItemContainer classname="unserSoftwareContainer" innerClassname="unsereSoftware">
-                        <Item name="Python" description="Stylesheet" imagePath="/assets/images/software/python.webp"/>
-                        <Item name="HTML" description="Stylesheet" imagePath="/assets/images/software/html.webp"/>
-                        <Item name="CSS" description="Aussehen und Layout von Webseite zu gestalten" imagePath="/assets/images/software/css.webp"/>
-                        <Item name="JavaScript" description="Stylesheet" imagePath="/assets/images/software/javascript.webp"/>
-                        <Item name="React" description="JavaScript-Bibliothek, für die Entwicklung von Benutzeroberflächen" imagePath="/assets/images/software/react.webp"/>
-                        <Item name="Nodejs" description="Stylesheet" imagePath="/assets/images/software/nodejs.webp"/>
-                        <Item name="MySQL" description="relationales Datenbankverwaltungssystem" imagePath="/assets/images/software/mysql.webp"/>
+                        <Item name="Python" description="Vielseitige Hochsprache für schnelle Entwicklung und Skripting" imagePath="/assets/images/software/python.webp"/>
+                        <Item name="HTML" description="Auszeichnungssprache für Webseitenstruktur" imagePath="/assets/images/software/html.webp"/>
+                        <Item name="CSS" description="Stylesheet-Sprache für das Styling von Webseiten" imagePath="/assets/images/software/css.webp"/>
+                        <Item name="JavaScript" description="Skriptsprache für Webseiteninteraktion" imagePath="/assets/images/software/javascript.webp"/>
+                        <Item name="React" description="JavaScript-Bibliothek für interaktive Benutzeroberflächenentwicklung auf Webseiten" imagePath="/assets/images/software/react.webp"/>
+                        <Item name="Nodejs" description="Laufzeitumgebung für serverseitige JavaScript-Anwendungen" imagePath="/assets/images/software/nodejs.webp"/>
+                        <Item name="MySQL" description="Relationales Datenbankverwaltungssystem für Datenbanken" imagePath="/assets/images/software/mysql.webp"/>
                     </ItemContainer>
                 </div>
                 <div id="aboutUs" className="aboutUS">

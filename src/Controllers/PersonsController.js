@@ -1,5 +1,6 @@
 const {getTeamMembers} = require("../Models/db_access");
 
+// TODO wegtian? weil werd nia verwendet!
 /**
  * Controller zur Abfrage der Teammitglieder.
  * @param {Object} req - Das Anfrageobjekt.
@@ -8,12 +9,13 @@ const {getTeamMembers} = require("../Models/db_access");
 const PersonsController = (req, res) => {
     getTeamMembers().then(r => {
         if (r.message) {
-            console.log("Fehler --> Objekt hat .message");
-            res.status(500).json(r);
+            // Fehler: Objekt hat .message
+            res.status(500).json("Internal Server Error: Fehler beim Laden der Daten");
         } else {
-            console.log("Kein Fehler --> Objekt hat nicht .message");
             res.status(400).json(r);
         }
+    }).catch(() => {
+        res.status(500).json("Internal Server Error: Fehler beim Laden der Daten");
     });
 }
 module.exports = PersonsController;
