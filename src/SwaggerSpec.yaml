@@ -6,7 +6,7 @@ info:
   description: Eine RESTful API für das Management von Benutzern, deren Authentifizierung
     und deren Aktivitäten.
 servers:
-  - url: http://10.10.31.11:8000/
+  - url: http://185.5.199.33:8080/
 paths:
   "/":
     get:

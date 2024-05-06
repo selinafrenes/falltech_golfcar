@@ -33,7 +33,7 @@ function EintragForm(props) {
             toast.error("Alle nicht optionale Felder müssen ausgefüllt werden");
         } else {
             // Senden der Daten an den Server
-            const response = await fetch('http://10.10.31.11:8000/api/v1/diary/entries', {
+            const response = await fetch('http://185.5.199.33:8080/api/v1/diary/entries', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

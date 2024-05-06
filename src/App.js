@@ -15,7 +15,7 @@ import "swagger-ui-react/swagger-ui.css";
 import specYAML from "./SwaggerSpec.yaml";
 
 function App() {
-    // authentifizierung für Tagebuch
+    // Authentifizierung für Tagebuch
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const [spec, setSpec] = useState("");
