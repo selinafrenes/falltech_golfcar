@@ -1,0 +1,276 @@
+---
+openapi: 3.0.0
+info:
+  title: FallTech Endpoint API
+  version: 3.0.0
+  description: Eine RESTful API für das Management von Benutzern, deren Authentifizierung
+    und deren Aktivitäten.
+servers:
+  - url: http://10.10.31.11:8000/
+paths:
+  "/":
+    get:
+      summary: Gibt das index.html File zurück.
+      responses:
+        '200':
+          description: "Index.html wird zurückgegeben"
+  "/api/v1/users":
+    get:
+      summary: Abrufen von allen Teammitgliedern
+      description: Liefert eine Liste aller Teammitglieder.
+      responses:
+        '200':
+          description: Teammitglieder erfolgreich abgerufen
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Person"
+        '500':
+          description: Fehler beim Abrufen der Informationen
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal Server Error"
+  "/api/v1/auth/login":
+    post:
+      summary: Anmeldung eines Benutzers
+      description: Authentifiziert einen Benutzer mit Benutzername und Passwort.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: "mustermannmax"
+                password:
+                  type: string
+                  example: "Kennwort0"
+              required:
+                - username
+                - password
+      responses:
+        '200':
+          description: Anmeldung erfolgreich
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/Person"
+        '401':
+          description: 'Anmeldung fehlgeschlagen: Ungültige Anmeldedaten.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Unauthorized"
+        '500':
+          description: 'Anmeldung fehlgeschlagen: Serverfehler.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Internal Server Error"
+  "/api/v1/diary/entries":
+    post:
+      summary: Neuen Tagebucheintrag erstellen
+      description: Erstellt einen neuen Tagebucheintrag mit Beschreibung,
+        Notizen, Datum, Dauer und Personen.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Entry"
+      responses:
+        '201':
+          description: Tagebucheintrag erfolgreich erstellt
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+        '500':
+          description: 'Fehler beim Erstellen des Tagebucheintrags\: Serverfehler.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Internal Server Error"
+  "/api/v1/diary/entries/grouped-by-user":
+    get:
+      summary: Tagebucheintrag gruppiert nach Benutzer abrufen
+      description: Liefert eine Liste von Tagebucheinträgen gruppiert nach Benutzer.
+      responses:
+        '200':
+          description: Tagebucheinträge gruppiert nach Benutzer erfolgreich abgerufen
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                      example: "mustermannmax"
+                    eintraege:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          description:
+                            type: string
+                            example: "Dies ist eine Beschreibung."
+                          notes:
+                            type: string
+                            example: Dies sind die Notizen des Eintrags.
+                          date:
+                            type: string
+                            format: date
+                          duration:
+                            type: integer
+                            example: 4
+                        required:
+                          - people
+                          - description
+                          - date
+                          - duration
+        '500':
+          description: Fehler beim Abrufen von Tagebucheinträgen
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal Server Error
+  "/api/v1/diary/entries/grouped-by-date":
+    get:
+      summary: Tagebucheintrag gruppiert nach Datum abrufen
+      description: Liefert eine Liste von Tagebucheinträgen gruppiert nach Datum.
+      responses:
+        '200':
+          description: Tagebucheinträge gruppiert nach Datum erfolgreich abgerufen
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                    eintraege:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          person:
+                            type: string
+                            example: "mustermannmax"
+                          description:
+                            type: string
+                            example: "Beschreibung des Eintrags"
+                          notes:
+                            type: string
+                            example: "Notizen des Eintrags"
+                          duration:
+                            type: integer
+                            example: 3
+        '500':
+          description: Fehler beim Abrufen von Tagebucheinträgen
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal Server Error"
+components:
+  schemas:
+    Entry:
+      type: object
+      properties:
+        people:
+          type: array
+          items:
+            type: string
+            example: "mustermannmax"
+        description:
+          type: string
+          example: "Dies ist eine Beschreibung des Eintrags."
+        notes:
+          type: string
+          example: "Dies sind die Notizen des Eintrags."
+        date:
+          type: string
+          format: date
+        duration:
+          type: integer
+          example: 4
+      required:
+        - people
+        - description
+        - date
+        - duration
+    Person:
+      type: array
+      items:
+        type: object
+        properties:
+          username:
+            type: string
+            example: "mustermannmax"
+          firstname:
+            type: string
+            example: "Max"
+          lastname:
+            type: string
+            example: "Mustermann"
+          teammember:
+            type: integer
+            example: 1
+      required:
+        - username
+        - firstname
+        - lastname
+        - teammember

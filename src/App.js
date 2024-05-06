@@ -10,13 +10,18 @@ import {useEffect, useState} from "react";
 import {getCookieValue} from "./script";
 import {Slide, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import SwaggerUI from "swagger-ui-react"
-import "swagger-ui-react/swagger-ui.css"
-const spec = require("./swaggerSpec.json");
+import SwaggerUI from "swagger-ui-react";
+import "swagger-ui-react/swagger-ui.css";
+import specYAML from "./SwaggerSpec.yaml";
 
 function App() {
     // authentifizierung für Tagebuch
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    const [spec, setSpec] = useState("");
+
+    // // Zustand für den Inhalt der YAML-Datei
+    // const [specYAML, setSpecYAML] = useState(null);
     const handleLoginSuccess = () => {
         setIsAuthenticated(true);
     };
@@ -26,11 +31,21 @@ function App() {
         if (username){
             setIsAuthenticated(true);
         }
+
+        // Lade den Inhalt der YAML-Datei
+        fetch(specYAML)
+            .then(response => response.text())
+            .then(yamlText => {
+                setSpec(yamlText);
+            })
+            .catch(error => {
+                console.error('Fehler beim Laden der Swagger-Spezifikation:', error);
+            });
     }, []);
+
 
     return (
         <>
-
             <Navbar/>
             <div id="content">
                 <Routes>
@@ -39,7 +54,7 @@ function App() {
                     <Route path="/impressum" element={<Impressum onLogin={handleLoginSuccess}/>} />
                     <Route path="/datenschutz" element={<Datenschutz onLogin={handleLoginSuccess}/>} />
                     <Route path="/swagger" element={<SwaggerUI spec={spec} />} />
-                    {/* TODO route einbinden */}
+                    {/* TODO route von davids seite einbinden */}
                     <Route path="*" element={<Navigate to="/" />} /> {/* Standardroute */}
                 </Routes>
                 <Footer/>
