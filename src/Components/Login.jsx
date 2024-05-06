@@ -37,7 +37,7 @@ function Login({ onLogin }) {
 
 
             // Unterscheidung production und development
-            let domain = "185.5.199.33:8080"//"10.10.31.11";
+            let domain = "185.5.199.33"//"10.10.31.11";
             if (process.env.NODE_ENV === 'development') domain = "localhost"
             console.log("UMGEBUNG: " + domain);
             // Cookies speichern
