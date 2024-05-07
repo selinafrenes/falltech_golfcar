@@ -315,8 +315,9 @@ function Controller(){
 
     return(
         <>
-            <div className="flex">
-                <img id="camImage" alt="Camera Image"/>
+            <div className="controller">
+                <div className="controllerPage">
+                    <img id="camImage" alt="Camera Image"/>
 
                     <div className="valueList ignoreWhenAuto">
                         <div>X: <span id="x_coordinate"> </span></div>
@@ -362,23 +363,22 @@ function Controller(){
                             Lights:
                             <label className="switch">
                                 <input type="checkbox" id="lightsState" onClick="sendData()" />
-                                    <span className="slider"></span>
+                                <span className="slider"></span>
                             </label>
                         </div>
                         <div className="switchBox ignoreWhenAuto">
                             Door:
                             <label className="switch">
                                 <input type="checkbox" id="doorState" onClick="sendData()" />
-                                    <span className="slider"></span>
+                                <span className="slider"></span>
                             </label>
                         </div>
                     </div>
 
                     <canvas id="canvas" className="ignoreWhenAuto" name="controls"></canvas>
-            </div>
-            <script>
+                </div>
 
-            </script>
+            </div>
         </>
     );
 }
