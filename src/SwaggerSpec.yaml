@@ -225,6 +225,44 @@ paths:
                   message:
                     type: string
                     example: "Internal Server Error"
+  /api/v1/statistics/work-time:
+    get:
+      summary: Arbeitszeitstatistik abrufen
+      description: Ruft die Gesamtarbeitszeit aller Personen ab.
+      responses:
+        '200':
+          description: Erfolgreiche Abfrage
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalTime:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        Username:
+                          type: string
+                        TotalDuration:
+                          type: integer
+                          description: Gesamtarbeitszeit in Sekunden
+              example:
+                totalTime:
+                  - Username: "mustermannmax"
+                    TotalDuration: 102
+                  - Username: "mariorossi"
+                    TotalDuration: 72
+        '500':
+          description: Interner Serverfehler
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal Server Error: Fehler beim Laden der Daten"
 components:
   schemas:
     Entry:
