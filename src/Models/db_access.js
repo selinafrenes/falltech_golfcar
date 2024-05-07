@@ -219,7 +219,8 @@ const getAllEntersFilterdByDate = async() => {
             FROM Person p
             INNER JOIN Enters te ON p.username = te.username
             INNER JOIN Entry e ON te.id = e.id
-            GROUP BY e.date;
+            GROUP BY e.date
+            ORDER BY e.date DESC;
         `);
 
         // Einträge in JSON-Format konvertieren
