@@ -42,7 +42,7 @@ function EintraegeOutput(props){
             const jsonData = await response.json();
             setData(jsonData);
         } catch (err) {
-            toast.error("Fehler beim holen der Daten aus der Datenbank");
+            toast.error("Fehler beim Holen der Daten aus der Datenbank");
         } finally {
             // Setze loading auf false, nachdem die Daten geladen wurden oder ein Fehler aufgetreten ist
             setLoading(false);
