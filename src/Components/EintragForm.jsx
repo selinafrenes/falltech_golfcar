@@ -48,7 +48,7 @@ function EintragForm(props) {
                 toast.success('Daten wurden erfolgreich abgespeichert');
                 event.target.reset();
             } else {
-                toast.error('Fehler beim abspeichern in der Datenbank');
+                toast.error('Fehler beim Abspeichern in der Datenbank');
             }
             props.reloadData();
         }

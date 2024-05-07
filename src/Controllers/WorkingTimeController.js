@@ -8,11 +8,14 @@ const {getTotalWorkingTime} = require("../Models/db_access");
 const WorkingTimeController = (req, res) => {
     getTotalWorkingTime()
         .then(response => {
+            /*
             let time = 0;
             for (const r of response) {
                 time += r.TotalDuration;
             }
-            res.status(200).json({totalTime: time})
+
+             */
+            res.status(200).json({totalTime: response})
         })
         .catch(() => {
             res.status(500).json({message: "Internal Server Error: Fehler beim Laden der Daten"});

@@ -6,7 +6,6 @@ import {useNavigate} from 'react-router-dom';
  * @returns {JSX.Element} Die gerenderte Navbar-Komponente.
  */
 function TagebuchNavbar() {
-    // const location = useLocation();
     const navigate = useNavigate();
 
 
@@ -17,6 +16,10 @@ function TagebuchNavbar() {
         navigate("/swagger");
     }
 
+    const toController = () => {
+        navigate("/Controller");
+    }
+
     // Rendern der Navbar-Komponente
     return (
         <>
@@ -25,8 +28,7 @@ function TagebuchNavbar() {
                     <button id="toSwaggerBtn" onClick={toSwagger}>Swagger</button>
                 </div>
                 <div className="tagebuchNavbarItem">
-                    {/* TODO : Zum Projekt Button - Funktionalität noch nicht implementiert */}
-                    <button id="toOtherSiteBtn" /*onClick={}*/>Zum Projekt</button>
+                    <button id="toOtherSiteBtn" onClick={toController}>Zum Projekt</button>
                 </div>
             </nav>
         </>

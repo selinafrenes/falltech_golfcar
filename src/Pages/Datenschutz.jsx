@@ -12,10 +12,10 @@ function Datenschutz({onLogin}){
             <Login onLogin={onLogin}/>
             <div id="datenschutz">
                 <h1>Datenschutzerklärung für FallTech.it</h1>
-                <p>Willkommen auf FallTech.it. Deine Privatsphäre ist uns wichtig.</p><br/>
+                <p>Willkommen auf der FallTech Webseite. Deine Privatsphäre ist uns wichtig.</p><br/>
                 <p><span>Links</span></p>
                 <p>
-                    Alle externen Links wurden zum Zeitpunkt der Linkerstellung auf gesetzlich nicht einwandfreie
+                    Alle externen Links wurden zum Zeitpunkt der Erstellung auf gesetzlich nicht einwandfreie
                     Inhalte überprüft.
                     Wir sind für diese Links in keinster Weise verantwortlich. Die Inhalte auf dieser Webseite sind
                     geschützt

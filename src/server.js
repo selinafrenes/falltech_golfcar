@@ -63,6 +63,11 @@ app.get('/api/v1/statistics/work-time', (req, res) => {
     WorkingTimeController(req, res);
 });
 
+// Beim Reloaden der Webseite, wenn man sich auf einem Unterpfad befindet
+app.get('/*', function (req, res){
+    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+});
+
 app.listen(port, () => {
     console.log(`Server started at http://localhost:${port}`)
 });
