@@ -270,7 +270,7 @@ function Controller(){
         }
 
     }
-    function handleMovement(e){
+    function handleMovement2(e){
         if(e.key == 'w'){
             try {
                 fetch(controlSrc, {
@@ -316,7 +316,7 @@ function Controller(){
     return(
         <>
             <div className="flex">
-                <img id="camImage" />
+                <img id="camImage" alt="Camera Image"/>
 
                     <div className="valueList ignoreWhenAuto">
                         <div>X: <span id="x_coordinate"> </span></div>
