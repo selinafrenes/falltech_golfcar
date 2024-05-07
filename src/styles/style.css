@@ -656,12 +656,12 @@ textarea {
     table-layout: fixed;
     border-collapse: collapse;
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.output-filed-table-thead {
-    background: transparent;
-    color: black;
-    width: 100%;
+.tableHeader_head {
+    display: none;
 }
 
 .output-filed-table-thead th {
@@ -680,14 +680,72 @@ textarea {
 }
 
 .output-filed-table-tbody tr {
-    border: 2px solid var(--ft_dunkelesPink);
+    border-top: 0 solid var(--ft_dunkelesPink);
+    border-left: 2px solid var(--ft_dunkelesPink);
+    border-right: 2px solid var(--ft_dunkelesPink);
+    border-bottom: 2px solid var(--ft_dunkelesPink);
+    display: flex;
+    flex-direction: column;
 }
 
 .output-filed-table-tbody tr td, .output-filed-table-tbody th {
-    border-right: 2px solid var(--ft_dunkelesPink);
     padding: 10px;
     text-align: center;
     word-wrap: break-word;
+    border-bottom: 1px solid var(--ft_dunkelesPink);
+}
+
+@media  screen and (min-width: 600px) {
+    .output-filed-table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+        margin-top: 10px;
+        display: table;
+    }
+
+    .output-field-table-thead {
+        display: table-header-group;
+    }
+
+    .output-filed-table-thead th {
+        padding: 10px;
+        border: 2px solid var(--ft_dunkelesPink);
+        text-align: center;
+        width: calc(100%);
+        margin: auto;
+    }
+
+    .tableHeader {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tableHeader_head {
+        display: block;
+        flex-direction: row;
+        width: calc(100%);
+    }
+
+    .tableHeader_head th{
+        margin: auto;
+    }
+
+    .output-filed-table-tbody tr {
+        border: 2px solid var(--ft_dunkelesPink);
+        display: table-row-group;
+        flex-direction: row;
+    }
+
+    .output-filed-table-tbody tr td, .output-filed-table-tbody th {
+        border-right: 2px solid var(--ft_dunkelesPink);
+        padding: 10px;
+        text-align: center;
+        word-wrap: break-word;
+        width: calc(100% / 4);
+        margin: auto;
+    }
+
 }
 
 .tableHeader {
@@ -696,4 +754,6 @@ textarea {
 
 .tableHeader:hover {
     cursor: pointer;
+    background-color: rgba(233, 30, 99, .5);
 }
+
