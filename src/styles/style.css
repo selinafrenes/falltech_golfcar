@@ -486,28 +486,6 @@ h1 {
     z-index: 999;
 }
 
-.login-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--ft_hellesPink);
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 30px;
-    cursor: pointer;
-    transition: 1s;
-}
-
-.close-btn:hover, .close-btn:focus, .close-btn:active {
-    color: var(--ft_dunkelesPink);
-}
 
 .login-container {
     background-color: #fff;
@@ -518,17 +496,65 @@ h1 {
     text-align: center;
 }
 
-h2 {
-    color: black;
-    text-align: center;
-    font-size: 30px;
+.login-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--ft_hellesPink);
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 1s;
 }
 
 #loginForm label, .label-input-text-field {
     display: block;
     margin: 10px 0 5px;
     color: black;
-    font-size: 16px;
+    font-size: 20px;
+}
+
+@media  screen and (min-width: 600px) {
+    .login-content {
+        width: 300px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 30px;
+        cursor: pointer;
+        transition: 1s;
+    }
+
+    #loginForm label, .label-input-text-field {
+        display: block;
+        margin: 10px 0 5px;
+        color: black;
+        font-size: 16px;
+    }
+}
+
+
+
+.close-btn:hover, .close-btn:focus, .close-btn:active {
+    color: var(--ft_dunkelesPink);
+}
+
+h2 {
+    color: black;
+    text-align: center;
+    font-size: 30px;
 }
 
 textarea {
