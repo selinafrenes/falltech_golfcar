@@ -72,9 +72,8 @@ function Navbar() {
     useEffect(() => {
         if (isNavigated !== "/") {
             const element = document.getElementById(isNavigated);
-            element.style.scrollMarginTop = '136px';
-
             if (element) {
+                element.style.scrollMarginTop = '136px';
                 element.scrollIntoView({ behavior: 'smooth' });
             }
             setIsNavigated("/");

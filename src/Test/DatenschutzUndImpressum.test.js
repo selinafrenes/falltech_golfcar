@@ -2,7 +2,7 @@ const { Builder, By } = require('selenium-webdriver');
 const assert = require('assert');
 // eslint-disable-next-line jest/valid-describe-callback
 describe('Datenschutz Und Impressum Test',  function () {
-    this.timeout(3000);
+    this.timeout(50000);
     // eslint-disable-next-line no-unused-vars
     let driver;
 

@@ -47,6 +47,7 @@ function App() {
 
     return (
         <>
+
             <Navbar/>
             <div id="content">
                 <Routes>
