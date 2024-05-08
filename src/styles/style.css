@@ -804,9 +804,8 @@ textarea {
         border-right: 2px solid var(--ft_dunkelesPink);
         padding: 10px;
         text-align: center;
-        word-wrap: break-word;
-        width: calc(100% / 4);
-        margin: auto;
+        word-break: break-word;
+        width: calc(100% /4);
     }
 
 }
