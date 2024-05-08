@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("DOMContentLoaded ausgelöst");
     setTimeout(() => {
         console.log("Ausführen von alleSlidesAusblenden nach Timeout");
+        /*
         const alleSlidesAusblenden = () => {
             console.log("allesSlideAusblenden");
             const slides = document.getElementsByClassName("slide");
@@ -94,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 slides[0].style.display = "grid";
             }
         };
+         */
 
         /**
          * Eine Funktion, die das Layout der Slides basierend auf der Bildschirmgröße ändert.
@@ -122,15 +124,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Das Media-Query-Objekt für Bildschirme mit einer maximalen Breite von 600px.
-        const mediaQuery600px = window.matchMedia("(max-width: 600px)");
+        const mediaQuery800px = window.matchMedia("(max-width: 800px)");
 
         // Ein Event-Listener, der auf Änderungen in der Bildschirmgröße reagiert und die handleMediaQuery-Funktion aufruft.
-        mediaQuery600px.addEventListener("change", () => {
-            handleMediaQuery(mediaQuery600px);
+        mediaQuery800px.addEventListener("change", () => {
+            handleMediaQuery(mediaQuery800px);
         });
 
         // Initialer Aufruf der handleMediaQuery-Funktion, um das Layout entsprechend der Bildschirmgröße festzulegen.
-        handleMediaQuery(mediaQuery600px);
+        handleMediaQuery(mediaQuery800px);
 
         //alleSlidesAusblenden();  // Call the function with a delay
 
