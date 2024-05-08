@@ -62,19 +62,6 @@ h1 {
     z-index: 1000; /* Damit die Navigationsleiste über anderen Elementen liegt */
 }
 
-/* Stil für den Inhalt, um Platz für die feste Navigationsleiste zu schaffen */
-/*.content {*/
-/*    padding-top: 250px; !* Gleiche Höhe wie die Navigationsleiste *!*/
-/*    !* Restlicher Stil für den Inhalt hier *!*/
-/*}*/
-
-/* Zusätzlicher Stil für den Inhalt, um Platz für die feste Navigationsleiste zu schaffen */
-/* Du musst sicherstellen, dass genügend Platz vorhanden ist, damit der Inhalt nicht hinter der Navigationsleiste verschwindet */
-/*@media screen and (max-width: 600px) {*/
-/*    .content {*/
-/*        padding-top: 100px; !* Falls die Navigationsleiste in mobilen Ansichten höher ist *!*/
-/*    }*/
-/*}*/
 
 #content {
     margin-top: 150px;

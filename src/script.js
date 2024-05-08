@@ -142,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let prevScrollpos = window.pageYOffset;
         window.onscroll = function() {
             var currentScrollPos = window.pageYOffset;
+            console.log("SCROLLLLLL")
             if (prevScrollpos > currentScrollPos) {
                 document.getElementById("navbar").style.top = "0";
                 console.log("Show Navbar");
