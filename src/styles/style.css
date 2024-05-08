@@ -76,8 +76,16 @@ h1 {
 /*    }*/
 /*}*/
 
+#content {
+    margin-top: 150px;
+}
 
 @media  screen and (min-width: 600px) {
+
+    #content {
+        margin-top: 200px;
+    }
+
     .navbar {
         position: sticky;
         top: 0;
