@@ -19,7 +19,7 @@ function TagebuchNavbar() {
     const toController = () => {
         // navigate("/Controller");
         // navigate("/controller");
-        window.location.href = "/controller";
+        // window.location.href = "/controller";
         navigate("/controller");
     }
 
