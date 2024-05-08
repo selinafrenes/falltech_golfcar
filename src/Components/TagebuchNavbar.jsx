@@ -17,7 +17,9 @@ function TagebuchNavbar() {
     }
 
     const toController = () => {
-        navigate("/Controller");
+        // navigate("/Controller");
+        // navigate("/controller");
+        window.location.href = "/controller";
     }
 
     // Rendern der Navbar-Komponente

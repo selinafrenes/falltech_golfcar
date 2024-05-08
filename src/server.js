@@ -32,6 +32,10 @@ app.get('/', function (req, res){
     res.sendFile(path.join(__dirname, 'build', '..', 'index.html'));
 });
 
+app.get('/controls', (req, res) => {
+    res.sendFile(path.join(__dirname, 'control_website.html'));
+});
+
 app.post('/api/v1/diary/entries', function (req, res){
     NewEntryController(req, res);
 });
