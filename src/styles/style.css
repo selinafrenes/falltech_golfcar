@@ -70,7 +70,7 @@ h1 {
 @media  screen and (min-width: 600px) {
 
     #content {
-        margin-top: 200px;
+        margin-top: 150px;
     }
 
     .navbar {
@@ -115,6 +115,12 @@ h1 {
     .navbar a {
         height: 120px;
     }
+}
+
+#controlsFrame {
+    height: 90vh;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .logo_FallTech {

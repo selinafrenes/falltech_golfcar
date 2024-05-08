@@ -19,6 +19,7 @@ const ControlsPage = () => {
         <div>
             {controlsHtml && (
                 <iframe
+                    id="controlsFrame"
                     title="Controls"
                     width="100%"
                     height="100%"
