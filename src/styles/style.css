@@ -170,11 +170,6 @@ h1 {
     scroll-margin-top: 136px;
 }
 
-.slide-image img {
-    width: 200px;
-    border-radius: 20px;
-    margin: 5px;
-}
 
 @media  screen and (min-width: 800px) {
     .slide:nth-child(2),
@@ -212,7 +207,9 @@ h1 {
         grid-row: 2;
     }
 
-
+    .img_slide{
+        height: 80%;
+    }
 
     .slide-text {
         grid-column: 1;
