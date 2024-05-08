@@ -99,7 +99,7 @@ function Home({onLogin}) {
                     <h1>Unser Team</h1>
                     <ItemContainer classname="unserTeamContainer" innerClassname="unserTeam">
                         <Item name="Damian Mayr, PM" description="3D CAD Designer" imagePath="/assets/images/teamMembers/DamianMayr.webp"/>
-                        <Item name="David Maierhofer" description="Robotics Engineer" imagePath="/assets/images/teamMembers/DavidMaierhofer.webp"/>
+                        <Item name="David Mairhofer" description="Robotics Engineer" imagePath="/assets/images/teamMembers/DavidMaierhofer.webp"/>
                         <Item name="Fabian Reifer" description="Software Engineer" imagePath="/assets/images/teamMembers/FabianReifer.webp"/>
                         <Item name="Selina Frenes" description="Full Stack Developer" imagePath="/assets/images/teamMembers/SelinaFrenes.webp"/>
                         <Item name="Wilma Frener" description="Full Stack Developer" imagePath="/assets/images/teamMembers/WilmaFrener.webp"/>

@@ -17,6 +17,9 @@ function Impressum({onLogin}){
                 <p>Mayr | Mairhofer | Reifer | Frenes | Frener</p><br/>
                 <p>Dantestraße 39E</p><br/>
                 <p>I-39042 Brixen</p><br/>
+                <p>Tel: +39 123 123 4567</p><br/>
+                <p>Email: <a href="mailto:falltech.bx@gmail.com">falltech.bx@gmail.com</a></p><br/>
+                <p>Webseite: <a href="http://185.5.199.33:8080">FallTech</a></p><br/>
                 <p><span>Bildmaterial</span></p><br/>
                 <p>© FallTech</p>
                 <p><a href="https://www.amazon.it/Raspberry-PI-Model-Scheda-madre/dp/B01CD5VC92">Raspberry PI 3</a></p>

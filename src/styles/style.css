@@ -14,8 +14,12 @@ html {
 }
 
 body {
-    height: 100%;
+    height: 100vh;
     font-family: Arial, sans-serif;
+}
+
+.content {
+    height: 100vh;
 }
 
 h1 {
@@ -172,7 +176,8 @@ h1 {
     scroll-margin-top: 136px;
 }
 
-@media  screen and (min-width: 600px) {
+
+@media  screen and (min-width: 800px) {
     .slide:nth-child(2),
     .slide:nth-child(3) {
         display:none;
@@ -186,6 +191,7 @@ h1 {
     }
 
     .slide {
+        height: 300px;
         flex: 0 0 100%;
         display: grid;
         grid-template-rows: 0.2fr 1.8fr;
@@ -207,7 +213,9 @@ h1 {
         grid-row: 2;
     }
 
-
+    .img_slide{
+        height: 80%;
+    }
 
     .slide-text {
         grid-column: 1;
@@ -234,8 +242,8 @@ h1 {
     .next:hover , .prev:hover {
         color: rgba(233, 30, 99, 0.8);
     }
-
 }
+
 
 /*About Us - Unser Team*/
 .aboutUS, #zumProjekt, #sponsor, #impressum, #datenschutz {
@@ -244,15 +252,6 @@ h1 {
     padding:1rem;
     margin: 1rem;
 }
-
-/*
-@media  screen and (min-width: 600px) {
-    #content{
-        padding-top: 136px;
-    }
-}
-
- */
 
 .hardwareContainer {
     display: flex;
@@ -662,7 +661,7 @@ textarea {
 
 #impressum p span, #datenschutz p span {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 24px;
 }
 
 .filternNach {
@@ -723,11 +722,11 @@ textarea {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
+
 }
 
-.tableHeader_head {
-    display: none;
-}
+
+
 
 .output-filed-table-thead th {
     padding: 10px;
@@ -767,6 +766,8 @@ textarea {
         border-collapse: collapse;
         margin-top: 10px;
         display: table;
+        border-color: var(--ft_dunkelesPink);
+        padding: 20px;
     }
 
     .output-field-table-thead {
@@ -777,19 +778,22 @@ textarea {
         padding: 10px;
         border: 2px solid var(--ft_dunkelesPink);
         text-align: center;
-        width: calc(100%);
+        /*width: calc(100%);*/
         margin: auto;
     }
 
-    .tableHeader {
-        display: flex;
-        flex-direction: column;
+    .tableHeader_head {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+        margin-top: 10px;
+        display: table;
     }
 
     .tableHeader_head {
         display: block;
         flex-direction: row;
-        width: calc(100%);
+        width: 100%;
     }
 
     .tableHeader_head th{
@@ -815,6 +819,10 @@ textarea {
 
 .tableHeader {
     background-color: rgba(233, 30, 99, .2);
+    border-color: var(--ft_dunkelesPink);
+    border: var(--ft_dunkelesPink) solid 2px;
+    font-size: 20px;
+    padding: 10px;
 }
 
 .tableHeader:hover {

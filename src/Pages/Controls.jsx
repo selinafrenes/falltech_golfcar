@@ -16,7 +16,7 @@ const ControlsPage = () => {
     }, []);
 
     return (
-        <div>
+        <>
             {controlsHtml && (
                 <iframe
                     id="controlsFrame"
@@ -26,7 +26,7 @@ const ControlsPage = () => {
                     srcDoc={controlsHtml} // Hier wird das heruntergeladene HTML-File eingebunden
                 />
             )}
-        </div>
+        </>
     );
 };
 
