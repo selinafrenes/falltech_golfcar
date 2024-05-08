@@ -135,6 +135,28 @@ document.addEventListener("DOMContentLoaded", () => {
         //alleSlidesAusblenden();  // Call the function with a delay
 
         //console.log("Windows.onload");
+
+        // Navbar responsive
+        let prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+                console.log("Show Navbar");
+                if (window.innerWidth < 600){
+                    document.getElementById("content").style.marginTop = "200px";
+                } else {
+                    document.getElementById("content").style.marginTop = "150px";
+                }
+            } else {
+                document.getElementById("navbar").style.top = "-250px"; // Höhe der Navigationsleiste
+                document.getElementById("content").style.marginTop = "10px";
+                console.log("Remove Navbar");
+
+            }
+            prevScrollpos = currentScrollPos;
+        }
+
     }, 500);
 });
 

@@ -1,6 +1,8 @@
 import "../styles/controller.css";
-
-// TODO JSX KOMMENTAR
+/**
+ * Controller-Komponente zur Verwaltung der Joystick-Eingabe und zum Senden von Steuerdaten an einen entfernten Server.
+ * @constructor
+ */
 function Controller(){
 
     let imgSrc = "http://10.10.31.11:5000/img";
@@ -10,6 +12,9 @@ function Controller(){
 
     var canvas, ctx;
 
+    /**
+     * Initialisiert das Canvas und richtet Event-Listener für Maus- und Touch-Eingaben ein.
+     */
     window.addEventListener('load', () => {
 
         canvas = document.getElementById('canvas');
@@ -34,6 +39,10 @@ function Controller(){
 
 
     var width, height, radius, x_orig, y_orig;
+
+    /**
+     * Passt das Canvas und den Joystick-Radius basierend auf den Fensterabmessungen an.
+     */
     function resize() {
         width = (window.innerWidth < window.innerHeight * 0.7) ? window.innerWidth : window.innerHeight * 0.7;
         radius = width / 4.5;
@@ -44,6 +53,9 @@ function Controller(){
         joystick(width / 2, height / 2);
     }
 
+    /**
+     * Zeichnet den Hintergrundkreis.
+     */
     function background() {
         x_orig = width / 2;
         y_orig = height / 2;
@@ -54,6 +66,12 @@ function Controller(){
         ctx.fill();
     }
 
+
+    /**
+     * Zeichnet den Joystick an den angegebenen Koordinaten.
+     * @param {number} width - X-Koordinate des Joystick-Mittelpunkts.
+     * @param {number} height - Y-Koordinate des Joystick-Mittelpunkts.
+     */
     function joystick(width, height) {
         ctx.beginPath();
         ctx.arc(width, height, radius, 0, Math.PI * 2, true);
@@ -67,6 +85,10 @@ function Controller(){
     let coord = {x: 0, y: 0};
     let paint = false;
 
+    /**
+     * Ermittelt die Position des Cursors oder Touchs relativ zum Canvas.
+     * @param {Event} event - Maus- oder Touch-Ereignis.
+     */
     function getPosition(event) {
         var mouse_x = event.pageX || event.touches[0].pageX;
         var mouse_y = event.pageY || event.touches[0].pageY;
@@ -74,13 +96,21 @@ function Controller(){
         coord.y = mouse_y - canvas.offsetTop;
     }
 
+
+    /**
+     * Überprüft, ob der Cursor oder Touch im Joystick-Bereich liegt.
+     * @returns {boolean} True, wenn im Joystick-Bereich, sonst false.
+     */
     function is_it_in_the_circle() {
         var current_radius = Math.sqrt(Math.pow(coord.x - x_orig, 2) + Math.pow(coord.y - y_orig, 2));
         if (radius >= current_radius) return true
         else return false
     }
 
-
+    /**
+     * Startet das Zeichnen, wenn der Cursor oder Touch gedrückt wird.
+     * @param {Event} event - Maus- oder Touch-Ereignis.
+     */
     function startDrawing(event) {
         getPosition(event);
         if (is_it_in_the_circle()) {
@@ -95,6 +125,9 @@ function Controller(){
 
     var x_relative = 0, y_relative = 0, speed = 0, angle_in_degrees = 0;
 
+    /**
+     * Beendet das Zeichnen und sendet Steuerdaten, wenn der Cursor oder Touch losgelassen wird.
+     */
     function stopDrawing() {
         paint = false;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -111,7 +144,12 @@ function Controller(){
         document.getElementById("angle").innerText = 0;
     }
     let sendTimeout = 0;
-    let prev_x_relative, prev_y_relative
+    let prev_x_relative, prev_y_relative;
+
+    /**
+     * Zeichnet den Joystick und sendet Steuerdaten während des Zeichnens.
+     * @param {Event} event - Maus- oder Touch-Ereignis.
+     */
     function Draw(event) {
 
         if (paint) {
@@ -316,11 +354,6 @@ function Controller(){
     window.addEventListener('keydown', handleMovement);
     window.addEventListener('keyup', handleMovement2);
 
-    const sendDataSwitchVisibility = () => {
-        sendData();
-        switchVisibility();
-    }
-
     return(
         <>
             <div className="controller">
@@ -363,21 +396,21 @@ function Controller(){
                         <label className="switchBox">
                             Autopilot:
                             <span className="switch">
-                    <input type="checkbox" id="autopilotState" onClick={sendDataSwitchVisibility} />
+                    <input type="checkbox" id="autopilotState" onClick="sendData();switchVisibility()" />
                     <span className="slider"></span>
                 </span>
                         </label>
                         <div className="switchBox ignoreWhenAuto">
                             Lights:
                             <label className="switch">
-                                <input type="checkbox" id="lightsState" onClick={sendData} />
+                                <input type="checkbox" id="lightsState" onClick="sendData()" />
                                 <span className="slider"></span>
                             </label>
                         </div>
                         <div className="switchBox ignoreWhenAuto">
                             Door:
                             <label className="switch">
-                                <input type="checkbox" id="doorState" onClick={sendData} />
+                                <input type="checkbox" id="doorState" onClick="sendData()" />
                                 <span className="slider"></span>
                             </label>
                         </div>

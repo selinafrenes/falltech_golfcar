@@ -50,13 +50,46 @@ h1 {
 
 #navbar-logo {
     padding: 10px;
+    display: none;
 }
 
 .navbar button:hover, .navbar a:hover, .footer a:hover, .tagebuchNavbar div:hover {
     background-color: rgba(233, 30, 99, 0.5);
 }
 
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 10px 0;
+    transition: top 0.3s;
+    z-index: 1000; /* Damit die Navigationsleiste über anderen Elementen liegt */
+}
+
+/* Stil für den Inhalt, um Platz für die feste Navigationsleiste zu schaffen */
+/*.content {*/
+/*    padding-top: 250px; !* Gleiche Höhe wie die Navigationsleiste *!*/
+/*    !* Restlicher Stil für den Inhalt hier *!*/
+/*}*/
+
+/* Zusätzlicher Stil für den Inhalt, um Platz für die feste Navigationsleiste zu schaffen */
+/* Du musst sicherstellen, dass genügend Platz vorhanden ist, damit der Inhalt nicht hinter der Navigationsleiste verschwindet */
+/*@media screen and (max-width: 600px) {*/
+/*    .content {*/
+/*        padding-top: 100px; !* Falls die Navigationsleiste in mobilen Ansichten höher ist *!*/
+/*    }*/
+/*}*/
+
+#content {
+    margin-top: 150px;
+}
+
 @media  screen and (min-width: 600px) {
+
+    #content {
+        margin-top: 200px;
+    }
+
     .navbar {
         position: sticky;
         top: 0;
@@ -86,6 +119,9 @@ h1 {
         width: 100%;
         height: 100%;
     }
+    #navbar-logo {
+        display: block;
+    }
 
     .navbar button {
         background: transparent;
@@ -101,6 +137,14 @@ h1 {
 .logo_FallTech {
     width: 100px;
     height: 100px;
+    object-fit: cover;
+}
+
+.img_slide{
+    height: 100%;
+    width: 90%;
+    border-radius: 20px;
+    margin: 5px;
     object-fit: cover;
 }
 
@@ -168,11 +212,13 @@ h1 {
         grid-column: 1 /span 2;
     }
 
-    .slide-image {
+    .slide-image-container {
         flex: 0 0 50%;
         grid-column: 2;
         grid-row: 2;
     }
+
+
 
     .slide-text {
         grid-column: 1;
@@ -490,28 +536,6 @@ h1 {
     z-index: 999;
 }
 
-.login-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--ft_hellesPink);
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 30px;
-    cursor: pointer;
-    transition: 1s;
-}
-
-.close-btn:hover, .close-btn:focus, .close-btn:active {
-    color: var(--ft_dunkelesPink);
-}
 
 .login-container {
     background-color: #fff;
@@ -522,17 +546,65 @@ h1 {
     text-align: center;
 }
 
-h2 {
-    color: black;
-    text-align: center;
-    font-size: 30px;
+.login-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--ft_hellesPink);
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 1s;
 }
 
 #loginForm label, .label-input-text-field {
     display: block;
     margin: 10px 0 5px;
     color: black;
-    font-size: 16px;
+    font-size: 20px;
+}
+
+@media  screen and (min-width: 600px) {
+    .login-content {
+        width: 300px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 30px;
+        cursor: pointer;
+        transition: 1s;
+    }
+
+    #loginForm label, .label-input-text-field {
+        display: block;
+        margin: 10px 0 5px;
+        color: black;
+        font-size: 16px;
+    }
+}
+
+
+
+.close-btn:hover, .close-btn:focus, .close-btn:active {
+    color: var(--ft_dunkelesPink);
+}
+
+h2 {
+    color: black;
+    text-align: center;
+    font-size: 30px;
 }
 
 textarea {
@@ -660,12 +732,12 @@ textarea {
     table-layout: fixed;
     border-collapse: collapse;
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.output-filed-table-thead {
-    background: transparent;
-    color: black;
-    width: 100%;
+.tableHeader_head {
+    display: none;
 }
 
 .output-filed-table-thead th {
@@ -684,14 +756,72 @@ textarea {
 }
 
 .output-filed-table-tbody tr {
-    border: 2px solid var(--ft_dunkelesPink);
+    border-top: 0 solid var(--ft_dunkelesPink);
+    border-left: 2px solid var(--ft_dunkelesPink);
+    border-right: 2px solid var(--ft_dunkelesPink);
+    border-bottom: 2px solid var(--ft_dunkelesPink);
+    display: flex;
+    flex-direction: column;
 }
 
 .output-filed-table-tbody tr td, .output-filed-table-tbody th {
-    border-right: 2px solid var(--ft_dunkelesPink);
     padding: 10px;
     text-align: center;
     word-wrap: break-word;
+    border-bottom: 1px solid var(--ft_dunkelesPink);
+}
+
+@media  screen and (min-width: 600px) {
+    .output-filed-table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+        margin-top: 10px;
+        display: table;
+    }
+
+    .output-field-table-thead {
+        display: table-header-group;
+    }
+
+    .output-filed-table-thead th {
+        padding: 10px;
+        border: 2px solid var(--ft_dunkelesPink);
+        text-align: center;
+        width: calc(100%);
+        margin: auto;
+    }
+
+    .tableHeader {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tableHeader_head {
+        display: block;
+        flex-direction: row;
+        width: calc(100%);
+    }
+
+    .tableHeader_head th{
+        margin: auto;
+    }
+
+    .output-filed-table-tbody tr {
+        border: 2px solid var(--ft_dunkelesPink);
+        display: table-row-group;
+        flex-direction: row;
+    }
+
+    .output-filed-table-tbody tr td, .output-filed-table-tbody th {
+        border-right: 2px solid var(--ft_dunkelesPink);
+        padding: 10px;
+        text-align: center;
+        word-wrap: break-word;
+        width: calc(100% / 4);
+        margin: auto;
+    }
+
 }
 
 .tableHeader {
@@ -700,4 +830,6 @@ textarea {
 
 .tableHeader:hover {
     cursor: pointer;
+    background-color: rgba(233, 30, 99, .5);
 }
+

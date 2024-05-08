@@ -41,7 +41,7 @@ const filterTableByUsername = (data) => {
                         {user.username}
                     </th>
                     {isExpanded === user.username && (
-                        <tr>
+                        <tr className="tableHeader_head">
                             <th>Datum</th>
                             <th>Zeit</th>
                             <th>Beschreibung</th>
@@ -99,7 +99,7 @@ const filterTableByDate = (data) => {
                             {new Date(e.date).toLocaleDateString('de-DE')}
                         </th>
                         {isExpanded === e.date && (
-                            <tr>
+                            <tr className="tableHeader_head">
                                 <th>Person</th>
                                 <th>Zeit</th>
                                 <th>Beschreibung</th>

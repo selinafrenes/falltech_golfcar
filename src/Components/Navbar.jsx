@@ -72,9 +72,8 @@ function Navbar() {
     useEffect(() => {
         if (isNavigated !== "/") {
             const element = document.getElementById(isNavigated);
-            element.style.scrollMarginTop = '136px';
-
             if (element) {
+                element.style.scrollMarginTop = '136px';
                 element.scrollIntoView({ behavior: 'smooth' });
             }
             setIsNavigated("/");
@@ -101,7 +100,7 @@ function Navbar() {
     // Rendern der Navbar-Komponente
     return (
         <>
-            <nav className="navbar">
+            <nav className="navbar" id="navbar">
                 <div className="navbar-a-container">
                     <button id="navbar-logo" onClick={toIndex}><img className="logo_FallTech" src="/assets/images/FallTech_Logo.webp" alt="Logo FallTech"/></button>
                 </div>
