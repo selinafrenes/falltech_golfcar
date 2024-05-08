@@ -208,16 +208,23 @@ h1 {
     }
 
     .slide-image-container {
+        display: flex;
+        justify-content: center; /* Zentriert horizontal */
+        align-items: center;
         flex: 0 0 50%;
         grid-column: 2;
         grid-row: 2;
     }
 
     .img_slide{
-        height: 80%;
+        max-height: 30vh;
+        width: auto;
     }
 
     .slide-text {
+        display: flex;
+        justify-content: center; /* Zentriert horizontal */
+        align-items: center;
         grid-column: 1;
         grid-row: 2;
     }
