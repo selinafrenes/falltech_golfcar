@@ -170,6 +170,12 @@ h1 {
         grid-row: 2;
     }
 
+    .slide-image img {
+        width: 300px;
+        border-radius: 20px;
+        margin: 5px;
+    }
+
     .slide-text {
         grid-column: 1;
         grid-row: 2;

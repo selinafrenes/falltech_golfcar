@@ -49,12 +49,12 @@ function Home({onLogin}) {
                             {/*TODO Problem mit Slideshow und Seite kleiner machen*/}
                             <div className="slides">
                                 <SlideItem heading="Schulprojekt" text={textSchulprojekt}
-                                           image="/assets/images/frosch.jpeg"
+                                           image="/assets/images/Auto.webp"
                                            altText="Bild"></SlideItem>
                                 <SlideItem heading="Golf Car Projekt" text={textGolfCar}
-                                           image="/assets/images/frosch.jpeg"
+                                           image="/assets/images/Auto.webp"
                                            altText="Bild"></SlideItem>
-                                <SlideItem heading="Ziele" text={textZiele} image="/assets/images/frosch.jpeg"
+                                <SlideItem heading="Ziele" text={textZiele} image="/assets/images/Aufbau.webp"
                                            altText="Bild"></SlideItem>
                             </div>
                         </section>
