@@ -3,8 +3,9 @@ openapi: 3.0.0
 info:
   title: FallTech Endpoint API
   version: 3.0.0
-  description: Eine RESTful API für das Management von Benutzern, deren Authentifizierung
-    und deren Aktivitäten.
+  description: Diese API bietet eine RESTful-Schnittstelle für das Management von Benutzern, deren Authentifizierung und deren Aktivitäten.
+    Die Endpunkte dieser API ermöglichen es, Teammitglieder abzurufen, Benutzeranmeldungen durchzuführen, Tagebucheinträge zu erstellen und abzurufen sowie Statistiken über die Arbeitszeit der Benutzer zu generieren.
+
 servers:
   - url: http://185.5.199.33:8080/
 paths:
