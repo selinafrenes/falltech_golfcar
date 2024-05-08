@@ -55,8 +55,7 @@ function App() {
                     <Route path="/impressum" element={<Impressum onLogin={handleLoginSuccess}/>} />
                     <Route path="/datenschutz" element={<Datenschutz onLogin={handleLoginSuccess}/>} />
                     <Route path="/swagger" element={<SwaggerUI spec={spec} />} />
-                    <Route path="/controller" element={<Controller onLogin={handleLoginSuccess}/>} />} />
-                    {/* TODO route von davids seite einbinden */}
+                    <Route path="/controller" element={<Controller onLogin={handleLoginSuccess}/>} />
                     <Route path="*" element={<Navigate to="/" />} /> {/* Standardroute */}
                 </Routes>
                 <Footer/>

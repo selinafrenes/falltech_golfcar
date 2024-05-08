@@ -1,3 +1,6 @@
+import "../styles/controller.css";
+
+// TODO JSX KOMMENTAR
 function Controller(){
 
     let imgSrc = "http://10.10.31.11:5000/img";
@@ -313,6 +316,11 @@ function Controller(){
     window.addEventListener('keydown', handleMovement);
     window.addEventListener('keyup', handleMovement2);
 
+    const sendDataSwitchVisibility = () => {
+        sendData();
+        switchVisibility();
+    }
+
     return(
         <>
             <div className="controller">
@@ -355,21 +363,21 @@ function Controller(){
                         <label className="switchBox">
                             Autopilot:
                             <span className="switch">
-                    <input type="checkbox" id="autopilotState" onClick="sendData();switchVisibility()" />
+                    <input type="checkbox" id="autopilotState" onClick={sendDataSwitchVisibility} />
                     <span className="slider"></span>
                 </span>
                         </label>
                         <div className="switchBox ignoreWhenAuto">
                             Lights:
                             <label className="switch">
-                                <input type="checkbox" id="lightsState" onClick="sendData()" />
+                                <input type="checkbox" id="lightsState" onClick={sendData} />
                                 <span className="slider"></span>
                             </label>
                         </div>
                         <div className="switchBox ignoreWhenAuto">
                             Door:
                             <label className="switch">
-                                <input type="checkbox" id="doorState" onClick="sendData()" />
+                                <input type="checkbox" id="doorState" onClick={sendData} />
                                 <span className="slider"></span>
                             </label>
                         </div>
