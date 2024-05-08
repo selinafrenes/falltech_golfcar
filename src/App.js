@@ -13,7 +13,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import SwaggerUI from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
 import specYAML from "./SwaggerSpec.yaml";
-import Controller from "./Pages/Controller";
 import Controls from "./Pages/Controls";
 
 function App() {
@@ -58,8 +57,6 @@ function App() {
                     <Route path="/datenschutz" element={<Datenschutz onLogin={handleLoginSuccess}/>} />
                     <Route path="/swagger" element={<SwaggerUI spec={spec} />} />
                     <Route path="/controller" element={<Controls/>}/>
-                    {/*<Route path="/controller" element={<Controller onLogin={handleLoginSuccess}/>} />} />*/}
-                    {/* TODO route von davids seite einbinden */}
                     <Route path="*" element={<Navigate to="/" />} /> {/* Standardroute */}
                 </Routes>
                 <Footer/>

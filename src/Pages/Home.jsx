@@ -46,7 +46,6 @@ function Home({onLogin}) {
                             <div className="prev" onClick={prevSlide}><FontAwesomeIcon icon={faArrowLeft}/></div>
                         </div>
                         <section id="zumProjektShow">
-                            {/*TODO Problem mit Slideshow und Seite kleiner machen*/}
                             <div className="slides">
                                 <SlideItem heading="Schulprojekt" text={textSchulprojekt}
                                            image="/assets/images/Auto.webp"

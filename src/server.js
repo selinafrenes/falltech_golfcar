@@ -45,11 +45,6 @@ app.post('/api/v1/auth/login', (req, res) => {
     AuthController(req, res);
 });
 
-// app.get('/tagebuch/eintraege', (req, res) => {
-//     ListAllEntriesController(req, res);
-// });
-
-//TODO evtl löschen?
 app.get('/api/v1/users', (req, res) => {
     PersonsController(req, res);
 });

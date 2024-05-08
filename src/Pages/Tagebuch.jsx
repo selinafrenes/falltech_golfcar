@@ -21,8 +21,6 @@ function Tagebuch() {
 
     return(
         <>
-            {/*TODO noch swagger einbinden mit kleiner "Navbar darunter*/}
-
             <div className="tagebuch">
                 <TagebuchNavbar />
                 <h1 id="tagebuchTitel">Tagebuch</h1>
