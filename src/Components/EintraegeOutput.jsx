@@ -90,7 +90,6 @@ function EintraegeOutput(props){
                 </div>
                 <div className="output-field" id="enters">
                     {loading ? (
-                        // TODO noch das mit dem Springen fixen
                         <p>Laden...</p>
                     ) : (
                         data &&  <Table data={data} filter={filter} />
