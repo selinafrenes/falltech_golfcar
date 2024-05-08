@@ -36,22 +36,22 @@ const filterTableByUsername = (data) => {
         data.data.map(user => (
             <table className="output-filed-table">
                 <Fragment key={user.username}>
-                    <thead className="output-filed-table-thead">
-                    <th className="tableHeader" colSpan={4} onClick={() => toggleExpand(user.username)}>
-                        {user.username}
-                    </th>
+                    <thead>
+                        <tr className="output-filed-table">
+                            <th className="tableHeader" colSpan={4} onClick={() => toggleExpand(user.username)}>
+                                {user.username}
+                            </th>
+                        </tr>
+                    </thead>
+
                     {isExpanded === user.username && (
+                        <tbody className="output-filed-table-tbody">
                         <tr className="tableHeader_head">
                             <th>Datum</th>
                             <th>Zeit</th>
                             <th>Beschreibung</th>
                             <th>Notizen</th>
                         </tr>
-                    )}
-                    </thead>
-
-                    {isExpanded === user.username && (
-                        <tbody className="output-filed-table-tbody">
                         {JSON.parse(user.eintraege) !== null &&
                             JSON.parse(user.eintraege).map((entry) => (
                                 <tr key={"_" + entry.id + "_" + entry.date + "_" + entry.duration}>
@@ -94,25 +94,24 @@ const filterTableByDate = (data) => {
             <table className="output-filed-table">
                 <Fragment key={new Date(e.date).toLocaleDateString('de-DE')}>
                     {
-                        <thead className="output-filed-table-thead">
-                        <th className="tableHeader" colSpan={4} onClick={() => toggleExpand(e.date)}>
-                            {new Date(e.date).toLocaleDateString('de-DE')}
-                        </th>
-                        {isExpanded === e.date && (
-                            <tr className="tableHeader_head">
-                                <th>Person</th>
-                                <th>Zeit</th>
-                                <th>Beschreibung</th>
-                                <th>Notizen</th>
+                        <thead>
+                            <tr className="output-filed-table">
+                                <th className="tableHeader" colSpan={4} onClick={() => toggleExpand(e.date)}>
+                                    {new Date(e.date).toLocaleDateString('de-DE')}
+                                </th>
                             </tr>
-                        )}
-
                         </thead>
 
                     }
 
                     {isExpanded === e.date && (
                         <tbody className="output-filed-table-tbody">
+                        <tr className="tableHeader_head">
+                            <th>Person</th>
+                            <th>Zeit</th>
+                            <th>Beschreibung</th>
+                            <th>Notizen</th>
+                        </tr>
                         {JSON.parse(e.eintraege).map((entry) => (
                                 <tr key={"_" + entry.person + "_" + entry.id + "_" + entry.duration}>
                                     <td>{entry.person}</td>
