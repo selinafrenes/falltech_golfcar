@@ -19,7 +19,8 @@ function TagebuchNavbar() {
     const toController = () => {
         // navigate("/Controller");
         // navigate("/controller");
-        window.location.href = "/controller";
+        // window.location.href = "/controller";
+        navigate("/controller");
     }
 
     // Rendern der Navbar-Komponente
@@ -30,7 +31,7 @@ function TagebuchNavbar() {
                     <button id="toSwaggerBtn" onClick={toSwagger}>Swagger</button>
                 </div>
                 <div className="tagebuchNavbarItem">
-                    <button id="toOtherSiteBtn" onClick={toController}>Zum Projekt</button>
+                    <button id="toOtherSiteBtn" onClick={toController}>Controller</button>
                 </div>
             </nav>
         </>

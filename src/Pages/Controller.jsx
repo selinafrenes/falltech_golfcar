@@ -1,3 +1,4 @@
+import "../styles/controller.css";
 /**
  * Controller-Komponente zur Verwaltung der Joystick-Eingabe und zum Senden von Steuerdaten an einen entfernten Server.
  * @constructor

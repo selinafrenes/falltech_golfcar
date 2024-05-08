@@ -1,7 +1,7 @@
 const {getTotalWorkingTime} = require("../Models/db_access");
 
 /**
- * Controller-Funktion zum Abrufen der Gesamtarbeitszeit und Senden der Antwort an den Client.
+ * Controller-Funktion zum Abrufen der Arbeitszeit und Senden der Antwort an den Client.
  * @param {Object} req - Das Anfrageobjekt.
  * @param {Object} res - Das Antwortobjekt.
  */
@@ -13,7 +13,6 @@ const WorkingTimeController = (req, res) => {
             for (const r of response) {
                 time += r.TotalDuration;
             }
-
              */
             res.status(200).json({totalTime: response})
         })

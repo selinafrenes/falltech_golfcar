@@ -33,7 +33,7 @@ app.get('/', function (req, res){
 });
 
 app.get('/controls', (req, res) => {
-    res.sendFile(path.join(__dirname, 'control_website.html'));
+    res.sendFile(path.join(__dirname, '..', 'public', 'control_website.html'));
 });
 
 app.post('/api/v1/diary/entries', function (req, res){

@@ -10,9 +10,6 @@ const AuthController = (req, res) => {
     userAuthentication(username, password)
         .then(response => {
             if (response && response.username){
-                // TODO Cookie evt wieder setzten und bei client löschen (logout) und automatisch anmelden?
-                // res.cookie()
-                // res.cookie('username', username, { maxAge: 24*60*60*1000, path: '/', domain: 'localhost' });
                 res.json({ success: true, data: response});
             } else {
                 console.error("Es wurde kein Benutzer mit dem angegebenen Benutzername und Passwort gefunden!");

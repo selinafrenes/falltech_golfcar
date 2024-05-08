@@ -247,7 +247,3 @@ module.exports = {
     getAllEntersFilterdByDate,
     getTotalWorkingTime
 };
-
-
-// TODO --> den Verbindungspool schließe
-// pool.drain().then(() => pool.clear());
