@@ -46,11 +46,36 @@ h1 {
 
 #navbar-logo {
     padding: 10px;
+    display: none;
 }
 
 .navbar button:hover, .navbar a:hover, .footer a:hover, .tagebuchNavbar div:hover {
     background-color: rgba(233, 30, 99, 0.5);
 }
+
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 10px 0;
+    transition: top 0.3s;
+    z-index: 1000; /* Damit die Navigationsleiste über anderen Elementen liegt */
+}
+
+/* Stil für den Inhalt, um Platz für die feste Navigationsleiste zu schaffen */
+/*.content {*/
+/*    padding-top: 250px; !* Gleiche Höhe wie die Navigationsleiste *!*/
+/*    !* Restlicher Stil für den Inhalt hier *!*/
+/*}*/
+
+/* Zusätzlicher Stil für den Inhalt, um Platz für die feste Navigationsleiste zu schaffen */
+/* Du musst sicherstellen, dass genügend Platz vorhanden ist, damit der Inhalt nicht hinter der Navigationsleiste verschwindet */
+/*@media screen and (max-width: 600px) {*/
+/*    .content {*/
+/*        padding-top: 100px; !* Falls die Navigationsleiste in mobilen Ansichten höher ist *!*/
+/*    }*/
+/*}*/
+
 
 @media  screen and (min-width: 600px) {
     .navbar {
@@ -82,6 +107,9 @@ h1 {
         width: 100%;
         height: 100%;
     }
+    #navbar-logo {
+        display: block;
+    }
 
     .navbar button {
         background: transparent;
@@ -97,6 +125,14 @@ h1 {
 .logo_FallTech {
     width: 100px;
     height: 100px;
+    object-fit: cover;
+}
+
+.img_slide{
+    height: 100%;
+    width: 90%;
+    border-radius: 20px;
+    margin: 5px;
     object-fit: cover;
 }
 
@@ -164,17 +200,13 @@ h1 {
         grid-column: 1 /span 2;
     }
 
-    .slide-image {
+    .slide-image-container {
         flex: 0 0 50%;
         grid-column: 2;
         grid-row: 2;
     }
 
-    .slide-image img {
-        width: 300px;
-        border-radius: 20px;
-        margin: 5px;
-    }
+
 
     .slide-text {
         grid-column: 1;

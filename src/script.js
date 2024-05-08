@@ -135,6 +135,24 @@ document.addEventListener("DOMContentLoaded", () => {
         //alleSlidesAusblenden();  // Call the function with a delay
 
         //console.log("Windows.onload");
+
+        // TODO yxc
+        let prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+                console.log("Show Navbar");
+                document.getElementById("content").style.marginTop = "250px";
+            } else {
+                document.getElementById("navbar").style.top = "-250px"; // Höhe der Navigationsleiste
+                document.getElementById("content").style.marginTop = "0";
+                console.log("Remove Navbar");
+
+            }
+            prevScrollpos = currentScrollPos;
+        }
+
     }, 500);
 });
 

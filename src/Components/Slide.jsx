@@ -16,8 +16,8 @@ export function Slide({heading, text, image, altText}) {
             <div className="slide-text">
                 {text}
             </div>
-            <div className="slide-image">
-                <img src={image} alt={altText}/>
+            <div className="slide-image-container">
+                <img className="img_slide" src={image} alt={altText}/>
             </div>
         </div>
     );
